@@ -4,22 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".controller.MainActivity">
 
-    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:background="#7129"
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/activity_main_welcome_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26dp"
-        android:layout_margin="20dp"
-        android:textStyle="bold"
-        android:fontFamily="cursive"
-        android:textColor="#009"
-        android:text="Good Morning/afternoon/evening username"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good morning/afternoon/evening"
+            android:textSize="@dimen/size_title"
+            android:padding="@dimen/padding_title"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"/>
 
+    </LinearLayout>
 
+    <!-- Block 2 prenant la deuxième moitié de l'écran -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="#9086"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/activity_main_default_smiley"
+            android:layout_width="@dimen/size_image_width"
+            android:layout_height="@dimen/size_image_height"
+            android:src="@drawable/ic_smiley-happy" />
+
+    </LinearLayout>
 
 </LinearLayout>
