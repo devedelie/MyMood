@@ -8,6 +8,7 @@ android:orientation="vertical"
 tools:context=".controller.MainActivity">
 
 <LinearLayout
+    android:textAlignment="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_weight="5"
@@ -22,6 +23,7 @@ tools:context=".controller.MainActivity">
         android:padding="@dimen/padding_title"
         android:textAlignment="center"
         android:textColor="#FFFFFF"/>
+
 
 </LinearLayout>
 

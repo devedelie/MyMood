@@ -1,7 +1,7 @@
 <resources>
     <!--TextView-->
-    <dimen name="size_title">25sp</dimen>
-    <dimen name="padding_title">40dip</dimen>
+    <dimen name="size_title">20sp</dimen>
+    <dimen name="padding_title">30dip</dimen>
     <!--images-->
     <dimen name="size_image_height">400dip</dimen>
     <dimen name="size_image_width">400dip</dimen>

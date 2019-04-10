@@ -5,23 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
-public class ReallyBadMoodActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class NormalMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
+    public static final int NEXT_SCREEN_REQUEST_CODE=3; // just a random code for screen number 3...
     private GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_really_bad_mood);
-
-
+        setContentView(R.layout.activity_normal_mood);
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
 
@@ -90,22 +87,25 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
 
 
     private void onSwipeLeft() {
-
     }
     private void onSwipeRight() {
     }
     private void onSwipeBottom() {
-        Toast.makeText(this, "Note: This is the saddest smiley possible. We hope your day will get better than that. (-;", Toast.LENGTH_LONG).show();
+        SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
         SwipeUpForNextActivity();
 
     }
 
+    private void SwipeDownForNextActivity() {
+        Intent precedentSmileyIntent = new Intent(this, DisappointedMood.class);
+        startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+    }
 
 
     private void SwipeUpForNextActivity() {
-        Intent nextSmileyIntent = new Intent(this, DisappointedMood.class);
+        Intent nextSmileyIntent = new Intent(this, MainActivity.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
     }
 

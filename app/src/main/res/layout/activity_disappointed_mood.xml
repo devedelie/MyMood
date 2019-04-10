@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".controller.DisappointedMood">
+
+
+
+    <!-- Block 2 prenant la deuxième moitié de l'écran -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1.5"
+        android:background="#A4A4A4"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/activity_main_default_smiley"
+            android:layout_width="@dimen/size_image_width"
+            android:layout_height="@dimen/size_image_height"
+            android:src="@drawable/smiley_disappointed" />
+
+    </LinearLayout>
+
+</LinearLayout>

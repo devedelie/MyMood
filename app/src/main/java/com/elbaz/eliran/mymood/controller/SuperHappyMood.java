@@ -9,25 +9,21 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
-public class ReallyBadMoodActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
+public class SuperHappyMood extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
+    public static final int NEXT_SCREEN_REQUEST_CODE=5; // just a random number for screen number 5...
     private GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_really_bad_mood);
-
+        setContentView(R.layout.activity_super_happy_mood);
 
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
-
-
     }
-
 
     @Override
     public boolean onDown(MotionEvent e) {
@@ -93,21 +89,29 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
 
     }
     private void onSwipeRight() {
+
     }
     private void onSwipeBottom() {
-        Toast.makeText(this, "Note: This is the saddest smiley possible. We hope your day will get better than that. (-;", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
+        SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
-        SwipeUpForNextActivity();
+        Toast.makeText(this, "Note: This is the happiest smiley, you can swipe down only.", Toast.LENGTH_LONG).show();
+
 
     }
 
-
-
-    private void SwipeUpForNextActivity() {
-        Intent nextSmileyIntent = new Intent(this, DisappointedMood.class);
-        startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+    private void SwipeDownForNextActivity() {
+        Intent precedentSmileyIntent = new Intent(this, MainActivity.class);
+        startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
     }
+
+//  Swipe up os not available after this smiley.
+
+//    private void SwipeUpForNextActivity() {
+//        Intent nextSmileyIntent = new Intent(this, ReallyBadMoodActivity.class);
+//        startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+//    }
 
     //Touch Event handles the touch
     @Override

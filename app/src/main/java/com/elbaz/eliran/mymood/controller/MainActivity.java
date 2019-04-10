@@ -1,7 +1,8 @@
 package com.elbaz.eliran.mymood.controller;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
@@ -12,7 +13,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
+    public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
     private GestureDetector mGestureDetector;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +24,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
+
+
     }
-
-
-
 
 
     @Override
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 }else{
                     onSwipeLeft();
                 }
+                result = true;
             }
 
         }else{
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             }else{
                 onSwipeUp();
             }
-            
+            result = true;
         }
 
         return result;
@@ -94,9 +97,23 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
     private void onSwipeBottom() {
         Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
+        SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
         Toast.makeText(this, "Swipe Up", Toast.LENGTH_LONG).show();
+        SwipeUpForNextActivity();
+
+    }
+
+    private void SwipeDownForNextActivity() {
+        Intent precedentSmileyIntent = new Intent(this, NormalMood.class);
+        startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+    }
+
+
+    private void SwipeUpForNextActivity() {
+        Intent nextSmileyIntent = new Intent(this, SuperHappyMood.class);
+        startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
     }
 
     //Touch Event handles the touch
