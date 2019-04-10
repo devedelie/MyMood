@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1.5"
-        android:background="#11D8D6"
+        android:background="@color/NormalSmiley"
         android:gravity="center">
 
         <ImageView
