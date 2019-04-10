@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
@@ -11,12 +12,20 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
+    private GestureDetector mGestureDetector;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //Gesture Detector
+        mGestureDetector = new GestureDetector(this);
     }
+
+
+
+
 
     @Override
     public boolean onDown(MotionEvent e) {
@@ -76,14 +85,25 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
 
 
-    
-    private void onSwipeLeft() {
-    }
 
+    private void onSwipeLeft() {
+        Toast.makeText(this, "Swipe Left", Toast.LENGTH_LONG).show();
+    }
     private void onSwipeRight() {
+        Toast.makeText(this, "Swipe Right", Toast.LENGTH_LONG).show();
     }
     private void onSwipeBottom() {
+        Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
     }
     private void onSwipeUp() {
+        Toast.makeText(this, "Swipe Up", Toast.LENGTH_LONG).show();
+    }
+
+    //Touch Event handles the touch
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        mGestureDetector.onTouchEvent(event);
+
+        return super.onTouchEvent(event);
     }
 }
