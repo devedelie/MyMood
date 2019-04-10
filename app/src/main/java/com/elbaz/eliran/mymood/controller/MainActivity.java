@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
@@ -90,17 +89,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
 
     private void onSwipeLeft() {
-        Toast.makeText(this, "Swipe Left", Toast.LENGTH_LONG).show();
     }
     private void onSwipeRight() {
-        Toast.makeText(this, "Swipe Right", Toast.LENGTH_LONG).show();
     }
     private void onSwipeBottom() {
-        Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
-        Toast.makeText(this, "Swipe Up", Toast.LENGTH_LONG).show();
         SwipeUpForNextActivity();
 
     }

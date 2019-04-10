@@ -95,7 +95,7 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
     private void onSwipeRight() {
     }
     private void onSwipeBottom() {
-        Toast.makeText(this, "Note: This is the saddest smiley possible. We hope your day will get better than that. (-;", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Note: This is the saddest smiley. We hope your day will get better soon. (-;", Toast.LENGTH_LONG).show();
     }
     private void onSwipeUp() {
         SwipeUpForNextActivity();

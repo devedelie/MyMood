@@ -92,11 +92,11 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
 
     }
     private void onSwipeBottom() {
-        Toast.makeText(this, "Swipe Bottom", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Your mood is: Happy!", Toast.LENGTH_LONG).show();
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
-        Toast.makeText(this, "Note: This is the happiest smiley, you can swipe down only.", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Note: This is the happiest smiley (-:.", Toast.LENGTH_LONG).show();
 
 
     }
