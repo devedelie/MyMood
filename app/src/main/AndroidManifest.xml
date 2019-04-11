@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.SuperHappyMood"></activity>
+        <activity android:name=".model.Statistics"></activity>
+        <activity android:name=".controller.SuperHappyMood" />
         <activity android:name=".controller.DisappointedMood" />
         <activity android:name=".controller.NormalMood" />
         <activity android:name=".controller.ReallyBadMoodActivity" />

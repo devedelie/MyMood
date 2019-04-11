@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
@@ -19,6 +20,9 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_normal_mood);
+
+        Toast.makeText(this, "Normal Mood!", Toast.LENGTH_SHORT).show();
+
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
 

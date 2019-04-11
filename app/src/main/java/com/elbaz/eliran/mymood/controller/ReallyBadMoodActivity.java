@@ -21,6 +21,7 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_really_bad_mood);
 
+        Toast.makeText(this, "Sad Mood", Toast.LENGTH_LONG).show();
 
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);

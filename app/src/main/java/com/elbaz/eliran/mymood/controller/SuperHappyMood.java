@@ -21,6 +21,8 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_super_happy_mood);
 
+        Toast.makeText(this, "Super Happy Mood! (-:", Toast.LENGTH_SHORT).show();
+
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
     }
@@ -92,7 +94,6 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
 
     }
     private void onSwipeBottom() {
-        Toast.makeText(this, "Your mood is: Happy!", Toast.LENGTH_LONG).show();
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
@@ -21,7 +22,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Gesture Detector
+        Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
+
+        //Start of the Gesture Detector operation
         mGestureDetector = new GestureDetector(this);
 
 
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     }
 
+    // onFling detects the direction and the velocity of the swipe on the screen
     @Override
     public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
         boolean result=false;
