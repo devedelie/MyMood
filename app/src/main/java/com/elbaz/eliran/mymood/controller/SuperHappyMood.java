@@ -105,6 +105,7 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
     private void SwipeDownForNextActivity() {
         Intent precedentSmileyIntent = new Intent(this, MainActivity.class);
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
 //  Swipe up os not available after this smiley.

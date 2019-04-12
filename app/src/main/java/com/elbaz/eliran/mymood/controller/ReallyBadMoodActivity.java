@@ -108,6 +108,7 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, DisappointedMood.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
     }
 
     //Touch Event handles the touch

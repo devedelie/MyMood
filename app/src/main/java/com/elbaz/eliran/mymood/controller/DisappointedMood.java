@@ -21,7 +21,7 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disappointed_mood);
 
-        Toast.makeText(this, "Disappointed Mood!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Disappointed Mood", Toast.LENGTH_SHORT).show();
 
             //Gesture Detector
             mGestureDetector = new GestureDetector(this);
@@ -105,12 +105,14 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
         private void SwipeDownForNextActivity() {
             Intent precedentSmileyIntent = new Intent(this, ReallyBadMoodActivity.class);
             startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+            overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
         }
 
 
         private void SwipeUpForNextActivity() {
             Intent nextSmileyIntent = new Intent(this, NormalMood.class);
             startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+            overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
         }
 
         //Touch Event handles the touch

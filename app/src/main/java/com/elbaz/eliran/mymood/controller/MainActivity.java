@@ -107,12 +107,15 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private void SwipeDownForNextActivity() {
         Intent precedentSmileyIntent = new Intent(this, NormalMood.class);
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
 
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, SuperHappyMood.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
+
     }
 
     //Touch Event handles the touch
