@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.controller.Fragments.NoteDialog;
 import com.elbaz.eliran.mymood.model.Statistics;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -122,22 +124,22 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private void onSwipeRight() {
     }
     private void onSwipeBottom() {
+        overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
+        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
         SwipeUpForNextActivity();
 
     }
     private void SwipeDownForNextActivity() {
         Intent precedentSmileyIntent = new Intent(this, NormalMood.class);
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
-        overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, SuperHappyMood.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
-        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
     }
     //Touch Event handles the touch
     @Override
@@ -145,5 +147,15 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mGestureDetector.onTouchEvent(event);
 
         return super.onTouchEvent(event);
+    }
+
+    public void happyNoteBtn(View view){
+        NoteDialog noteDialog = new NoteDialog();
+        noteDialog.show(getSupportFragmentManager(), "Comment box");
+    }
+
+    public void happyHistoryBtn(View view){
+        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
+        startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
     }
 }
