@@ -1,6 +1,8 @@
 package com.elbaz.eliran.mymood.controller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -9,12 +11,20 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.model.Statistics;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
     public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
+    private static final int STATISTICS_SCREEN = 1 ;
+
+    SharedPreferences mSharedPreferences;
+
+//    private static final String SHARED_PREFS = "shardPref";
+//    private static final String MOOD_STATE = "moodState";
+
     private GestureDetector mGestureDetector;
 
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
@@ -25,7 +35,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // A Toast message to indicate the current mood for the user.
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
+
+        /**
+         * The below is used to save the user's mood state on SharedPreferences
+         */
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString("Mood", "Happy Mood");
+        editor.apply();
+
 
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
         mNoteBtn = (ImageView) findViewById(R.id.happy_note_btn);
@@ -95,6 +115,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return result;
     }
     private void onSwipeLeft() {
+        Intent moodTest = new Intent(getApplicationContext(), Statistics.class);
+        startActivityForResult(moodTest, STATISTICS_SCREEN);
     }
     private void onSwipeRight() {
     }
