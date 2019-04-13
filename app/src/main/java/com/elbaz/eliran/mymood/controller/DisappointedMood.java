@@ -1,6 +1,8 @@
 package com.elbaz.eliran.mymood.controller;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -16,6 +18,8 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
     public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
     private GestureDetector mGestureDetector;
 
+    SharedPreferences mSharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +27,19 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
 
         Toast.makeText(this, "Disappointed Mood", Toast.LENGTH_SHORT).show();
 
-            //Gesture Detector
+
+        /**
+         * The below is used to save the user's mood state on SharedPreferences
+         */
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString("Mood", "Disappointed");
+        editor.apply();
+        //////////End of data saving///////////////////////////////////////////////////////
+
+
+
+        //Gesture Detector
             mGestureDetector = new GestureDetector(this);
 
 

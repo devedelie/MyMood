@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString("Mood", "Happy Mood");
         editor.apply();
+        //////////End of data saving///////////////////////////////////////////////////////
 
 
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
