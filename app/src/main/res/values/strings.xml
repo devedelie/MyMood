@@ -3,4 +3,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="super_happy">super_happy</string>
+    <string name="note_btn">note_btn</string>
+    <string name="history_btn">history_btn</string>
 </resources>

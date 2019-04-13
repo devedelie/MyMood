@@ -5,5 +5,15 @@
     <!--images-->
     <dimen name="size_image_height">400dip</dimen>
     <dimen name="size_image_width">400dip</dimen>
+    <!--Element position on screen (constraints)-->
+    <dimen name="smiley_marginTop">140dp</dimen>
+    <dimen name="smiley_marginBottom">130dp</dimen>
+    <dimen name="smiley_marginStart">8dp</dimen>
+    <dimen name="smiley_marginEnd">8dp</dimen>
+
+    <dimen name="btn_width">65dp</dimen>
+    <dimen name="btn_height">65dp</dimen>
+    <dimen name="btn_marginStart">8dp</dimen>
+    <dimen name="btn_marginEnd">8dp</dimen>
 
 </resources>

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
@@ -16,6 +17,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
     private GestureDetector mGestureDetector;
 
+    private ImageView mSmiley, mNoteBtn, mHistoryBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +27,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
 
+        mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
+        mNoteBtn = (ImageView) findViewById(R.id.happy_note_btn);
+        mHistoryBtn = (ImageView) findViewById(R.id.happy_history_btn);
+
         //Start of the Gesture Detector operation
         mGestureDetector = new GestureDetector(this);
-
-
     }
-
 
     @Override
     public boolean onDown(MotionEvent e) {
@@ -38,25 +42,28 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     @Override
     public void onShowPress(MotionEvent e) {
-
     }
-
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
         return false;
     }
-
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         return false;
     }
-
     @Override
     public void onLongPress(MotionEvent e) {
 
     }
 
-    // onFling detects the direction and the velocity of the swipe on the screen
+    /**
+     * onFling detects the direction and the velocity of the swipe on the screen
+     * @param downEvent the value of movement on the screen
+     * @param moveEvent the value of movement on the screen
+     * @param velocityX finger move velocity on X axis
+     * @param velocityY finger move velocity on Y axis
+     * @return
+     */
     @Override
     public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
         boolean result=false;
@@ -75,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 }
                 result = true;
             }
-
         }else{
             //Up or down swipe
             if (diffY > 0){
@@ -88,10 +94,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         return result;
     }
-
-
-
-
     private void onSwipeLeft() {
     }
     private void onSwipeRight() {
@@ -103,21 +105,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         SwipeUpForNextActivity();
 
     }
-
     private void SwipeDownForNextActivity() {
         Intent precedentSmileyIntent = new Intent(this, NormalMood.class);
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
-
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, SuperHappyMood.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-
     }
-
     //Touch Event handles the touch
     @Override
     public boolean onTouchEvent(MotionEvent event) {
