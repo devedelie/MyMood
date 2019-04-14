@@ -31,7 +31,7 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
         /**
          * The below is used to save the user's mood state on SharedPreferences
          */
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString("Mood", "Normal Mood");
         editor.apply();
@@ -103,19 +103,13 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
         return result;
     }
 
-
-
-
-    private void onSwipeLeft() {
-    }
-    private void onSwipeRight() {
-    }
+    private void onSwipeLeft() { }
+    private void onSwipeRight() { }
     private void onSwipeBottom() {
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
         SwipeUpForNextActivity();
-
     }
 
     private void SwipeDownForNextActivity() {

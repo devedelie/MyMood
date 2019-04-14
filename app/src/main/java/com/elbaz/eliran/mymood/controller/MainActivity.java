@@ -12,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
-import com.elbaz.eliran.mymood.controller.Fragments.NoteDialog;
 import com.elbaz.eliran.mymood.model.Statistics;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -43,9 +42,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         /**
          * The below is used to save the user's mood state on SharedPreferences
          */
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("Mood", "Happy Mood");
+        editor.putString("Mood", "Happy Mood!");
         editor.apply();
         //////////End of data saving///////////////////////////////////////////////////////
 
@@ -124,24 +123,24 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private void onSwipeRight() {
     }
     private void onSwipeBottom() {
-        overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
-        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
         SwipeUpForNextActivity();
 
     }
     private void SwipeDownForNextActivity() {
         Intent precedentSmileyIntent = new Intent(this, NormalMood.class);
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, SuperHappyMood.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
     }
-    //Touch Event handles the touch
+    //Touch Event - handles the touch
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mGestureDetector.onTouchEvent(event);

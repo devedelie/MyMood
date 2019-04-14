@@ -31,9 +31,9 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         /**
          * The below is used to save the user's mood state on SharedPreferences
          */
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("Mood", "Happy Mood");
+        editor.putString("Mood", "Super Happy Mood");
         editor.apply();
         //////////End of data saving///////////////////////////////////////////////////////
 

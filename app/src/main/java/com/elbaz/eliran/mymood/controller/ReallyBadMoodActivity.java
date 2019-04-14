@@ -30,9 +30,9 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
         /**
          * The below is used to save the user's mood state on SharedPreferences
          */
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("Mood", "Happy Mood");
+        editor.putString("Mood", "Sad Mood");
         editor.apply();
         //////////End of data saving///////////////////////////////////////////////////////
 

@@ -8,16 +8,12 @@ import android.widget.TextView;
 
 import com.elbaz.eliran.mymood.R;
 
-public class Statistics extends AppCompatActivity {
-
-//    private static final String SHARED_PREFS = "sharedPref" ;
-////    private static final String MOOD_STATE = "moodState" ;
+public class Statistics extends AppCompatActivity {//implements NoteDialog.CommentListener {
 
 
 
-    private String userMoodSatetString;
-    private String moodLoader;
-    private TextView textForTEST;
+    private TextView textForTEST, userComment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +21,17 @@ public class Statistics extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
 
         textForTEST = (TextView) findViewById(R.id.user_mood_statistics_test);
+        userComment = (TextView) findViewById(R.id.user_mood_note) ;
 
-        SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+
+        SharedPreferences result = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
 
         String value = result.getString("Mood", "default");
+        String value2 = result.getString("SaveCommentData", "default");
 
         textForTEST.setText(value);
+        userComment.setText(value2);
 
     }
+
 }
