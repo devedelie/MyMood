@@ -1,5 +1,4 @@
 package com.elbaz.eliran.mymood.model;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,14 +12,12 @@ import android.widget.Toast;
 import com.elbaz.eliran.mymood.R;
 
 public class CommentDialog extends AppCompatActivity {
-
     SharedPreferences mSharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_dialog);
-
 
         /**
          * Declaration of the Dialog Builder along with the Text and Button
@@ -31,13 +28,13 @@ public class CommentDialog extends AppCompatActivity {
         Button mSave = (Button) mView.findViewById(R.id.comment_box_save_btn);
         Button mCancel = (Button) mView.findViewById(R.id.comment_box_cancel_btn);
 
-
         /**
          * Setting the save button functionality
          */
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
+        // Save Button
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,6 +53,7 @@ public class CommentDialog extends AppCompatActivity {
             }
         });
 
+        // Cancel button
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
