@@ -28,7 +28,8 @@ public class CommentDialog extends AppCompatActivity {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(CommentDialog.this);
         View mView = getLayoutInflater().inflate(R.layout.activity_comment_dialog, null);
         final EditText mComment = (EditText) mView.findViewById(R.id.activity_comment_dialog);
-        Button mSave = (Button) mView.findViewById(R.id.comment_box_btn);
+        Button mSave = (Button) mView.findViewById(R.id.comment_box_save_btn);
+        Button mCancel = (Button) mView.findViewById(R.id.comment_box_cancel_btn);
 
 
         /**
@@ -52,6 +53,13 @@ public class CommentDialog extends AppCompatActivity {
                 }else{
                     Toast.makeText(CommentDialog.this, "Your comment field is empty", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        mCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
