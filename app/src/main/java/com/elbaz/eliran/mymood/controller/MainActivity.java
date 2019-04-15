@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.model.CommentDialog;
 import com.elbaz.eliran.mymood.model.Statistics;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         /**
          * The below is used to save the user's mood state on SharedPreferences
          */
-        mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString("Mood", "Happy Mood!");
         editor.apply();
@@ -140,6 +141,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
     }
+
     //Touch Event - handles the touch
     @Override
     public boolean onTouchEvent(MotionEvent event) {
@@ -149,8 +151,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void happyNoteBtn(View view){
-        NoteDialog noteDialog = new NoteDialog();
-        noteDialog.show(getSupportFragmentManager(), "Comment box");
+//        NoteDialog noteDialog = new NoteDialog();
+//        noteDialog.show(getSupportFragmentManager(), "Comment box");
+        Intent commentDialog = new Intent(this, CommentDialog.class);
+        startActivityForResult(commentDialog, NEXT_SCREEN_REQUEST_CODE);
+
     }
 
     public void happyHistoryBtn(View view){

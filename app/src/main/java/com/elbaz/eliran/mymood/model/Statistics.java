@@ -13,6 +13,8 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
 
     private TextView textForTEST, userComment;
+    SharedPreferences mSharedPreferences;
+
 
 
     @Override
@@ -24,10 +26,10 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userComment = (TextView) findViewById(R.id.user_mood_note) ;
 
 
-        SharedPreferences result = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
+        SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
 
         String value = result.getString("Mood", "default");
-        String value2 = result.getString("SaveCommentData", "default");
+        String value2 = result.getString("CommentData", "default");
 
         textForTEST.setText(value);
         userComment.setText(value2);
