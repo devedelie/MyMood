@@ -1,4 +1,5 @@
 package com.elbaz.eliran.mymood.model;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,8 @@ import com.elbaz.eliran.mymood.R;
 
 public class CommentDialog extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
+    EditText mComment;
+//    int moodSwitch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,7 @@ public class CommentDialog extends AppCompatActivity {
          */
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(CommentDialog.this);
         View mView = getLayoutInflater().inflate(R.layout.activity_comment_dialog, null);
-        final EditText mComment = (EditText) mView.findViewById(R.id.activity_comment_dialog);
+        mComment = (EditText) mView.findViewById(R.id.activity_comment_dialog);
         Button mSave = (Button) mView.findViewById(R.id.comment_box_save_btn);
         Button mCancel = (Button) mView.findViewById(R.id.comment_box_cancel_btn);
 
@@ -35,6 +38,7 @@ public class CommentDialog extends AppCompatActivity {
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
         // Save Button
+
         mSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,7 +46,7 @@ public class CommentDialog extends AppCompatActivity {
                     // Save mComment variable into SharedPreferences
                     mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
-                    editor.putString("CommentData", mComment.getText().toString());
+                    editor.putString("DailyCommentData", mComment.getText().toString());
                     editor.apply();
                     // Toast message and termination
                     Toast.makeText(CommentDialog.this, "Comment saved", Toast.LENGTH_SHORT).show();
@@ -52,7 +56,6 @@ public class CommentDialog extends AppCompatActivity {
                 }
             }
         });
-
         // Cancel button
         mCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +63,7 @@ public class CommentDialog extends AppCompatActivity {
                 finish();
             }
         });
-
+        //// End of Save/Cancel button
     }
+
 }
