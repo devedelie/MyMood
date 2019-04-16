@@ -16,7 +16,7 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
     private TextView userTodayMood, userComment, userMood7, userMood6, userMood5, userMood4, userMood3, userMood2, userMood1;
     private ImageView commentToday, commentYesterday, comment2Days, comment3Days, comment4Days, comment5Days, comment6Days, comment7Days;
-    String commentDataYesterday, commentDataToday;
+    String CommentData7DaysAgo, CommentData6Daysago, CommentData5DaysAgo, CommentData4DaysAgo,CommentData3DaysAgo, CommentData2DaysAgo, commentDataYesterday, commentDataToday;
     SharedPreferences mSharedPreferences;
 
 
@@ -38,7 +38,7 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
 
 
-        // Link comment images to each mood line on the layout
+        // Link comment btn images to each mood line on the layout
         comment7Days = (ImageView) findViewById(R.id.btn_comment_7_days_ago);
         comment6Days = (ImageView) findViewById(R.id.btn_comment_6_days_ago);
         comment5Days = (ImageView) findViewById(R.id.btn_comment_5_days_ago);
@@ -49,6 +49,7 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         commentToday = (ImageView) findViewById(R.id.btn_comment_today);
 
         userComment = (TextView) findViewById(R.id.user_mood_note); // to be erased
+
 
         /**
          * Check if comment button should be visible/Invisible
@@ -80,17 +81,36 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userMood2.setText("Your mood 2 days ago: "+ value2);
         userMood1.setText("Your mood yesterday: "+ value1);
 
-        userTodayMood.setText("Your mood today: "+ value);
+        userTodayMood.setText("Your mood today: "+ value); // to be erased
 
-        commentDataToday = result.getString("CommentData", "default");
+        //Tests
+        commentDataToday = result.getString("DailyCommentData", "default");
+
         userComment.setText(commentDataToday);
-
     }
 
     /**
      * The methods below are used to show Toast messages for each comment button on the layout
      * @param view
      */
+    public void Comment7daysAgo(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
+    public void Comment6daysAgo(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
+    public void Comment5daysAgo(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
+    public void Comment4daysAgoComment(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
+    public void Comment3daysAgo(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
+    public void Comment2daysAgo(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
     public void yesterdayComment(View view){
         Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
     }
