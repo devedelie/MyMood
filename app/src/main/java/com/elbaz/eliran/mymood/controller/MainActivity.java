@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mGcmNetworkManager = GcmNetworkManager.getInstance(this);
         PeriodicTask task = new PeriodicTask.Builder()
                 .setService(PeriodicTaskLauncher.class)
-                .setPeriod(20L)
-                .setFlex(1L)
+                .setPeriod(20L) // Period in seconds
+                .setFlex(1L) // Initialize the time to first launch the task after running the GcmNetworkManager
                 .setTag("PeriodicTaskLauncher")
                 .build();
 
