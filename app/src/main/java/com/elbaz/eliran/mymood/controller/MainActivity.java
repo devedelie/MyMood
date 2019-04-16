@@ -13,7 +13,10 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.PeriodicTaskLauncher;
 import com.elbaz.eliran.mymood.model.Statistics;
+import com.google.android.gms.gcm.GcmNetworkManager;
+import com.google.android.gms.gcm.PeriodicTask;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private static final int STATISTICS_SCREEN = 1 ;
 
     SharedPreferences mSharedPreferences;
+
+    private GcmNetworkManager mGcmNetworkManager;
 
 //    private static final String SHARED_PREFS = "shardPref";
 //    private static final String MOOD_STATE = "moodState";
@@ -41,13 +46,31 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
 
         /**
+         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
+         */
+
+//        DailyCounter dailyCounter = new DailyCounter();
+//        dailyCounter.dailyCounter();
+        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
+        PeriodicTask task = new PeriodicTask.Builder()
+                .setService(PeriodicTaskLauncher.class)
+                .setPeriod(20L)
+                .setFlex(1L)
+                .setTag("PeriodicTaskLauncher")
+                .build();
+
+        mGcmNetworkManager.schedule(task);
+        // [End of Periodic Task Launcher]
+
+
+        /**
          * The below is used to save the user's mood state on SharedPreferences
          */
         mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("Mood", "Happy Mood!");
+        editor.putString("TodayMood", "Happy Mood!");
         editor.apply();
-        //////////End of data saving///////////////////////////////////////////////////////
+        //////////[ End of data saving ]///////////////////////////////////////////////////////
 
 
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
