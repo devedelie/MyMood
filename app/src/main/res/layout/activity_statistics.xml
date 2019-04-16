@@ -32,6 +32,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ic_comment_black_48px"
+        android:onClick="Comment7daysAgo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_7_days_ago"
@@ -63,6 +64,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="100dp"
         android:layout_marginEnd="8dp"
+        android:onClick="Comment6daysAgo"
         android:src="@drawable/ic_comment_black_48px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.596"
@@ -96,7 +98,7 @@
         android:layout_marginTop="176dp"
         android:layout_marginEnd="100dp"
         android:contentDescription="TODO"
-        android:onClick="todayComment"
+        android:onClick="Comment5daysAgo"
         android:src="@drawable/ic_comment_black_48px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -129,7 +131,7 @@
         android:layout_marginTop="272dp"
         android:layout_marginEnd="100dp"
         android:contentDescription="TODO"
-        android:onClick="todayComment"
+        android:onClick="Comment4daysAgoComment"
         android:src="@drawable/ic_comment_black_48px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -162,7 +164,7 @@
         android:layout_marginTop="340dp"
         android:layout_marginEnd="100dp"
         android:contentDescription="TODO"
-        android:onClick="todayComment"
+        android:onClick="Comment3daysAgo"
         android:src="@drawable/ic_comment_black_48px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -195,7 +197,7 @@
         android:layout_marginTop="428dp"
         android:layout_marginEnd="100dp"
         android:contentDescription="TODO"
-        android:onClick="todayComment"
+        android:onClick="Comment2daysAgo"
         android:src="@drawable/ic_comment_black_48px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -268,7 +270,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="TODO" />
 
-
     <TextView
         android:id="@+id/user_mood_note"
         android:layout_width="wrap_content"
@@ -285,9 +286,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.966" />
-
-
-
-
 
 </android.support.constraint.ConstraintLayout>
