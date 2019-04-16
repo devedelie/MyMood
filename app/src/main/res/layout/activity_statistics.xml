@@ -24,6 +24,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025" />
 
+    <ImageView
+        android:id="@+id/btn_comment_7_days_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_7_days_ago"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
     <TextView
         android:id="@+id/user_mood_statistics_6_days_ago"
         android:layout_width="wrap_content"
@@ -41,6 +55,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.134" />
+
+    <ImageView
+        android:id="@+id/btn_comment_6_days_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.596"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_6_days_ago"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
 
     <TextView
         android:id="@+id/user_mood_statistics_5_days_ago"
@@ -60,6 +88,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.244" />
 
+    <ImageView
+        android:id="@+id/btn_comment_5_days_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="176dp"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="TODO"
+        android:onClick="todayComment"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_5_days_ago"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/user_mood_statistics_4_days_ago"
         android:layout_width="wrap_content"
@@ -77,6 +120,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.365" />
+
+    <ImageView
+        android:id="@+id/btn_comment_4_days_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="272dp"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="TODO"
+        android:onClick="todayComment"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_4_days_ago"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/user_mood_statistics_3_days_ago"
@@ -96,6 +154,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.48" />
 
+    <ImageView
+        android:id="@+id/btn_comment_3_days_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="TODO"
+        android:onClick="todayComment"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_3_days_ago"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/user_mood_statistics_2_days_ago"
         android:layout_width="wrap_content"
@@ -113,6 +186,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.59" />
+
+    <ImageView
+        android:id="@+id/btn_comment_2_days_ago"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="428dp"
+        android:layout_marginEnd="100dp"
+        android:contentDescription="TODO"
+        android:onClick="todayComment"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_2_days_ago"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/user_mood_statistics_1_days_ago"
@@ -132,6 +220,21 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.712" />
 
+    <ImageView
+        android:id="@+id/btn_comment_yesterday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="512dp"
+        android:layout_marginEnd="104dp"
+        android:contentDescription="TODO"
+        android:onClick="yesterdayComment"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_1_days_ago"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/user_mood_statistics_test"
         android:layout_width="wrap_content"
@@ -145,10 +248,26 @@
         android:textSize="@dimen/statistics_text_size"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.86" />
+        app:layout_constraintVertical_bias="0.823" />
+
+    <ImageView
+        android:id="@+id/btn_comment_today"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="580dp"
+        android:layout_marginEnd="100dp"
+        android:onClick="todayComment"
+        android:src="@drawable/ic_comment_black_48px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.956"
+        app:layout_constraintStart_toEndOf="@+id/user_mood_statistics_test"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO" />
+
 
     <TextView
         android:id="@+id/user_mood_note"
@@ -166,6 +285,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.966" />
+
+
 
 
 

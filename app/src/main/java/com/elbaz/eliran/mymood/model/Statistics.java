@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 
@@ -12,6 +15,8 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
 
     private TextView userTodayMood, userComment, userMood7, userMood6, userMood5, userMood4, userMood3, userMood2, userMood1;
+    private ImageView commentToday, commentYesterday, comment2Days, comment3Days, comment4Days, comment5Days, comment6Days, comment7Days;
+    String commentDataYesterday, commentDataToday;
     SharedPreferences mSharedPreferences;
 
 
@@ -19,6 +24,7 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
+
 
         // Link the layout text lines
         userMood7 = (TextView) findViewById(R.id.user_mood_statistics_7_days_ago);
@@ -28,9 +34,29 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userMood3 = (TextView) findViewById(R.id.user_mood_statistics_3_days_ago);
         userMood2 = (TextView) findViewById(R.id.user_mood_statistics_2_days_ago);
         userMood1 = (TextView) findViewById(R.id.user_mood_statistics_1_days_ago);
-
         userTodayMood = (TextView) findViewById(R.id.user_mood_statistics_test);
-        userComment = (TextView) findViewById(R.id.user_mood_note);
+
+
+
+        // Link comment images to each mood line on the layout
+        comment7Days = (ImageView) findViewById(R.id.btn_comment_7_days_ago);
+        comment6Days = (ImageView) findViewById(R.id.btn_comment_6_days_ago);
+        comment5Days = (ImageView) findViewById(R.id.btn_comment_5_days_ago);
+        comment4Days = (ImageView) findViewById(R.id.btn_comment_4_days_ago);
+        comment3Days = (ImageView) findViewById(R.id.btn_comment_3_days_ago);
+        comment2Days = (ImageView) findViewById(R.id.btn_comment_2_days_ago);
+        commentYesterday = (ImageView) findViewById(R.id.btn_comment_yesterday);
+        commentToday = (ImageView) findViewById(R.id.btn_comment_today);
+
+        userComment = (TextView) findViewById(R.id.user_mood_note); // to be erased
+
+        /**
+         * Check if comment button should be visible/Invisible
+         */
+//        SharedPreferences resulter = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+//        if (resulter.getString("CommentData", "default").isEmpty())
+//        commentToday.setVisibility(View.INVISIBLE);
+
 
 
         // Load the values from SharedPreferences into the layout
@@ -43,10 +69,8 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         String value3 = result.getString("3DaysAgo", "default");
         String value2 = result.getString("2DaysAgo", "default");
         String value1 = result.getString("1DaysAgo", "default");
-
         String value = result.getString("TodayMood", "default");
 
-        String value22 = result.getString("CommentData", "default");
 
         userMood7.setText("Your mood 7 days ago: "+ value7);
         userMood6.setText("Your mood 6 days ago: "+ value6);
@@ -58,9 +82,20 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
         userTodayMood.setText("Your mood today: "+ value);
 
-        userComment.setText(value22);
+        commentDataToday = result.getString("CommentData", "default");
+        userComment.setText(commentDataToday);
 
     }
 
+    /**
+     * The methods below are used to show Toast messages for each comment button on the layout
+     * @param view
+     */
+    public void yesterdayComment(View view){
+        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+    }
+    public void todayComment(View view){
+        Toast.makeText(this, commentDataToday, Toast.LENGTH_LONG).show();
+    }
 
 }
