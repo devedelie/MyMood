@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
+    // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
+    public static final int MOOD_REQUEST_CODE=4;
     private static final int STATISTICS_SCREEN = 1 ;
 
     SharedPreferences mSharedPreferences;
@@ -153,13 +154,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
     private void SwipeDownForNextActivity() {
         Intent precedentSmileyIntent = new Intent(this, NormalMood.class);
-        startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        startActivityForResult(precedentSmileyIntent, MOOD_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, SuperHappyMood.class);
-        startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
+        startActivityForResult(nextSmileyIntent, MOOD_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
     }
 
@@ -172,15 +173,16 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void happyNoteBtn(View view){
-//        NoteDialog noteDialog = new NoteDialog();
-//        noteDialog.show(getSupportFragmentManager(), "Comment box");
         Intent commentDialog = new Intent(this, CommentDialog.class);
-        startActivityForResult(commentDialog, NEXT_SCREEN_REQUEST_CODE);
+        commentDialog.putExtra("MoodNumberForComment", MOOD_REQUEST_CODE);
+        startActivity(commentDialog);
 
     }
 
     public void happyHistoryBtn(View view){
         Intent statistics = new Intent(getApplicationContext(), Statistics.class);
-        startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
+        startActivityForResult(statistics, MOOD_REQUEST_CODE);
     }
+    
+
 }
