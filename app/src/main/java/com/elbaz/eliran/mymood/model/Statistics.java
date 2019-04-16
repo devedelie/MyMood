@@ -48,15 +48,15 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
         String value22 = result.getString("CommentData", "default");
 
-        userMood7.setText(value7);
-        userMood6.setText(value6);
-        userMood5.setText(value5);
-        userMood4.setText(value4);
-        userMood3.setText(value3);
-        userMood2.setText(value2);
-        userMood1.setText(value1);
+        userMood7.setText("Your mood 7 days ago: "+ value7);
+        userMood6.setText("Your mood 6 days ago: "+ value6);
+        userMood5.setText("Your mood 5 days ago: "+ value5);
+        userMood4.setText("Your mood 4 days ago: "+ value4);
+        userMood3.setText("Your mood 3 days ago: "+ value3);
+        userMood2.setText("Your mood 2 days ago: "+ value2);
+        userMood1.setText("Your mood yesterday: "+ value1);
 
-        userTodayMood.setText(value);
+        userTodayMood.setText("Your mood today: "+ value);
 
         userComment.setText(value22);
 
