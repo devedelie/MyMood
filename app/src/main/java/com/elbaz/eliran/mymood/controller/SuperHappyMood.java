@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.model.CommentDialog;
 
 public class SuperHappyMood extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -137,5 +139,12 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         mGestureDetector.onTouchEvent(event);
 
         return super.onTouchEvent(event);
+    }
+
+    public void superHappyNoteBtn(View view){
+        Intent commentDialog = new Intent(this, CommentDialog.class);
+        commentDialog.putExtra("MoodNumberForComment", 5);
+        startActivity(commentDialog);
+
     }
 }
