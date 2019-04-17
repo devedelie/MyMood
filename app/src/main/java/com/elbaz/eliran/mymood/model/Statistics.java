@@ -16,7 +16,7 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
     private TextView userTodayMood, userComment, userMood7, userMood6, userMood5, userMood4, userMood3, userMood2, userMood1;
     private ImageView commentToday, commentYesterday, comment2Days, comment3Days, comment4Days, comment5Days, comment6Days, comment7Days;
-    String CommentData7DaysAgo, CommentData6Daysago, CommentData5DaysAgo, CommentData4DaysAgo,CommentData3DaysAgo, CommentData2DaysAgo, commentDataYesterday, commentDataToday;
+    String commentData7DaysAgo, commentData6DaysAgo, commentData5DaysAgo, commentData4DaysAgo,commentData3DaysAgo, commentData2DaysAgo, commentDataYesterday, commentDataToday;
     SharedPreferences mSharedPreferences;
 
 
@@ -81,35 +81,44 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userMood2.setText("Your mood 2 days ago: "+ value2);
         userMood1.setText("Your mood yesterday: "+ value1);
 
-        userTodayMood.setText("Your mood today: "+ value); // to be erased
 
-        //Tests
+        //Load all daily comment 7 days old
+        commentData7DaysAgo = result.getString("comment7DaysAgo", "default");
+        commentData6DaysAgo = result.getString("comment6DaysAgo", "default");
+        commentData5DaysAgo =  result.getString("comment5DaysAgo", "default");
+        commentData4DaysAgo = result.getString("comment4DaysAgo", "default");
+        commentData3DaysAgo = result.getString("comment3DaysAgo", "default");
+        commentData2DaysAgo = result.getString("comment2DaysAgo", "default");
+        commentDataYesterday = result.getString("comment1DaysAgo", "default");
         commentDataToday = result.getString("DailyCommentData", "default");
 
-        userComment.setText(commentDataToday);
+
+        userTodayMood.setText("Your mood today: "+ value); // to be erased
+        userComment.setText(commentDataToday);  // to be erased
+
     }
 
     /**
-     * The methods below are used to show Toast messages for each comment button on the layout
+     * Methods which are used to show Toast messages for each comment button on the layout
      * @param view
      */
     public void Comment7daysAgo(View view){
-        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, commentData7DaysAgo, Toast.LENGTH_LONG).show();
     }
     public void Comment6daysAgo(View view){
-        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, commentData6DaysAgo, Toast.LENGTH_LONG).show();
     }
     public void Comment5daysAgo(View view){
-        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, commentData5DaysAgo, Toast.LENGTH_LONG).show();
     }
     public void Comment4daysAgoComment(View view){
-        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, commentData4DaysAgo, Toast.LENGTH_LONG).show();
     }
     public void Comment3daysAgo(View view){
-        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, commentData3DaysAgo, Toast.LENGTH_LONG).show();
     }
     public void Comment2daysAgo(View view){
-        Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, commentData2DaysAgo, Toast.LENGTH_LONG).show();
     }
     public void yesterdayComment(View view){
         Toast.makeText(this, commentDataYesterday, Toast.LENGTH_LONG).show();
