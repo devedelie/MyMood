@@ -7,12 +7,30 @@ import com.google.android.gms.gcm.GcmTaskService;
 import com.google.android.gms.gcm.TaskParams;
 
 public class PeriodicTaskLauncher extends GcmTaskService {
+
+    /**
+     *   ///////////////////////////////////////////////
+     *   ///////////////////////////////////////////////
+     *
+     *
+     *   This Activity will be erased once the Test of DataOrganizer.java
+     *   will run positive
+     *
+     *   ////////////////////////////////////////////////
+     *   ////////////////////////////////////////////////
+     *
+     */
+
+
+
+
    SharedPreferences mSharedPreferences;
 
     String day7, day6, day5, day4, day3, day2, yesterday, today; // Mood Strings
     String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday;
 
 
+    // will be launched with the GcmNetworkManager task
     @Override
     public int onRunTask(TaskParams taskParams) {
 
