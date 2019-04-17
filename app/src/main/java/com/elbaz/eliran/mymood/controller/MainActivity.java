@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -13,10 +14,11 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.PeriodicTaskLauncher;
+import com.elbaz.eliran.mymood.model.DataOrganizer;
 import com.elbaz.eliran.mymood.model.Statistics;
 import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.PeriodicTask;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -37,6 +39,30 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
 
+    /**
+     * Checking if the day has changed from the last time the app was live.
+     * If the date has been changed (new day), the method onResume will call the DataOrganizer to
+     * set all the data in its current daily variables.
+     */
+    @Override
+    public void onResume(){
+        super.onResume();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        int lastTimeStarted = settings.getInt("last_time_started", -1);
+        Calendar calendar = Calendar.getInstance();
+        int today = calendar.get(Calendar.DAY_OF_YEAR);
+
+        if (today != lastTimeStarted) {
+            Intent dataOrganizer = new Intent(this, DataOrganizer.class);
+            dataOrganizer.putExtra("DataOrganizer", MOOD_REQUEST_CODE);
+            startActivity(dataOrganizer);
+             // updates the current day date with a key
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("last_time_started", today);
+            editor.commit();
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,18 +72,20 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         // A Toast message to indicate the current mood for the user.
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
 
-        /**
-         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
-         */
-        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
-        PeriodicTask task = new PeriodicTask.Builder()
-                .setService(PeriodicTaskLauncher.class)
-                .setPeriod(86400L) // Period in seconds
-                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
-                .setTag("PeriodicTaskLauncher")
-                .build();
 
-        mGcmNetworkManager.schedule(task);
+//        /**
+//         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
+//         */
+//        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
+//        PeriodicTask task = new PeriodicTask.Builder()
+//                .setService(PeriodicTaskLauncher.class)
+//                .setPeriod(86400L) // Period in seconds
+//                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
+//                .setTag("PeriodicTaskLauncher")
+//                .build();
+//
+//        mGcmNetworkManager.schedule(task);
+
         // [End of Periodic Task Launcher]
 
 

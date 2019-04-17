@@ -12,20 +12,16 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.PeriodicTaskLauncher;
 import com.elbaz.eliran.mymood.model.Statistics;
-import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.PeriodicTask;
 
 public class SuperHappyMood extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    public static final int NEXT_SCREEN_REQUEST_CODE=5; // just a random number for screen number 5...
+    public static final int NEXT_SCREEN_REQUEST_CODE=5; // code for screen number 5
     private GestureDetector mGestureDetector;
 
     SharedPreferences mSharedPreferences;
-    private GcmNetworkManager mGcmNetworkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,21 +31,6 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         Toast.makeText(this, "Super Happy Mood! (-:", Toast.LENGTH_SHORT).show();
 
         /**
-         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
-         */
-        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
-        PeriodicTask task = new PeriodicTask.Builder()
-                .setService(PeriodicTaskLauncher.class)
-                .setPeriod(86400L) // Period in seconds
-                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
-                .setTag("PeriodicTaskLauncher")
-                .build();
-
-        mGcmNetworkManager.schedule(task);
-        // [End of Periodic Task Launcher]
-
-
-        /**
          * The below is used to save the user's mood state on SharedPreferences
          */
         mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
@@ -57,8 +38,6 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         editor.putString("Mood", "Super Happy Mood");
         editor.apply();
         //////////End of data saving///////////////////////////////////////////////////////
-
-
 
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
@@ -71,24 +50,18 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
 
     @Override
     public void onShowPress(MotionEvent e) {
-
     }
-
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
         return false;
     }
-
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         return false;
     }
-
     @Override
     public void onLongPress(MotionEvent e) {
-
     }
-
     @Override
     public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
         boolean result=false;
@@ -121,22 +94,15 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         return result;
     }
 
-
-
-
     private void onSwipeLeft() {
-
     }
     private void onSwipeRight() {
-
     }
     private void onSwipeBottom() {
         SwipeDownForNextActivity();
     }
     private void onSwipeUp() {
         Toast.makeText(this, "Note: This is the happiest smiley (-:.", Toast.LENGTH_LONG).show();
-
-
     }
 
     private void SwipeDownForNextActivity() {
@@ -145,12 +111,6 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
 
-//  Swipe up os not available after this smiley.
-
-//    private void SwipeUpForNextActivity() {
-//        Intent nextSmileyIntent = new Intent(this, ReallyBadMoodActivity.class);
-//        startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
-//    }
 
     //Touch Event handles the touch
     @Override

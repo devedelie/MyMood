@@ -12,10 +12,7 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.PeriodicTaskLauncher;
 import com.elbaz.eliran.mymood.model.Statistics;
-import com.google.android.gms.gcm.GcmNetworkManager;
-import com.google.android.gms.gcm.PeriodicTask;
 
 public class NormalMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -25,7 +22,6 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
     private GestureDetector mGestureDetector;
 
     SharedPreferences mSharedPreferences;
-    private GcmNetworkManager mGcmNetworkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,22 +29,6 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
         setContentView(R.layout.activity_normal_mood);
 
         Toast.makeText(this, "Normal Mood!", Toast.LENGTH_SHORT).show();
-
-
-        /**
-         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
-         */
-        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
-        PeriodicTask task = new PeriodicTask.Builder()
-                .setService(PeriodicTaskLauncher.class)
-                .setPeriod(86400L) // Period in seconds
-                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
-                .setTag("PeriodicTaskLauncher")
-                .build();
-
-        mGcmNetworkManager.schedule(task);
-        // [End of Periodic Task Launcher]
-
 
         /**
          * The below is used to save the user's mood state on SharedPreferences
@@ -59,14 +39,9 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
         editor.apply();
         //////////End of data saving///////////////////////////////////////////////////////
 
-
-
         //Gesture Detector
         mGestureDetector = new GestureDetector(this);
-
-
     }
-
 
     @Override
     public boolean onDown(MotionEvent e) {
@@ -75,9 +50,7 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
 
     @Override
     public void onShowPress(MotionEvent e) {
-
     }
-
     @Override
     public boolean onSingleTapUp(MotionEvent e) {
         return false;
@@ -87,12 +60,9 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
         return false;
     }
-
     @Override
     public void onLongPress(MotionEvent e) {
-
     }
-
     @Override
     public boolean onFling(MotionEvent downEvent, MotionEvent moveEvent, float velocityX, float velocityY) {
         boolean result=false;
@@ -139,7 +109,6 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
-
 
     private void SwipeUpForNextActivity() {
         Intent nextSmileyIntent = new Intent(this, MainActivity.class);
