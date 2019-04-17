@@ -3,7 +3,6 @@ package com.elbaz.eliran.mymood.model;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 /**
@@ -14,10 +13,10 @@ public class DataOrganizer extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
 
     String day7, day6, day5, day4, day3, day2, yesterday, today; // Mood Strings
-    String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday;
+    String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday; //Comment Strings
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         /**
@@ -35,6 +34,7 @@ public class DataOrganizer extends AppCompatActivity {
         day2 = result.getString("2DaysAgo", "default");
         yesterday = result.getString("1DaysAgo", "default");
         today = result.getString("TodayMood", "default");
+
         // Load Daily comments for the last 7 days
         comment7 = result.getString("comment7DaysAgo","default");
         comment6 = result.getString("comment6DaysAgo","default");
@@ -44,7 +44,6 @@ public class DataOrganizer extends AppCompatActivity {
         comment2 = result.getString("comment2DaysAgo","default");
         comment1 = result.getString("comment1DaysAgo","default");
         commentToday = result.getString("DailyCommentData","default");
-
 
         // Switch mood and comment data between days
         day7 = day6;         comment7 = comment6;
@@ -65,6 +64,7 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("3DaysAgo", day3);
         editor.putString("2DaysAgo", day2);
         editor.putString("1DaysAgo", yesterday);
+
         // Save updated variables with daily comments to SharedPreference
         editor.putString("comment7DaysAgo", comment7);
         editor.putString("comment6DaysAgo", comment6);
@@ -74,8 +74,8 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("comment2DaysAgo", comment2);
         editor.putString("comment1DaysAgo", comment1);
         editor.apply();
+        finish();
     }
-
 
 }
 

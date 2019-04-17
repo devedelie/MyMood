@@ -4,6 +4,7 @@
     package="com.elbaz.eliran.mymood">
     
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -14,14 +15,6 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         android:fullBackupContent="true">
-        <service
-            android:name=".model.PeriodicTaskLauncher"
-            android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
-            </intent-filter>
-        </service>
 
         <activity android:name=".model.CommentDialog" />
         <activity android:name=".model.Statistics" />
@@ -29,6 +22,7 @@
         <activity android:name=".controller.DisappointedMood" />
         <activity android:name=".controller.NormalMood" />
         <activity android:name=".controller.ReallyBadMoodActivity" />
+        <activity android:name=".model.DataOrganizer"/>
         <activity android:name=".controller.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,6 +30,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <receiver android:name=".model.DataOrganizeTaskLauncher"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
     </application>
 
 </manifest>
