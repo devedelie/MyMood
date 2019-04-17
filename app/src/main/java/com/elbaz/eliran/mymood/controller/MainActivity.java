@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -30,6 +31,26 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     SharedPreferences mSharedPreferences;
     private GestureDetector mGestureDetector;
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
+    boolean dateHasChanged;
+
+    //
+    @Override
+    public void onResume(){
+        super.onResume();
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
+        int lastTimeStarted = settings.getInt("last_time_started", -1);
+        Calendar calendar = Calendar.getInstance();
+        int today = calendar.get(Calendar.DAY_OF_YEAR);
+
+        if (today != lastTimeStarted) {
+            dateHasChanged = true;
+
+            // updates the current day date with a key
+            SharedPreferences.Editor editor = settings.edit();
+            editor.putInt("last_time_started", today);
+            editor.commit();
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +73,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
                     00, 00, 00);
         }
-        setAlarm(calendar.getTimeInMillis());
+
+        // Launch the alarm initialization only
+        if (dateHasChanged) {
+            // as long as it is the same day, set the flag again to false
+            dateHasChanged = false;
+            setAlarm(calendar.getTimeInMillis());
+        }
         // End of Calendar initialization (continues in setAlarm() method)
 
         /**
