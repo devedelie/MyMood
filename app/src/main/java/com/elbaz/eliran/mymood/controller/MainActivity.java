@@ -1,10 +1,11 @@
 package com.elbaz.eliran.mymood.controller;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -14,9 +15,8 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.DataOrganizer;
+import com.elbaz.eliran.mymood.model.DataOrganizeTaskLauncher;
 import com.elbaz.eliran.mymood.model.Statistics;
-import com.google.android.gms.gcm.GcmNetworkManager;
 
 import java.util.Calendar;
 
@@ -26,43 +26,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
     // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
     public static final int MOOD_REQUEST_CODE=4;
-    private static final int STATISTICS_SCREEN = 1 ;
 
     SharedPreferences mSharedPreferences;
-
-    private GcmNetworkManager mGcmNetworkManager;
-
-//    private static final String SHARED_PREFS = "shardPref";
-//    private static final String MOOD_STATE = "moodState";
-
     private GestureDetector mGestureDetector;
-
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
-
-    /**
-     * Checking if the day has changed from the last time the app was live.
-     * If the date has been changed (new day), the method onResume will call the DataOrganizer to
-     * set all the data in its current daily variables.
-     */
-    @Override
-    public void onResume(){
-        super.onResume();
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        int lastTimeStarted = settings.getInt("last_time_started", -1);
-        Calendar calendar = Calendar.getInstance();
-        int today = calendar.get(Calendar.DAY_OF_YEAR);
-
-        if (today != lastTimeStarted) {
-            Intent dataOrganizer = new Intent(this, DataOrganizer.class);
-            dataOrganizer.putExtra("DataOrganizer", MOOD_REQUEST_CODE);
-            startActivity(dataOrganizer);
-             // updates the current day date with a key
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("last_time_started", today);
-            editor.commit();
-        }
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,21 +40,20 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
 
 
-//        /**
-//         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
-//         */
-//        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
-//        PeriodicTask task = new PeriodicTask.Builder()
-//                .setService(PeriodicTaskLauncher.class)
-//                .setPeriod(86400L) // Period in seconds
-//                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
-//                .setTag("PeriodicTaskLauncher")
-//                .build();
-//
-//        mGcmNetworkManager.schedule(task);
-
-        // [End of Periodic Task Launcher]
-
+        /**
+         * Periodic task - Daily (silent) alarm for the system, to initialize and organize
+         * the mood and comments into 7 days reordered statistics
+         */
+        Calendar calendar = Calendar.getInstance();
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                    00, 00, 00);
+        } else {
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                    00, 00, 00);
+        }
+        setAlarm(calendar.getTimeInMillis());
+        // End of Calendar initialization (continues in setAlarm() method)
 
         /**
          * The below is used to save the user's mood state on SharedPreferences
@@ -107,11 +73,23 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mGestureDetector = new GestureDetector(this);
     }
 
+    /**
+     * setAlarm method belongs to the daily task operation every midnight
+     * The initialization of the alarm is above
+     * @param
+     */
+    private void setAlarm(long timeInMillis) {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, DataOrganizeTaskLauncher.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,0);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
+        Toast.makeText(this, "Alarm was set", Toast.LENGTH_LONG).show();
+    }
+
     @Override
     public boolean onDown(MotionEvent e) {
         return false;
     }
-
     @Override
     public void onShowPress(MotionEvent e) {
     }
@@ -125,7 +103,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
     @Override
     public void onLongPress(MotionEvent e) {
-
     }
 
     /**
@@ -167,8 +144,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         return result;
     }
     private void onSwipeLeft() {
-        Intent moodTest = new Intent(getApplicationContext(), Statistics.class);
-        startActivityForResult(moodTest, STATISTICS_SCREEN);
     }
     private void onSwipeRight() {
     }
