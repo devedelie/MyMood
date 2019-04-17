@@ -12,7 +12,10 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.PeriodicTaskLauncher;
 import com.elbaz.eliran.mymood.model.Statistics;
+import com.google.android.gms.gcm.GcmNetworkManager;
+import com.google.android.gms.gcm.PeriodicTask;
 
 public class DisappointedMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -22,6 +25,7 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
     private GestureDetector mGestureDetector;
 
     SharedPreferences mSharedPreferences;
+    private GcmNetworkManager mGcmNetworkManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,19 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
 
         Toast.makeText(this, "Disappointed Mood", Toast.LENGTH_SHORT).show();
 
+        /**
+         * Periodic task - Daily time counter to initialize the mood into 7 days statistics
+         */
+        mGcmNetworkManager = GcmNetworkManager.getInstance(this);
+        PeriodicTask task = new PeriodicTask.Builder()
+                .setService(PeriodicTaskLauncher.class)
+                .setPeriod(86400L) // Period in seconds
+                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
+                .setTag("PeriodicTaskLauncher")
+                .build();
+
+        mGcmNetworkManager.schedule(task);
+        // [End of Periodic Task Launcher]
 
         /**
          * The below is used to save the user's mood state on SharedPreferences

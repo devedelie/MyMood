@@ -49,12 +49,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         /**
          * Periodic task - Daily time counter to initialize the mood into 7 days statistics
          */
-
         mGcmNetworkManager = GcmNetworkManager.getInstance(this);
         PeriodicTask task = new PeriodicTask.Builder()
                 .setService(PeriodicTaskLauncher.class)
-                .setPeriod(20L) // Period in seconds
-                .setFlex(1L) // Initialize the time to first launch the task after running the GcmNetworkManager
+                .setPeriod(86400L) // Period in seconds
+                .setFlex(86400L) // Initialize the time to first launch the task after running the GcmNetworkManager
                 .setTag("PeriodicTaskLauncher")
                 .build();
 
