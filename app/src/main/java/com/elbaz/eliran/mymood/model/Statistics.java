@@ -54,12 +54,12 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         /**
          * Check if comment button should be visible/Invisible
          */
-        //Test-  to be erased
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("comment1DaysAgo", "Hello");
-        editor.apply();
-        //End of test
+//        // Start - Initializer for testing only - to be erased
+//        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = mSharedPreferences.edit();
+//        editor.putString("comment4DaysAgo", "This comment was placed in position 4, check if tomorrow is placed above 5/6/7");
+//        editor.apply();
+//        //End of initializer test
 
         SharedPreferences showOrHide = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         if (showOrHide.getString("comment7DaysAgo", "default").isEmpty())
