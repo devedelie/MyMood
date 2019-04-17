@@ -17,6 +17,13 @@ public class CommentDialog extends AppCompatActivity {
     EditText mComment;
 //    int moodSwitch;
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
