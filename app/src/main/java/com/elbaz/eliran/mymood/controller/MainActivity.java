@@ -176,7 +176,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         Intent commentDialog = new Intent(this, CommentDialog.class);
         commentDialog.putExtra("MoodNumberForComment", MOOD_REQUEST_CODE);
         startActivity(commentDialog);
-
     }
 
     public void happyHistoryBtn(View view){

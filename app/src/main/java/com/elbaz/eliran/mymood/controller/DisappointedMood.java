@@ -7,15 +7,18 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.Statistics;
 
 public class DisappointedMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    public static final int NEXT_SCREEN_REQUEST_CODE=4; // just a random code for screen number 4...
+    public static final int NEXT_SCREEN_REQUEST_CODE=2; //  code for screen number 2...
     private GestureDetector mGestureDetector;
 
     SharedPreferences mSharedPreferences;
@@ -138,4 +141,15 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
 
             return super.onTouchEvent(event);
         }
+
+    public void disappointedNoteBtn(View view){
+        Intent commentDialog = new Intent(this, CommentDialog.class);
+        commentDialog.putExtra("MoodNumberForComment", NEXT_SCREEN_REQUEST_CODE);
+        startActivity(commentDialog);
+    }
+
+    public void disappointedHistoryBtn(View view){
+        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
+        startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
+    }
     }

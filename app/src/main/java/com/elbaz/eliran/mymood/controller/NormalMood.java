@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.Statistics;
 
 public class NormalMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -131,5 +134,16 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
         mGestureDetector.onTouchEvent(event);
 
         return super.onTouchEvent(event);
+    }
+
+    public void normalNoteBtn(View view){
+        Intent commentDialog = new Intent(this, CommentDialog.class);
+        commentDialog.putExtra("MoodNumberForComment", NEXT_SCREEN_REQUEST_CODE);
+        startActivity(commentDialog);
+    }
+
+    public void normalHistoryBtn(View view){
+        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
+        startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
     }
 }

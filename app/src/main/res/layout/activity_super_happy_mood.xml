@@ -43,7 +43,7 @@ android:background="@color/SuperHappySmiley">
     android:layout_height="65dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
-
+    android:onClick="superHappyHistoryBtn"
     android:src="@drawable/ic_history_black"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"

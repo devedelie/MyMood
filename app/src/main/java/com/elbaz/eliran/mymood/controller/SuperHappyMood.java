@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.Statistics;
 
 public class SuperHappyMood extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -145,6 +146,9 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         Intent commentDialog = new Intent(this, CommentDialog.class);
         commentDialog.putExtra("MoodNumberForComment", 5);
         startActivity(commentDialog);
-
+    }
+    public void superHappyHistoryBtn(View view){
+        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
+        startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
     }
 }
