@@ -54,9 +54,30 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         /**
          * Check if comment button should be visible/Invisible
          */
-//        SharedPreferences resulter = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-//        if (resulter.getString("CommentData", "default").isEmpty())
-//        commentToday.setVisibility(View.INVISIBLE);
+        //Test-  to be erased
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString("comment1DaysAgo", "Hello");
+        editor.apply();
+        //End of test
+
+        SharedPreferences showOrHide = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        if (showOrHide.getString("comment7DaysAgo", "default").isEmpty())
+            comment7Days.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("comment6DaysAgo", "default").isEmpty())
+            comment6Days.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("comment5DaysAgo", "default").isEmpty())
+            comment5Days.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("comment4DaysAgo", "default").isEmpty())
+            comment4Days.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("comment3DaysAgo", "default").isEmpty())
+            comment3Days.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("comment2DaysAgo", "default").isEmpty())
+            comment2Days.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("comment1DaysAgo", "default").isEmpty())
+            commentYesterday.setVisibility(View.INVISIBLE);
+        if (showOrHide.getString("dailyCommentData", "default").isEmpty()) // to be erased
+            commentToday.setVisibility(View.INVISIBLE); // to be erased
 
 
 
