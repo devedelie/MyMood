@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -32,25 +31,8 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private GestureDetector mGestureDetector;
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
     boolean dateHasChanged;
-
-    //
-    @Override
-    public void onResume(){
-        super.onResume();
-        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this);
-        int lastTimeStarted = settings.getInt("last_time_started", -1);
-        Calendar calendar = Calendar.getInstance();
-        int today = calendar.get(Calendar.DAY_OF_YEAR);
-
-        if (today != lastTimeStarted) {
-            dateHasChanged = true;
-
-            // updates the current day date with a key
-            SharedPreferences.Editor editor = settings.edit();
-            editor.putInt("last_time_started", today);
-            editor.commit();
-        }
-    }
+    // Set the variables to time of system alarm execute
+    int hours=0,minutes=0,seconds=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,25 +44,15 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
 
         /**
-         * Periodic task - Daily (silent) alarm for the system, to initialize and organize
+         * Periodic task - Daily alarm(silent) for the system, to initialize and organize
          * the mood and comments into 7 days reordered statistics
          */
-        Calendar calendar = Calendar.getInstance();
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                    00, 00, 00);
-        } else {
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                    00, 00, 00);
+        SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        int flagValue = result.getInt("AlarmSetFlag", 0);
+        if(flagValue==0) {
+            setCalendarForAlarm();
         }
 
-        // Launch the alarm initialization only
-        if (dateHasChanged) {
-            // as long as it is the same day, set the flag again to false
-            dateHasChanged = false;
-            setAlarm(calendar.getTimeInMillis());
-        }
-        // End of Calendar initialization (continues in setAlarm() method)
 
         /**
          * The below is used to save the user's mood state on SharedPreferences
@@ -100,6 +72,28 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         mGestureDetector = new GestureDetector(this);
     }
 
+
+    /**
+     * Set the calendar with date and time for the alarm
+     */
+    private void setCalendarForAlarm(){
+        // Set the alarm flag back to 1, to indicate the system alarm is on
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
+        alarmEditor.putInt("AlarmSetFlag",1);
+        alarmEditor.apply();
+        //////////[ End of alarm flag ]///////////////////////////////////////////////////////
+
+        Calendar calendar = Calendar.getInstance();
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                    hours, minutes, seconds);
+        } else {
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
+                    hours, minutes, seconds);
+        }
+        setAlarm(calendar.getTimeInMillis());
+    }
     /**
      * setAlarm method belongs to the daily task operation every midnight
      * The initialization of the alarm is above
