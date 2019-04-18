@@ -20,8 +20,10 @@
 
     <!--Statistics - TextView element position-->
     <dimen name="TextView_layout_marginStart">25dp</dimen>
-    <dimen name="TextView_layout_marginTop">68dp</dimen>
+    <dimen name="TextView_layout_marginTop">34dp</dimen>
+    <dimen name="TextView_layout_marginBottom">34dp</dimen>
     <!--Statistics - ImageView element position-->
     <dimen name="ImageView_layout_marginStart">75dp</dimen>
-    <dimen name="ImageView_layout_marginTop">68dp</dimen>
+    <dimen name="ImageView_layout_marginTop">34dp</dimen>
+    <dimen name="ImageView_layout_marginBottom">34dp</dimen>
 </resources>

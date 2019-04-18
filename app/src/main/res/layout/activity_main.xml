@@ -36,6 +36,18 @@
         android:contentDescription="@string/note_btn"/>
 
     <ImageView
+        android:id="@+id/happy_email_btn"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="happyEmailBtn"
+        android:src="@drawable/ic_mail_outline_black_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="@string/happy_email_btn" />
+
+    <ImageView
 
         android:id="@+id/happy_history_btn"
         android:layout_width="65dp"

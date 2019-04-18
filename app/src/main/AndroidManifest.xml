@@ -2,28 +2,42 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.elbaz.eliran.mymood">
-    
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:fullBackupContent="true">
-
-        <activity android:name=".model.CommentDialog" />
-        <activity android:name=".model.Statistics" />
-        <activity android:name=".controller.SuperHappyMood" />
-        <activity android:name=".controller.DisappointedMood" />
-        <activity android:name=".controller.NormalMood" />
-        <activity android:name=".controller.ReallyBadMoodActivity" />
-        <activity android:name=".model.DataOrganizer"/>
-        <activity android:name=".controller.MainActivity">
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".controller.EmailSender"></activity>
+        <activity
+            android:name=".model.CommentDialog"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".model.Statistics"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.SuperHappyMood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.DisappointedMood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.NormalMood"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.ReallyBadMoodActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".model.DataOrganizer" />
+        <activity
+            android:name=".controller.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +45,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".model.DataOrganizeTaskLauncher"
+        <receiver
+            android:name=".model.DataOrganizeTaskLauncher"
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedReceiver" />

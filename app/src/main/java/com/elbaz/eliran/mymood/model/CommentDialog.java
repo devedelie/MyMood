@@ -15,7 +15,6 @@ import com.elbaz.eliran.mymood.R;
 public class CommentDialog extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
     EditText mComment;
-//    int moodSwitch;
 
 
     @Override
@@ -39,7 +38,7 @@ public class CommentDialog extends AppCompatActivity {
         Button mCancel = (Button) mView.findViewById(R.id.comment_box_cancel_btn);
 
         /**
-         * Setting the save button functionality
+         * Set the save button functionality
          */
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();

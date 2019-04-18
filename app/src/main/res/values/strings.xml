@@ -15,4 +15,5 @@
     <string name="days_ago_2">Mood 2 Days ago: </string>
     <string name="yesterday">Mood Yesterday: </string>
     <string name="today">Mood today: </string>
+    <string name="happy_email_btn">happy_email_btn</string>
 </resources>
