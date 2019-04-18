@@ -3,6 +3,8 @@ package com.elbaz.eliran.mymood.controller;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -20,7 +22,7 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
     public static final int NEXT_SCREEN_REQUEST_CODE=1; //  code for screen number 1...
     private GestureDetector mGestureDetector;
-
+    MediaPlayer mMediaPlayer;
     SharedPreferences mSharedPreferences;
 
     @Override
@@ -28,14 +30,21 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_really_bad_mood);
 
+        // Play sound when activity is launched
+        mMediaPlayer = new MediaPlayer();
+        mMediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.start();
+
+        // A Toast message to indicate the current mood for the user.
         Toast.makeText(this, "Sad Mood", Toast.LENGTH_LONG).show();
 
         /**
          * The below is used to save the user's mood state on SharedPreferences
          */
-        mSharedPreferences = getSharedPreferences("SaveCommentData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("Mood", "Sad Mood");
+        editor.putString("TodayMood", "Sad Mood");
         editor.apply();
         //////////End of data saving///////////////////////////////////////////////////////
 
@@ -128,5 +137,9 @@ public class ReallyBadMoodActivity extends AppCompatActivity implements GestureD
     public void sadHistoryBtn(View view){
         Intent statistics = new Intent(getApplicationContext(), Statistics.class);
         startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
+    }
+    public void sadEmailBtn(View view){
+        Intent email = new Intent(getApplicationContext(), EmailSender.class);
+        startActivity(email);
     }
 }

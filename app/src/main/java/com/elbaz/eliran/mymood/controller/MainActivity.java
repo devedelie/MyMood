@@ -5,6 +5,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
     // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
     public static final int MOOD_REQUEST_CODE=4;
+    MediaPlayer mMediaPlayer;
 
     SharedPreferences mSharedPreferences;
     private GestureDetector mGestureDetector;
@@ -38,6 +41,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mMediaPlayer = new MediaPlayer();
+        mMediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
+        mMediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mMediaPlayer.start();
 
         // A Toast message to indicate the current mood for the user.
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
@@ -204,6 +212,11 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     public void happyHistoryBtn(View view){
         Intent statistics = new Intent(getApplicationContext(), Statistics.class);
         startActivityForResult(statistics, MOOD_REQUEST_CODE);
+    }
+    public void happyEmailBtn(View view){
+        Intent email = new Intent(getApplicationContext(), EmailSender.class);
+        email.putExtra("Email Subject", "Subject: Hey, I'm in Happy-mood and I wanted to share it with you.");
+        startActivity(email);
     }
     
 
