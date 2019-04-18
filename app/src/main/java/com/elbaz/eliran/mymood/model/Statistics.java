@@ -12,19 +12,16 @@ import android.widget.Toast;
 import com.elbaz.eliran.mymood.R;
 
 public class Statistics extends AppCompatActivity {//implements NoteDialog.CommentListener {
-
-
+    
     private TextView userTodayMood, userComment, userMood7, userMood6, userMood5, userMood4, userMood3, userMood2, userMood1;
     private ImageView commentToday, commentYesterday, comment2Days, comment3Days, comment4Days, comment5Days, comment6Days, comment7Days;
     String commentData7DaysAgo, commentData6DaysAgo, commentData5DaysAgo, commentData4DaysAgo,commentData3DaysAgo, commentData2DaysAgo, commentDataYesterday, commentDataToday;
     SharedPreferences mSharedPreferences;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
-
 
         // Link the layout text lines
         userMood7 = (TextView) findViewById(R.id.user_mood_statistics_7_days_ago);
@@ -37,7 +34,6 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userTodayMood = (TextView) findViewById(R.id.user_mood_statistics_test);
 
 
-
         // Link comment btn images to each mood line on the layout
         comment7Days = (ImageView) findViewById(R.id.btn_comment_7_days_ago);
         comment6Days = (ImageView) findViewById(R.id.btn_comment_6_days_ago);
@@ -46,20 +42,20 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         comment3Days = (ImageView) findViewById(R.id.btn_comment_3_days_ago);
         comment2Days = (ImageView) findViewById(R.id.btn_comment_2_days_ago);
         commentYesterday = (ImageView) findViewById(R.id.btn_comment_yesterday);
-        commentToday = (ImageView) findViewById(R.id.btn_comment_today);
 
         userComment = (TextView) findViewById(R.id.user_mood_note); // to be erased
 
 
-        /**
-         * Check if comment button should be visible/Invisible
-         */
 //        // Start - Initializer for testing only - to be erased
 //        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
 //        SharedPreferences.Editor editor = mSharedPreferences.edit();
-//        editor.putString("comment4DaysAgo", "This comment was placed in position 4, check if tomorrow is placed above 5/6/7");
+//        editor.putString("comment2DaysAgo", "");
 //        editor.apply();
 //        //End of initializer test
+
+        /**
+         * Check if comment button should be visible/Invisible
+         */
 
         SharedPreferences showOrHide = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         if (showOrHide.getString("comment7DaysAgo", "default").isEmpty())
@@ -80,7 +76,6 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
             commentToday.setVisibility(View.INVISIBLE); // to be erased
 
 
-
         // Load the values from SharedPreferences into the layout
         SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
 
@@ -93,7 +88,6 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         String value1 = result.getString("1DaysAgo", "default");
         String value = result.getString("TodayMood", "default");
 
-
         userMood7.setText("Your mood 7 days ago: "+ value7);
         userMood6.setText("Your mood 6 days ago: "+ value6);
         userMood5.setText("Your mood 5 days ago: "+ value5);
@@ -101,7 +95,6 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userMood3.setText("Your mood 3 days ago: "+ value3);
         userMood2.setText("Your mood 2 days ago: "+ value2);
         userMood1.setText("Your mood yesterday: "+ value1);
-
 
         //Load all daily comment 7 days old
         commentData7DaysAgo = result.getString("comment7DaysAgo", "default");
@@ -113,10 +106,8 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         commentDataYesterday = result.getString("comment1DaysAgo", "default");
         commentDataToday = result.getString("DailyCommentData", "default");
 
-
         userTodayMood.setText("Your mood today: "+ value); // to be erased
         userComment.setText(commentDataToday);  // to be erased
-
     }
 
     /**
@@ -147,5 +138,4 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
     public void todayComment(View view){
         Toast.makeText(this, commentDataToday, Toast.LENGTH_LONG).show();
     }
-
 }
