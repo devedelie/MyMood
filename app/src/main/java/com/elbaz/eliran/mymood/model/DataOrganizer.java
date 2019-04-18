@@ -19,6 +19,13 @@ public class DataOrganizer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Set the alarm flag back to zero
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
+        alarmEditor.putInt("AlarmSetFlag",0);
+        alarmEditor.apply();
+        //////////[ End of data saving ]///////////////////////////////////////////////////////
+
         /**
          * Set all the statistics data in the right daily order while the periodic task is launched
          */
