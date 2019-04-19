@@ -38,8 +38,8 @@ public class EmailSender extends AppCompatActivity {
     mTitle = (TextView) mView.findViewById(R.id.email_dialog_activity_title);
     mEmail = (EditText) mView.findViewById(R.id.email_activity_email_dialog);
     mComment = (EditText) mView.findViewById(R.id.email_activity_comment_dialog);
-    Button mSend = (Button) mView.findViewById(R.id.comment_box_save_btn);
-    Button mCancel = (Button) mView.findViewById(R.id.comment_box_cancel_btn);
+    Button mSend = (Button) mView.findViewById(R.id.email_box_send_btn);
+    Button mCancel = (Button) mView.findViewById(R.id.email_box_cancel_btn);
     // Set a pre-defined mood title to the message
     String data = getIntent().getExtras().getString("Email Subject","No Title");
     mTitle.setText(data);
