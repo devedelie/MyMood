@@ -43,18 +43,18 @@
         android:layout_height="match_parent"
         android:layout_below="@id/email_activity_comment_dialog">
     <Button
-        android:id="@+id/comment_box_save_btn"
+        android:id="@+id/email_box_send_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="60dp"
         android:layout_below="@id/email_activity_comment_dialog"
-        android:text="Save" />
+        android:text="Send" />
 
 
     <Button
-        android:id="@+id/comment_box_cancel_btn"
+        android:id="@+id/email_box_cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
