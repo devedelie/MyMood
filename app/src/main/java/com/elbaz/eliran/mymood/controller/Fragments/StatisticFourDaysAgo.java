@@ -59,7 +59,11 @@ public class StatisticFourDaysAgo extends Fragment {
                 break;
             case "default":
                 colorBar.setImageResource(R.drawable.no_color);
+        }
 
+        // Show/hide the comment button by checking if comment was made for that day
+        if (preferences.getString("comment4DaysAgo", "default").isEmpty()){
+            commentBtn.setVisibility(View.INVISIBLE);
         }
 
         return view;

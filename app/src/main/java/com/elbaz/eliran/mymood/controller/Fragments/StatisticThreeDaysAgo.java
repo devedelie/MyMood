@@ -59,7 +59,11 @@ public class StatisticThreeDaysAgo extends Fragment {
                 break;
             case "default":
                 colorBar.setImageResource(R.drawable.no_color);
+        }
 
+        // Show/hide the comment button by checking if comment was made for that day
+        if (preferences.getString("comment3DaysAgo", "default").isEmpty()){
+            commentBtn.setVisibility(View.INVISIBLE);
         }
 
         return view;
