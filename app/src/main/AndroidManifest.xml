@@ -15,7 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".controller.EmailSender"></activity>
+        <activity android:name=".controller.HappyMood"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".controller.MoodHistoryScreen"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".controller.EmailSender"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".model.CommentDialog"
             android:screenOrientation="portrait" />
