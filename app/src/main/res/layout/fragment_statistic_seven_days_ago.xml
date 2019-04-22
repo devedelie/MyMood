@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".controller.MoodHistoryScreen">
+
+<ImageView
+    android:id="@+id/color_bar_image_7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:src="@drawable/no_color"
+    android:contentDescription="fragment_layout_7_days_ago" />
+
+<RelativeLayout
+    android:id="@+id/fragment7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true">
+
+    <TextView
+        android:id="@+id/fragment_7_days_ago_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="40dp"
+        android:text="@string/_7_days_ago" />
+
+    <ImageView
+        android:id="@+id/fragment_7_days_ago_comment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="250dp"
+        android:contentDescription="@string/view_comment_btn"
+        android:onClick="comment7DaysAgo"
+        android:src="@drawable/ic_comment_black_48px" />
+</RelativeLayout>
+
+</FrameLayout>
