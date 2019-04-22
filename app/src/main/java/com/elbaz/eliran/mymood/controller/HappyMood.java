@@ -1,7 +1,5 @@
 package com.elbaz.eliran.mymood.controller;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,9 +15,6 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.DataOrganizeTaskLauncher;
-
-import java.util.Calendar;
 
 public class HappyMood extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -32,8 +27,8 @@ public class HappyMood extends AppCompatActivity implements GestureDetector.OnGe
     SharedPreferences mSharedPreferences;
     private GestureDetector mGestureDetector;
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
-    // Set time variables for system alarm execute
-    int hours=23,minutes=59,seconds=59;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +47,6 @@ public class HappyMood extends AppCompatActivity implements GestureDetector.OnGe
         Toast.makeText(this, "Happy Mood! (-:", Toast.LENGTH_SHORT).show();
 
         /**
-         * Periodic task - Daily alarm(silent) for the system, to initialize and organize
-         * the mood and comments into 7 days reordered statistics
-         */
-        int flagValue = result.getInt("AlarmSetFlag", 0);
-//        flagValue=0; // set back to zero manually
-        if(flagValue==0) {
-            setCalendarForAlarm();
-        }
-
-        /**
          * The below is used to save the user's mood state on SharedPreferences
          */
         mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
@@ -76,40 +61,6 @@ public class HappyMood extends AppCompatActivity implements GestureDetector.OnGe
 
         //Start of the Gesture Detector operation
         mGestureDetector = new GestureDetector(this);
-    }
-
-    /**
-     * Set the calendar with date and time for the alarm
-     */
-    private void setCalendarForAlarm(){
-        // Set the alarm flag back to 1, to indicate the system alarm is on
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
-        alarmEditor.putInt("AlarmSetFlag",1);
-        alarmEditor.apply();
-        //////////[ End of alarm flag ]///////////////////////////////////////////////////////
-
-        Calendar calendar = Calendar.getInstance();
-        if (android.os.Build.VERSION.SDK_INT >= 23) {
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                    hours, minutes, seconds);
-        } else {
-            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                    hours, minutes, seconds);
-        }
-        setAlarm(calendar.getTimeInMillis());
-    }
-    /**
-     * setAlarm method belongs to the daily task operation every midnight
-     * The initialization of the alarm is above
-     * @param
-     */
-    private void setAlarm(long timeInMillis) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, DataOrganizeTaskLauncher.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
-        Toast.makeText(this, "Alarm was set", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -214,5 +165,5 @@ public class HappyMood extends AppCompatActivity implements GestureDetector.OnGe
         email.putExtra("Email Subject", "Subject: Hey, I'm in Happy-mood and I wanted to share it with you.");
         startActivity(email);
     }
-    
+
 }
