@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.Statistics;
 
 public class DisappointedMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -142,11 +141,12 @@ public class DisappointedMood extends AppCompatActivity implements GestureDetect
     }
 
     public void disappointedHistoryBtn(View view){
-        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
+        Intent statistics = new Intent(getApplicationContext(), MoodHistoryScreen.class);
         startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
     }
     public void disappointedEmailBtn(View view){
         Intent email = new Intent(getApplicationContext(), EmailSender.class);
+        email.putExtra("Email Subject", "Subject: Hey, I'm disappointed and I wanted to share it with you.");
         startActivity(email);
     }
 }

@@ -14,7 +14,8 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.Statistics;
+
+import static com.elbaz.eliran.mymood.controller.MainActivity.MOOD_REQUEST_CODE;
 
 public class SuperHappyMood extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -115,11 +116,10 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
     }
 
     private void SwipeDownForNextActivity() {
-        Intent precedentSmileyIntent = new Intent(this, MainActivity.class);
+        Intent precedentSmileyIntent = new Intent(this, HappyMood.class);
         startActivityForResult(precedentSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
     }
-
 
     //Touch Event handles the touch
     @Override
@@ -135,11 +135,13 @@ public class SuperHappyMood extends AppCompatActivity implements GestureDetector
         startActivity(commentDialog);
     }
     public void superHappyHistoryBtn(View view){
-        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
-        startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
+        Intent statistics = new Intent(getApplicationContext(), MoodHistoryScreen.class);
+        statistics.putExtra("history", MOOD_REQUEST_CODE);
+        startActivity(statistics);
     }
     public void superHappyEmailBtn(View view){
         Intent email = new Intent(getApplicationContext(), EmailSender.class);
+        email.putExtra("Email Subject", "Subject: Hey, I'm super Happy today and I wanted to share it with you.");
         startActivity(email);
     }
 }

@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
-import com.elbaz.eliran.mymood.model.Statistics;
 
 public class NormalMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -120,7 +119,7 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
     }
 
     private void SwipeUpForNextActivity() {
-        Intent nextSmileyIntent = new Intent(this, MainActivity.class);
+        Intent nextSmileyIntent = new Intent(this, HappyMood.class);
         startActivityForResult(nextSmileyIntent, NEXT_SCREEN_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
     }
@@ -140,11 +139,12 @@ public class NormalMood extends AppCompatActivity implements GestureDetector.OnG
     }
 
     public void normalHistoryBtn(View view){
-        Intent statistics = new Intent(getApplicationContext(), Statistics.class);
+        Intent statistics = new Intent(getApplicationContext(), MoodHistoryScreen.class);
         startActivityForResult(statistics, NEXT_SCREEN_REQUEST_CODE);
     }
     public void normalEmailBtn(View view){
         Intent email = new Intent(getApplicationContext(), EmailSender.class);
+        email.putExtra("Email Subject", "Subject: Hey, my mood is normal today and I wanted to share it with you.");
         startActivity(email);
     }
 }
