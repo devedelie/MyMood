@@ -32,9 +32,9 @@ public class StatisticSevenDaysAgo extends Fragment {
         moodText = (TextView) view.findViewById(R.id.fragment_7_days_ago_text);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("TodayMood", "default");
-
-
+        String value = preferences.getString("7DaysAgo", "default");
+        // Show the mood of specific day
+        moodText.setText("Your mood 7 days ago: \n"+value);
         // Check the mood and switch it to set the correct bar-color
         switch (value) {
             case "Super Happy Mood":

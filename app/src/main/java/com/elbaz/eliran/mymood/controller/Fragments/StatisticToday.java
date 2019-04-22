@@ -1,6 +1,5 @@
 package com.elbaz.eliran.mymood.controller.Fragments;
 
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,7 +19,6 @@ public class StatisticToday extends Fragment {
     private ImageView colorBar, commentBtn;
     private TextView moodText;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,8 +31,8 @@ public class StatisticToday extends Fragment {
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         String value = preferences.getString("TodayMood", "default");
-
-
+        // Show the mood of specific day
+        moodText.setText("Your mood today: \n"+value);
         // Check the mood and switch it to set the correct bar-color
         switch (value) {
                 case "Super Happy Mood":
@@ -54,11 +52,9 @@ public class StatisticToday extends Fragment {
                     break;
                 case "default":
                     colorBar.setImageResource(R.drawable.no_color);
-
             }
-            return null;
+            return view;
         // End of switch
 
         }
-
 }
