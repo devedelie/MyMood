@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Eliran Elbaz on 17-Apr-19.
+ *
+ * DataOrganizer.java will be launched every day at midnight to set and save the values for the next day.
  */
 public class DataOrganizer extends AppCompatActivity {
 
@@ -19,19 +21,24 @@ public class DataOrganizer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set the alarm flag back to zero
+        // Set the alarm flag back to zero &
+        // set the comment back to empty &
+        // set the default mood back to "Happy"
         mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
-        alarmEditor.putInt("AlarmSetFlag",0);
-        alarmEditor.apply();
-        //////////[ End of data saving ]///////////////////////////////////////////////////////
+        SharedPreferences.Editor save = mSharedPreferences.edit();
+        // alarm flag to zero
+        save.putInt("AlarmSetFlag",0);
+        // Daily comment to empty
+        save.putString("DailyCommentData","");
+        // Default mood back to Happy
+        save.putString("TodayMood", "Happy Mood!");
+        save.apply();
+        //////////[ End of default values ]///////////////////////////
 
         /**
-         * Set all the statistics data in the right daily order while the periodic task is launched
+         * Set all the statistics data in the right daily order while the periodic alarm is launched
          */
-
-        //Load data from SharedPreference to variables
-        // Load Daily mood for the last 7 days
+        // Load the daily mood from SharedPreference (last 7 days)
         SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         day7 = result.getString("7DaysAgo", "default");
         day6 = result.getString("6DaysAgo", "default");
@@ -71,6 +78,8 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("3DaysAgo", day3);
         editor.putString("2DaysAgo", day2);
         editor.putString("1DaysAgo", yesterday);
+        //Set back the daily mood to Happy by default after midnight
+        editor.putString("TodayMood", "Happy Mood! (-:");
 
         // Save updated variables with daily comments to SharedPreference
         editor.putString("comment7DaysAgo", comment7);
