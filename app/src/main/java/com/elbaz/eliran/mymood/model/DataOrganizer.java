@@ -21,20 +21,6 @@ public class DataOrganizer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Set the alarm flag back to zero &
-        // set the comment back to empty &
-        // set the default mood back to "Happy"
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor save = mSharedPreferences.edit();
-        // alarm flag to zero
-        save.putInt("AlarmSetFlag",0);
-        // Daily comment to empty
-        save.putString("DailyCommentData","");
-        // Default mood back to Happy
-        save.putString("TodayMood", "Happy Mood!");
-        save.apply();
-        //////////[ End of default values ]///////////////////////////
-
         /**
          * Set all the statistics data in the right daily order while the periodic alarm is launched
          */
@@ -91,6 +77,21 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("comment1DaysAgo", comment1);
         editor.apply();
         finish();
+
+
+        // Set the alarm flag back to zero &
+        // set the comment back to empty &
+        // set the default mood back to "Happy"
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor save = mSharedPreferences.edit();
+        // alarm flag to zero
+        save.putInt("AlarmSetFlag",0);
+        // Daily comment to empty
+        save.putString("DailyCommentData","");
+        // Default mood back to Happy
+        save.putString("TodayMood", "Happy Mood!");
+        save.apply();
+        //////////[ End of default values ]///////////////////////////
     }
 
 }
