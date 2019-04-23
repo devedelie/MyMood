@@ -1,9 +1,11 @@
 package com.elbaz.eliran.mymood.controller;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,21 +16,13 @@ import com.elbaz.eliran.mymood.R;
 
 public class EmailSender extends AppCompatActivity {
 
-
     EditText mEmail, mComment;
     TextView mTitle;
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_sender);
-
 
     /**
      * Declaration of the Dialog Builder along with the Text and Button
@@ -40,9 +34,25 @@ public class EmailSender extends AppCompatActivity {
     mComment = (EditText) mView.findViewById(R.id.email_activity_comment_dialog);
     Button mSend = (Button) mView.findViewById(R.id.email_box_send_btn);
     Button mCancel = (Button) mView.findViewById(R.id.email_box_cancel_btn);
-    // Set a pre-defined mood title to the message
+    // Get & set a pre-defined title for the email, from the current mood
     String data = getIntent().getExtras().getString("Email Subject","No Title");
     mTitle.setText(data);
+
+        /**
+         * KeyListener to detect the android "Back Press" button and dismiss the dialog box
+         */
+        mBuilder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+            @Override
+            public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+
+                if(keyCode == KeyEvent.KEYCODE_BACK){
+                    dialog.dismiss(); // dismiss the dialog
+                    EmailSender.this.finish(); // exits the activity
+                }
+                return true;
+            }
+        });
+
     /**
      * Set the save button functionality
      */
@@ -87,5 +97,11 @@ public class EmailSender extends AppCompatActivity {
     });
     //// End of Save/Cancel button
 }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 
 }
