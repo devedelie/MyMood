@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.EmailSender;
 
 public class NormalMood extends AppCompatActivity implements GestureDetector.OnGestureListener {
 

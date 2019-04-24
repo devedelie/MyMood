@@ -21,7 +21,7 @@
             android:name=".controller.MoodHistoryScreen"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".controller.EmailSender"
+            android:name=".model.EmailSender"
             android:screenOrientation="portrait" />
         <activity
             android:name=".model.CommentDialog"

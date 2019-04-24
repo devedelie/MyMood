@@ -1,4 +1,4 @@
-package com.elbaz.eliran.mymood.controller;
+package com.elbaz.eliran.mymood.model;
 
 import android.content.DialogInterface;
 import android.content.Intent;
