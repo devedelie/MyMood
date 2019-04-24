@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -38,18 +39,33 @@ public class StatisticYesterday extends Fragment {
         switch (value) {
             case "Super Happy Mood":
                 colorBar.setImageResource(R.drawable.super_happy_color);
+                FrameLayout.LayoutParams superHappy = new FrameLayout.LayoutParams(1000, 300);
+                superHappy.setMargins(0, 0, 0 ,0);
+                colorBar.setLayoutParams(superHappy);
                 break;
             case "Happy Mood!":
                 colorBar.setImageResource(R.drawable.happy_color);
+                FrameLayout.LayoutParams happy = new FrameLayout.LayoutParams(900, 300);
+                happy.setMargins(0, 0, 0 ,0);
+                colorBar.setLayoutParams(happy);
                 break;
             case "Normal Mood":
                 colorBar.setImageResource(R.drawable.normal_color);
+                FrameLayout.LayoutParams normal = new FrameLayout.LayoutParams(800, 300);
+                normal.setMargins(0, 0, 0 ,0);
+                colorBar.setLayoutParams(normal);
                 break;
             case "Disappointed":
                 colorBar.setImageResource(R.drawable.disappointed_color);
+                FrameLayout.LayoutParams disapp = new FrameLayout.LayoutParams(700, 300);
+                disapp.setMargins(0, 0, 0 ,0);
+                colorBar.setLayoutParams(disapp);
                 break;
             case "Sad Mood":
                 colorBar.setImageResource(R.drawable.sad_color);
+                FrameLayout.LayoutParams sad = new FrameLayout.LayoutParams(600, 300);
+                sad.setMargins(0, 0, 0 ,0);
+                colorBar.setLayoutParams(sad);
                 break;
             case "default":
                 colorBar.setImageResource(R.drawable.no_color);
