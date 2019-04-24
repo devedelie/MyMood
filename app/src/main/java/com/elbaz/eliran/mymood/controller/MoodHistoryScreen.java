@@ -4,7 +4,6 @@ package com.elbaz.eliran.mymood.controller;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
@@ -20,11 +19,10 @@ import com.elbaz.eliran.mymood.controller.Fragments.StatisticTwoDaysAgo;
 import com.elbaz.eliran.mymood.controller.Fragments.StatisticYesterday;
 
 /**
- * A simple {@link Fragment} subclass.
+ * History screen frame-layout with 8 fragments
  */
 public class MoodHistoryScreen extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
-    String bar7DaysAgo,bar6DaysAgo,bar5DaysAgo,bar4DaysAgo,bar3DaysAgo,bar2DaysAgo,bar1DaysAgo,barToday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,29 +46,6 @@ public class MoodHistoryScreen extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_today, new StatisticToday()).commit();
 
-
-//        /// To erase ?? ///
-//        SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-//
-//        String value7 = result.getString("7DaysAgo", "default");
-//        String value6 = result.getString("6DaysAgo", "default");
-//        String value5 = result.getString("5DaysAgo", "default");
-//        String value4 = result.getString("4DaysAgo", "default");
-//        String value3 = result.getString("3DaysAgo", "default");
-//        String value2 = result.getString("2DaysAgo", "default");
-//        String value1 = result.getString("1DaysAgo", "default");
-//        String value = result.getString("TodayMood", "default");
-//
-//
-//
-//        if (value != "default") {
-//            barToday = colorSwitcher.switcher(value);
-////            barToday.setImageResource(R.drawable.super_happy_color);
-//        }
-//
-//        /// End - To erase ?? ///
-
-
     }
 
     /**
@@ -78,43 +53,43 @@ public class MoodHistoryScreen extends AppCompatActivity {
      */
 
     public void comment7DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment7DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment7DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void comment6DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment6DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment6DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void comment5DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment5DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment5DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void comment4DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment4DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment4DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void comment3DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment3DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment3DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void comment2DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment2DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment2DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void comment1DaysAgo(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("comment1DaysAgo", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("comment1DaysAgo", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
     public void commentToday(View view){
-        SharedPreferences preferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("DailyCommentData", "default");
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        String value = mSharedPreferences.getString("DailyCommentData", "default");
         Toast.makeText(this, value, Toast.LENGTH_LONG).show();
     }
 }
