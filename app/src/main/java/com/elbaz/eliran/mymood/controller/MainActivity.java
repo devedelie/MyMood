@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
 
     // Set time variables for system alarm execution
-    int hour=9,minutes=40,seconds=0;
+    int hour=10,minutes=26,seconds=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
