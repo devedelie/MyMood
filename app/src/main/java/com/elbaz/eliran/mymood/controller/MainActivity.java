@@ -18,16 +18,21 @@ public class MainActivity extends AppCompatActivity {
 
     // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
     public static final int MOOD_REQUEST_CODE=4;
-//    MediaPlayer mMediaPlayer;
-
     SharedPreferences mSharedPreferences;
 
-    // Set time variables for system alarm execute
-    int hours=23,minutes=59,seconds=59;
+    // Set time variables for system alarm execution
+    int hour=9,minutes=25,seconds=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Set the alarm flag to 0, for testing only // should be commented/erased on production
+        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
+        alarmEditor.putInt("AlarmSetFlag",0);
+        alarmEditor.apply();
+        //////////[ End of alarm flag test ]///////////////////////////////////////////////////////
 
         /**
          * Periodic task:
@@ -36,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
          */
         SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         int flagValue = result.getInt("AlarmSetFlag", 0);
-//        flagValue=0; // set back to zero manually
         if(flagValue==0) {
             setCalendarForAlarm();
         }
@@ -45,38 +49,37 @@ public class MainActivity extends AppCompatActivity {
         // After midnight, the mood will be changed to "Happy" by default
         String todayMood = result.getString("TodayMood", "default");
 
-
             switch (todayMood){
-            case "Sad Mood":
-                Intent sadSmileyIntent = new Intent(this, ReallyBadMoodActivity.class);
-                startActivityForResult(sadSmileyIntent, MOOD_REQUEST_CODE);
-                overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                break;
-            case "Disappointed":
-                Intent todaySmileyIntent = new Intent(this, DisappointedMood.class);
-                startActivityForResult(todaySmileyIntent, MOOD_REQUEST_CODE);
-                overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                break;
-            case "Normal Mood":
-                Intent normalSmileyIntent = new Intent(this, NormalMood.class);
-                startActivityForResult(normalSmileyIntent, MOOD_REQUEST_CODE);
-                overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                break;
+                case "Sad Mood":
+                    Intent sadSmileyIntent = new Intent(this, ReallyBadMoodActivity.class);
+                    startActivityForResult(sadSmileyIntent, MOOD_REQUEST_CODE);
+                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
+                    break;
+                case "Disappointed":
+                    Intent todaySmileyIntent = new Intent(this, DisappointedMood.class);
+                    startActivityForResult(todaySmileyIntent, MOOD_REQUEST_CODE);
+                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
+                    break;
+                case "Normal Mood":
+                    Intent normalSmileyIntent = new Intent(this, NormalMood.class);
+                    startActivityForResult(normalSmileyIntent, MOOD_REQUEST_CODE);
+                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
+                    break;
                 case "Happy Mood!":
                     Intent happySmileyIntent = new Intent(this, HappyMood.class);
                     startActivityForResult(happySmileyIntent, MOOD_REQUEST_CODE);
                     overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
                     break;
-            case "Super Happy Mood":
-                Intent superHappySmileyIntent = new Intent(this, SuperHappyMood.class);
-                startActivityForResult(superHappySmileyIntent, MOOD_REQUEST_CODE);
-                overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                break;
-            default:
-                Intent defaultSmileyIntent = new Intent(this, HappyMood.class);
-                startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
-                overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                break;
+                case "Super Happy Mood":
+                    Intent superHappySmileyIntent = new Intent(this, SuperHappyMood.class);
+                    startActivityForResult(superHappySmileyIntent, MOOD_REQUEST_CODE);
+                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
+                    break;
+                default:
+                    Intent defaultSmileyIntent = new Intent(this, HappyMood.class);
+                    startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
+                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
+                    break;
             }
      }
 
@@ -84,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
      * Set the calendar with date and time for the alarm
      */
     private void setCalendarForAlarm(){
-        // Set the alarm flag back to 1, to indicate the system alarm is on
+        // Set the alarm flag to 1, to indicate the condition on restart, that alarm is already ON
         mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
         alarmEditor.putInt("AlarmSetFlag",1);
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
         // Set the the time and date in calendar
         Calendar calendar = Calendar.getInstance();
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH),
-                hours, minutes, seconds);
+                hour,minutes,seconds);
         // call setAlarm with the time in milli-seconds
         setAlarm(calendar.getTimeInMillis());
     }
@@ -103,12 +106,12 @@ public class MainActivity extends AppCompatActivity {
      * The initialization of the alarm is above
      * @param
      */
-    private void setAlarm(long timeInMillis) {
+    public void setAlarm(long timeInMillis) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(this, DataOrganizeTaskLauncher.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,0);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
-        Toast.makeText(this, "Alarm was set", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Alarm set", Toast.LENGTH_LONG).show();
     }
-    
+
 }

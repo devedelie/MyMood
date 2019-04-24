@@ -10,6 +10,7 @@
 
     <FrameLayout
         android:id="@+id/frame_7_days_ago"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_height="85dp">
 
@@ -17,6 +18,7 @@
 
     <FrameLayout
         android:id="@+id/frame_6_days_ago"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_height="85dp">
 

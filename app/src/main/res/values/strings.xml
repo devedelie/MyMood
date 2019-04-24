@@ -16,4 +16,8 @@
     <string name="yesterday">Mood Yesterday: </string>
     <string name="today">Mood today: </string>
     <string name="happy_email_btn">happy_email_btn</string>
+    <string name="_7_days_ago">7 days ago:</string>
+    <string name="view_comment_btn">view_comment_btn</string>
+    <string name="_6_days_ago">6 days ago:</string>
+    <string name="fragment_layout_6_days_ago">fragment_layout_6_days_ago</string>
 </resources>
