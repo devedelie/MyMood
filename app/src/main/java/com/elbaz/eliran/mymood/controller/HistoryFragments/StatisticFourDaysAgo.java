@@ -1,4 +1,5 @@
-package com.elbaz.eliran.mymood.controller.Fragments;
+package com.elbaz.eliran.mymood.controller.HistoryFragments;
+
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,25 +16,30 @@ import com.elbaz.eliran.mymood.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StatisticYesterday extends Fragment {
+public class StatisticFourDaysAgo extends Fragment {
     private ImageView colorBar, commentBtn;
     private TextView moodText;
+
+
+    public StatisticFourDaysAgo() {
+        // Required empty public constructor
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_statistic_yesterday, container, false);
+        View view = inflater.inflate(R.layout.fragment_statistic_four_days_ago, container, false);
 
-        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_1);
-        commentBtn = (ImageView) view.findViewById(R.id.fragment_1_days_ago_comment_btn);
-        moodText = (TextView) view.findViewById(R.id.fragment_1_days_ago_text);
+        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_4);
+        commentBtn = (ImageView) view.findViewById(R.id.fragment_4_days_ago_comment_btn);
+        moodText = (TextView) view.findViewById(R.id.fragment_4_days_ago_text);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("1DaysAgo", "default");
+        String value = preferences.getString("4DaysAgo", "default");
         // Show the mood of specific day
-        moodText.setText("Your mood yesterday: \n"+value);
+        moodText.setText("Your mood 4 days ago: \n"+value);
         // Check the mood and switch it to set the correct bar-color
         switch (value) {
             case "Super Happy Mood":
@@ -56,10 +62,10 @@ public class StatisticYesterday extends Fragment {
         }
 
         // Show/hide the comment button by checking if comment was made for that day
-        if (preferences.getString("comment1DaysAgo", "default").isEmpty() || preferences.getString("comment1DaysAgo", "default").equals("default")){
-            commentBtn.setVisibility(View.INVISIBLE);
+        if (preferences.getString("comment4DaysAgo", "default").isEmpty() || preferences.getString("comment4DaysAgo", "default").equals("default")){
         }
 
         return view;
     }
+
 }

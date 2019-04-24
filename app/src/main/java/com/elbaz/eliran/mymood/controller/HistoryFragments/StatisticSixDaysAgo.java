@@ -1,4 +1,4 @@
-package com.elbaz.eliran.mymood.controller.Fragments;
+package com.elbaz.eliran.mymood.controller.HistoryFragments;
 
 
 import android.content.Context;
@@ -16,25 +16,30 @@ import com.elbaz.eliran.mymood.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StatisticSevenDaysAgo extends Fragment {
-
+public class StatisticSixDaysAgo extends Fragment {
     private ImageView colorBar, commentBtn;
     private TextView moodText;
+
+
+    public StatisticSixDaysAgo() {
+        // Required empty public constructor
+    }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_statistic_seven_days_ago, container, false);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_statistic_six_days_ago, container, false);
 
-        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_7);
-        commentBtn = (ImageView) view.findViewById(R.id.fragment_7_days_ago_comment_btn);
-        moodText = (TextView) view.findViewById(R.id.fragment_7_days_ago_text);
+        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_6);
+        commentBtn = (ImageView) view.findViewById(R.id.fragment_6_days_ago_comment_btn);
+        moodText = (TextView) view.findViewById(R.id.fragment_6_days_ago_text);
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("7DaysAgo", "default");
+        String value = preferences.getString("6DaysAgo", "default");
         // Show the mood of specific day
-        moodText.setText("Your mood 7 days ago: \n"+value);
+        moodText.setText("Your mood 6 days ago: \n"+value);
         // Check the mood and switch it to set the correct bar-color
         switch (value) {
             case "Super Happy Mood":
@@ -57,12 +62,11 @@ public class StatisticSevenDaysAgo extends Fragment {
         }
 
         // Show/hide the comment button by checking if comment was made for that day
-        if (preferences.getString("comment7DaysAgo", "default").isEmpty() || preferences.getString("comment7DaysAgo", "default").equals("default")){
+        if (preferences.getString("comment6DaysAgo", "default").isEmpty() || preferences.getString("comment6DaysAgo", "default").equals("default")){
             commentBtn.setVisibility(View.INVISIBLE);
         }
 
         return view;
     }
-
 
 }

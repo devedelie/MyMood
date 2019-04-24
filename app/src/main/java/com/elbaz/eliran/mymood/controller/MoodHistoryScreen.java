@@ -9,14 +9,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticFiveDaysAgo;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticFourDaysAgo;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticSevenDaysAgo;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticSixDaysAgo;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticThreeDaysAgo;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticToday;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticTwoDaysAgo;
-import com.elbaz.eliran.mymood.controller.Fragments.StatisticYesterday;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticFiveDaysAgo;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticFourDaysAgo;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticSevenDaysAgo;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticSixDaysAgo;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticThreeDaysAgo;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticToday;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticTwoDaysAgo;
+import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticYesterday;
 
 /**
  * History screen frame-layout with 8 fragments

@@ -1,4 +1,4 @@
-package com.elbaz.eliran.mymood.controller.Fragments;
+package com.elbaz.eliran.mymood.controller.HistoryFragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
