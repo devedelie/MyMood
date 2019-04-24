@@ -15,8 +15,9 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
 
     private TextView userTodayMood, userComment, userMood7, userMood6, userMood5, userMood4, userMood3, userMood2, userMood1;
     private ImageView commentToday, commentYesterday, comment2Days, comment3Days, comment4Days, comment5Days, comment6Days, comment7Days;
+    private ImageView colorBarToday;
     String commentData7DaysAgo, commentData6DaysAgo, commentData5DaysAgo, commentData4DaysAgo,commentData3DaysAgo, commentData2DaysAgo, commentDataYesterday, commentDataToday;
-    String bar7,bar6,bar5,bar4,bar3,bar2,bar1;
+    String bar7,bar6,bar5,bar4,bar3,bar2,bar1,barToday;
     SharedPreferences mSharedPreferences;
 
     @Override
@@ -45,6 +46,9 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         commentYesterday = (ImageView) findViewById(R.id.btn_comment_yesterday);
 
         userComment = (TextView) findViewById(R.id.user_mood_note); // to be erased
+
+        // Link Color Bar Images
+        colorBarToday = (ImageView) findViewById(R.id.color_bar_today);
 
 
 //        // Initializer for testing only - to be erased
@@ -110,35 +114,47 @@ public class Statistics extends AppCompatActivity {//implements NoteDialog.Comme
         userComment.setText(commentDataToday);  // to be erased
 
 
+        /**
+         * Statistics - mood color bar selection
+         */
+        //Reusing the object "result" from above
+        if (value != "default"){
+            barToday = colorSwitch(value);
 
-//        /**
-//         * Statistics - mood color bar selection
-//         */
-//        //Reusing the object "result" from above
-//        if (value6 != "default"){
-//            bar6 = colorSwitch(value6);
-//        }
-//
-//    }
-//
-//    public String colorSwitch(String moodToColor) {
-//        switch (moodToColor) {
-//            case "Super Happy Mood":
-//                return "#FAF911";
-//            case "Happy Mood!":
-//                return "#9086";
-//            case "Normal Mood":
-//                return "#11D8D6";
-//            case "Disappointed":
-//                return "#A4A4A4";
-//            case "Sad Mood":
-//                return "#cf1a08";
-//            case "default":
-//                return "";
-//
-//        }return null;
+        }
+
+
+        // Set bars color
+        colorBarToday.setImageResource(R.drawable.super_happy_color);
 
     }
+
+    public String colorSwitch(String moodToColor) {
+        String src;
+        switch (moodToColor) {
+            case "Super Happy Mood":
+                colorBarToday.setImageResource(R.drawable.super_happy_color);
+                break;
+            case "Happy Mood!":
+                return "#9086";
+            case "Normal Mood":
+                return "#11D8D6";
+            case "Disappointed":
+                return "#A4A4A4";
+            case "Sad Mood":
+                colorBarToday.setImageResource(R.drawable.sad_color);
+                break;
+            case "default":
+                return "";
+
+        }return null;
+
+    }
+
+    //////////// End of color bar
+
+
+
 
     /**
      * Methods which are used to show Toast messages for each comment button on the layout

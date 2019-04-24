@@ -21,17 +21,17 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
 
     // Set time variables for system alarm execution
-    int hour=9,minutes=25,seconds=0;
+    int hour=9,minutes=40,seconds=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // Set the alarm flag to 0, for testing only // should be commented/erased on production
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
-        alarmEditor.putInt("AlarmSetFlag",0);
-        alarmEditor.apply();
+//        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
+//        alarmEditor.putInt("AlarmSetFlag",0);
+//        alarmEditor.apply();
         //////////[ End of alarm flag test ]///////////////////////////////////////////////////////
 
         /**

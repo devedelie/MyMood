@@ -85,7 +85,7 @@ public class DataOrganizer extends AppCompatActivity {
         mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor save = mSharedPreferences.edit();
         // alarm flag to zero
-        save.putInt("AlarmSetFlag",0);
+//        save.putInt("AlarmSetFlag",0);
         // Daily comment to empty
         save.putString("DailyCommentData","");
         // Default mood back to Happy
