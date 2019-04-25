@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 public class DataOrganizer extends AppCompatActivity {
 
     SharedPreferences mSharedPreferences;
+    public static final int MOOD_REQUEST_CODE=1;
 
     String day7, day6, day5, day4, day3, day2, yesterday, today; // Mood Strings
     String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday; //Comment Strings
@@ -84,14 +85,15 @@ public class DataOrganizer extends AppCompatActivity {
         // set the default mood back to "Happy"
         mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor save = mSharedPreferences.edit();
-        // alarm flag to zero
-//        save.putInt("AlarmSetFlag",0);
         // Daily comment to empty
         save.putString("DailyCommentData","");
         // Default mood back to Happy
         save.putString("TodayMood", "Happy Mood!");
         save.apply();
         //////////[ End of default values ]///////////////////////////
+
+
+        finish();
     }
 
 }
