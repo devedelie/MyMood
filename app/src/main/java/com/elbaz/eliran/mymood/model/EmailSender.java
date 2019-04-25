@@ -36,7 +36,7 @@ public class EmailSender extends AppCompatActivity {
     Button mCancel = (Button) mView.findViewById(R.id.email_box_cancel_btn);
     // Get & set a pre-defined title for the email, from the current mood
     String data = getIntent().getExtras().getString("Email Subject","No Title");
-    mTitle.setText(data);
+        mTitle.setText(data);
 
         /**
          * KeyListener to detect the android "Back Press" button and dismiss the dialog box
