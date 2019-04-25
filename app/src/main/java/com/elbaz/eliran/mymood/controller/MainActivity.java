@@ -20,8 +20,9 @@ public class MainActivity extends AppCompatActivity {
     public static final int MOOD_REQUEST_CODE=4;
     SharedPreferences mSharedPreferences;
 
-    // Set time variables for system alarm execution
-    int hour=10,minutes=26,seconds=0;
+
+    // Set time variables for repeated execution of DataOrganizer.java (with AlarmManager)
+    int hour=23,minutes=59,seconds=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,18 @@ public class MainActivity extends AppCompatActivity {
 //        alarmEditor.putInt("AlarmSetFlag",0);
 //        alarmEditor.apply();
         //////////[ End of alarm flag test ]///////////////////////////////////////////////////////
-
+//
         /**
          * Periodic task:
          * Daily silent-alarm for the system, to initialize and organize
-         * the moods and comments of the last 7 days.
+         * the moods and comments of the last 7 days. (with AlarmManager)
          */
         SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         int flagValue = result.getInt("AlarmSetFlag", 0);
         if(flagValue==0) {
             setCalendarForAlarm();
         }
+
 
         // Switch method to launch the last mood of the current day
         // After midnight, the mood will be changed to "Happy" by default
@@ -81,10 +83,20 @@ public class MainActivity extends AppCompatActivity {
                     overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
                     break;
             }
+
+
+//            organizeData();
      }
 
+//     public void organizeData(){
+//        Intent data = new Intent(getApplicationContext(), DataOrganizer.class);
+//        startActivityForResult(data, MOOD_REQUEST_CODE);
+//         overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
+//    }
+
+
     /**
-     * Set the calendar with date and time for the alarm
+     * Set the calendar with date and time for system alarm to launch DataOrganizer.java
      */
     private void setCalendarForAlarm(){
         // Set the alarm flag to 1, to indicate the condition on restart, that alarm is already ON
@@ -102,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
         setAlarm(calendar.getTimeInMillis());
     }
     /**
-     * setAlarm method belongs to the daily task operation every midnight
-     * The initialization of the alarm is above
+     * setAlarm() method, will receive the time in milliseconds from setCalendarForAlarm()
+     * and will initialize a repeating system alarm to call dataOrganizer.java
      * @param
      */
     public void setAlarm(long timeInMillis) {

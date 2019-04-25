@@ -29,8 +29,6 @@ public class HappyMood extends AppCompatActivity implements GestureDetector.OnGe
     private GestureDetector mGestureDetector;
     private ImageView mSmiley, mNoteBtn, mHistoryBtn;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +61,7 @@ public class HappyMood extends AppCompatActivity implements GestureDetector.OnGe
         //Start of the Gesture Detector operation
         mGestureDetector = new GestureDetector(this);
     }
+
 
     @Override
     public boolean onDown(MotionEvent e) {
