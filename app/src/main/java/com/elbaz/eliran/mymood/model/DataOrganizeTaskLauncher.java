@@ -14,7 +14,7 @@ public class DataOrganizeTaskLauncher extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         // The task to be launched by Android AlarmManager when time is right.
-        Toast.makeText(context, "BroadCast was received. Your data from yesterday is being saved now.", Toast.LENGTH_LONG).show();
+        Toast.makeText(context, "It is midnight. Your data from yesterday is being saved now.", Toast.LENGTH_LONG).show();
 
         //Start the DataOrganizer.java class
         Intent dataOrganizer = new Intent();
