@@ -79,6 +79,7 @@ public class StatisticFourDaysAgo extends Fragment {
 
         // Show/hide the comment button by checking if comment was made for that day
         if (preferences.getString("comment4DaysAgo", "default").isEmpty() || preferences.getString("comment4DaysAgo", "default").equals("default")){
+            commentBtn.setVisibility(View.INVISIBLE);
         }
 
         return view;
