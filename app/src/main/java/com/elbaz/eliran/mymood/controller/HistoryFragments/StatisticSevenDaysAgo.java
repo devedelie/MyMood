@@ -3,7 +3,6 @@ package com.elbaz.eliran.mymood.controller.HistoryFragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.elbaz.eliran.mymood.R;
@@ -31,7 +31,7 @@ public class StatisticSevenDaysAgo extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic_seven_days_ago, container, false);
 
-//        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_7);
+        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_7);
         commentBtn = (ImageView) view.findViewById(R.id.fragment_7_days_ago_comment_btn);
         moodText = (TextView) view.findViewById(R.id.fragment_7_days_ago_text);
 
@@ -49,16 +49,16 @@ public class StatisticSevenDaysAgo extends Fragment {
                 colorBar.setLayoutParams(superHappy);
                 break;
             case "Happy Mood!":
-//                colorBar.setImageResource(R.drawable.happy_color);
-//                RelativeLayout.LayoutParams happy = new RelativeLayout.LayoutParams(200, 300);
-//                happy.setMargins(0, 0, 300 ,0);
-//                colorBar.setLayoutParams(happy);
-                layout7DaysAgo = (LinearLayout) getActivity().findViewById(R.id.frame_7_days_ago);
-                layout7DaysAgo.setWeightSum(30);
-                LinearLayout.LayoutParams happy = new LinearLayout.LayoutParams(800, 250);
+                colorBar.setImageResource(R.drawable.happy_color);
+                RelativeLayout.LayoutParams happy = new RelativeLayout.LayoutParams(800, 300);
                 happy.setMargins(0, 0, 0 ,0);
-                layout7DaysAgo.setLayoutParams(happy);
-                layout7DaysAgo.setBackgroundColor(Color.GREEN);
+                colorBar.setLayoutParams(happy);
+//                layout7DaysAgo = (LinearLayout) getActivity().findViewById(R.id.frame_7_days_ago);
+//                layout7DaysAgo.setWeightSum(30);
+//                LinearLayout.LayoutParams happy = new LinearLayout.LayoutParams(800, 250);
+//                happy.setMargins(0, 0, 0 ,0);
+//                layout7DaysAgo.setLayoutParams(happy);
+//                layout7DaysAgo.setBackgroundColor(Color.GREEN);
 
 
                 break;

@@ -6,17 +6,17 @@ android:layout_width="wrap_content"
 android:layout_height="match_parent"
 tools:context=".controller.MoodHistoryScreen">
 
-<!--<ImageView-->
-    <!--android:id="@+id/color_bar_image_7"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent"-->
-    <!--android:layout_marginStart="0dp"-->
-    <!--android:contentDescription="fragment_layout_7_days_ago" />-->
+<ImageView
+    android:id="@+id/color_bar_image_7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginStart="0dp"
+    android:contentDescription="fragment_layout_7_days_ago" />
 
-<!--<RelativeLayout-->
-    <!--android:id="@+id/fragment7"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
+<RelativeLayout
+    android:id="@+id/fragment7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/fragment_7_days_ago_text"
@@ -34,5 +34,6 @@ tools:context=".controller.MoodHistoryScreen">
         android:contentDescription="@string/view_comment_btn"
         android:onClick="comment7DaysAgo"
         android:src="@drawable/ic_comment_black_48px" />
+</RelativeLayout>
 </RelativeLayout>
 
