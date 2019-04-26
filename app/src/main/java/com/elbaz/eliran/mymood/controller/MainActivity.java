@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Switch method to launch the last mood of the current day
-        // After midnight, the mood will be changed to "Happy" by default
+        // After midnight, the mood will go back to "Happy" by default
         String todayMood = result.getString("TodayMood", "default");
 
             switch (todayMood){

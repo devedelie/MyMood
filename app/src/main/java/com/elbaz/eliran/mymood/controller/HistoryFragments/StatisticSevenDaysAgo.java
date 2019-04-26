@@ -53,14 +53,6 @@ public class StatisticSevenDaysAgo extends Fragment {
                 RelativeLayout.LayoutParams happy = new RelativeLayout.LayoutParams(800, 300);
                 happy.setMargins(0, 0, 0 ,0);
                 colorBar.setLayoutParams(happy);
-//                layout7DaysAgo = (LinearLayout) getActivity().findViewById(R.id.frame_7_days_ago);
-//                layout7DaysAgo.setWeightSum(30);
-//                LinearLayout.LayoutParams happy = new LinearLayout.LayoutParams(800, 250);
-//                happy.setMargins(0, 0, 0 ,0);
-//                layout7DaysAgo.setLayoutParams(happy);
-//                layout7DaysAgo.setBackgroundColor(Color.GREEN);
-
-
                 break;
             case "Normal Mood":
                 colorBar.setImageResource(R.drawable.normal_color);
