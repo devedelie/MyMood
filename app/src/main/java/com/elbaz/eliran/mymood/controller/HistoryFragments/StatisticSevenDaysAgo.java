@@ -3,6 +3,7 @@ package com.elbaz.eliran.mymood.controller.HistoryFragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.elbaz.eliran.mymood.R;
@@ -21,6 +23,7 @@ public class StatisticSevenDaysAgo extends Fragment {
 
     private ImageView colorBar, commentBtn;
     private TextView moodText;
+    private LinearLayout layout7DaysAgo;
 
 
     @Override
@@ -28,14 +31,15 @@ public class StatisticSevenDaysAgo extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic_seven_days_ago, container, false);
 
-        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_7);
+//        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_7);
         commentBtn = (ImageView) view.findViewById(R.id.fragment_7_days_ago_comment_btn);
         moodText = (TextView) view.findViewById(R.id.fragment_7_days_ago_text);
+
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         String value = preferences.getString("7DaysAgo", "default");
         // Show the mood of specific day
-        moodText.setText("Your mood 7 days ago: \n"+value);
+        moodText.setText("7 days ago: \n"+value);
         // Check the mood and switch it to set the correct bar-color
         switch (value) {
             case "Super Happy Mood":
@@ -45,10 +49,18 @@ public class StatisticSevenDaysAgo extends Fragment {
                 colorBar.setLayoutParams(superHappy);
                 break;
             case "Happy Mood!":
-                colorBar.setImageResource(R.drawable.happy_color);
-                FrameLayout.LayoutParams happy = new FrameLayout.LayoutParams(900, 300);
+//                colorBar.setImageResource(R.drawable.happy_color);
+//                RelativeLayout.LayoutParams happy = new RelativeLayout.LayoutParams(200, 300);
+//                happy.setMargins(0, 0, 300 ,0);
+//                colorBar.setLayoutParams(happy);
+                layout7DaysAgo = (LinearLayout) getActivity().findViewById(R.id.frame_7_days_ago);
+                layout7DaysAgo.setWeightSum(30);
+                LinearLayout.LayoutParams happy = new LinearLayout.LayoutParams(800, 250);
                 happy.setMargins(0, 0, 0 ,0);
-                colorBar.setLayoutParams(happy);
+                layout7DaysAgo.setLayoutParams(happy);
+                layout7DaysAgo.setBackgroundColor(Color.GREEN);
+
+
                 break;
             case "Normal Mood":
                 colorBar.setImageResource(R.drawable.normal_color);
@@ -73,9 +85,9 @@ public class StatisticSevenDaysAgo extends Fragment {
         }
 
         // Show/hide the comment button by checking if comment was made for that day
-        if (preferences.getString("comment7DaysAgo", "default").isEmpty() || preferences.getString("comment7DaysAgo", "default").equals("default")){
-            commentBtn.setVisibility(View.INVISIBLE);
-        }
+//        if (preferences.getString("comment7DaysAgo", "default").isEmpty() || preferences.getString("comment7DaysAgo", "default").equals("default")){
+//            commentBtn.setVisibility(View.INVISIBLE);
+//        }
 
         return view;
     }

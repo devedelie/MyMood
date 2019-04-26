@@ -38,7 +38,7 @@ public class StatisticToday extends Fragment {
         switch (value) {
             case "Super Happy Mood":
                 colorBar.setImageResource(R.drawable.super_happy_color);
-                FrameLayout.LayoutParams superHappy = new FrameLayout.LayoutParams(1000, 300);
+                FrameLayout.LayoutParams superHappy = new FrameLayout.LayoutParams(1100, 300);
                 superHappy.setMargins(0, 0, 0 ,0);
                 colorBar.setLayoutParams(superHappy);
                 break;
@@ -71,7 +71,7 @@ public class StatisticToday extends Fragment {
         }
 
         // Show/hide the comment button by checking if comment was made for that day
-        if (preferences.getString("dailyCommentData", "default").isEmpty()){
+        if (preferences.getString("dailyCommentData", "default").isEmpty() || preferences.getString("comment6DaysAgo", "default").equals("default")){
             commentBtn.setVisibility(View.INVISIBLE);
         }
 

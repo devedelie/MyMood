@@ -8,70 +8,77 @@ android:weightSum="8"
 android:background="#E0E1FF"
 tools:context=".controller.MoodHistoryScreen">
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_7_days_ago"
+        android:orientation="vertical"
         android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+    </LinearLayout>
 
-    </FrameLayout>
-
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_6_days_ago"
+        android:orientation="horizontal"
         android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_5_days_ago"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_4_days_ago"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_3_days_ago"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_2_days_ago"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_1_days_ago"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-    </FrameLayout>
+    </LinearLayout>
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frame_today"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_weight="1"
-        android:layout_height="wrap_content">
-    </FrameLayout>
+        android:layout_height="match_parent">
+    </LinearLayout>
 
 </LinearLayout>
 
