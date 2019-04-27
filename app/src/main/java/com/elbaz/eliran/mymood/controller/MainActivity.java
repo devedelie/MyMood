@@ -17,7 +17,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
-    public static final int MOOD_REQUEST_CODE=4;
+    public static final int MOOD_REQUEST_CODE=1;
     SharedPreferences mSharedPreferences;
 
 
@@ -47,42 +47,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        // Switch method to launch the last mood of the current day
-        // After midnight, the mood will go back to "Happy" by default
-        String todayMood = result.getString("TodayMood", "default");
+        // Launch mood screen
+        Intent defaultSmileyIntent = new Intent(this, Moods.class);
+        startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
+        overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
 
-            switch (todayMood){
-                case "Sad Mood":
-                    Intent sadSmileyIntent = new Intent(this, ReallyBadMoodActivity.class);
-                    startActivityForResult(sadSmileyIntent, MOOD_REQUEST_CODE);
-                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                    break;
-                case "Disappointed":
-                    Intent todaySmileyIntent = new Intent(this, DisappointedMood.class);
-                    startActivityForResult(todaySmileyIntent, MOOD_REQUEST_CODE);
-                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                    break;
-                case "Normal Mood":
-                    Intent normalSmileyIntent = new Intent(this, NormalMood.class);
-                    startActivityForResult(normalSmileyIntent, MOOD_REQUEST_CODE);
-                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                    break;
-                case "Happy Mood!":
-                    Intent happySmileyIntent = new Intent(this, HappyMood.class);
-                    startActivityForResult(happySmileyIntent, MOOD_REQUEST_CODE);
-                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                    break;
-                case "Super Happy Mood":
-                    Intent superHappySmileyIntent = new Intent(this, SuperHappyMood.class);
-                    startActivityForResult(superHappySmileyIntent, MOOD_REQUEST_CODE);
-                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                    break;
-                default:
-                    Intent defaultSmileyIntent = new Intent(this, HappyMood.class);
-                    startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
-                    overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
-                    break;
-            }
+        finish();
 
 
 //            organizeData();
@@ -113,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
         // call setAlarm with the time in milli-seconds
         setAlarm(calendar.getTimeInMillis());
     }
+
+
     /**
      * setAlarm() method, will receive the time in milliseconds from setCalendarForAlarm()
      * and will initialize a repeating system alarm to call dataOrganizer.java
