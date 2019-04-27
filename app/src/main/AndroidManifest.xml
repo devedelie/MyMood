@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".controller.HappyMood"
+        <activity android:name=".controller.Moods"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".controller.MoodHistoryScreen"
@@ -28,18 +28,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".model.Statistics"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".controller.SuperHappyMood"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".controller.DisappointedMood"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".controller.NormalMood"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".controller.ReallyBadMoodActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".model.DataOrganizer" />
         <activity
