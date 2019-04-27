@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.CommentDialog;
+import com.elbaz.eliran.mymood.model.DataOrganizer;
 import com.elbaz.eliran.mymood.model.EmailSender;
 
 public class Moods extends AppCompatActivity implements GestureDetector.OnGestureListener{
@@ -39,18 +40,31 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moods);
 
-        // Get the last mood of the day. If empty, set 3 (happy) by default and launch it
         result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        moodNumber = result.getInt("MOOD_NUMBER",3);
 
-        // Link the elements of the layout to the activity class.
+        // Check if alarm was executed
+        int flagValue = result.getInt("AlarmSetFlag", 0);
+        if (flagValue == 1) {
+            result.edit().putInt("MOOD_NUMBER", 3).apply();
+            // set alarm flag back to 0
+            SharedPreferences.Editor alarmEditor = result.edit();
+            alarmEditor.putInt("AlarmSetFlag", 0).apply();
+            //Start the DataOrganizer.java class
+            Intent data = new Intent(getApplicationContext(), DataOrganizer.class);
+            startActivityForResult(data, MOOD_REQUEST_CODE);
+            overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
+        }else{
+            // Get the last mood of the day. If its empty, set 3 (happy) by default and launch it
+            moodNumber = result.getInt("MOOD_NUMBER",3);
+        }
+        // Link the elements of the layout to the activity
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
         mNoteBtn = (ImageView) findViewById(R.id.note_btn);
         mEmailBtn = (ImageView) findViewById(R.id.email_btn);
         mHistoryBtn = (ImageView) findViewById(R.id.history_btn);
 
-        // Launch the last mood of the user, by switching the value of modNumber
-        changeMood(moodNumber);
+        // Launch the last mood of the user, by switching the value of moodNumber
+        SetMood(moodNumber);
 
         //Start of the Gesture Detector
         mGestureDetector = new GestureDetector(this);
@@ -61,24 +75,20 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         return false;
     }
     @Override
-    public void onShowPress(MotionEvent e) { // For future use
-    }
+    public void onShowPress(MotionEvent e) {}// For future use
     @Override
     public boolean onSingleTapUp(MotionEvent e) { // For future use
         return false;
     }
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) { // For future use
-        return false;
-    }
+        return false; } // For future use
     @Override
-    public void onLongPress(MotionEvent e) { // For future use
-    }
+    public void onLongPress(MotionEvent e) {}// For future use
     //Touch Event - handles the touch
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         mGestureDetector.onTouchEvent(event);
-
         return super.onTouchEvent(event);
     }
     /**
@@ -117,14 +127,13 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         }
         return result;
     }
-    private void onSwipeLeft() {  // For future use
-    }
-    private void onSwipeRight() {  // For future use
-    }
+    private void onSwipeLeft() {}// For future use
+    private void onSwipeRight() {}// For future use
+
     private void onSwipeUp() {
         if (moodNumber < 4){
             moodNumber++;
-            changeMood(moodNumber);
+            SetMood(moodNumber);
         }else{
             moodNumber=4;
             Toast.makeText(this, "We are glad you are happy, but no more moods above that one", Toast.LENGTH_LONG).show();
@@ -133,13 +142,13 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
     private void onSwipeBottom() {
         if (moodNumber > 0) {
             moodNumber--;
-            changeMood(moodNumber);
+            SetMood(moodNumber);
         } else {
             moodNumber=0;
             Toast.makeText(this, "We are sorry, but no more moods below that one", Toast.LENGTH_LONG).show();
         }
     }
-    public void changeMood(int num){
+    public void SetMood(int num){
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
         result = getSharedPreferences("SaveData", MODE_PRIVATE);
         MediaPlayer mediaPlayer;
@@ -187,9 +196,9 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
     }
 
     public void HistoryBtn(View view){
-        Intent statistics = new Intent(getApplicationContext(), History.class);
-        statistics.putExtra("history", MOOD_REQUEST_CODE);
-        startActivity(statistics);
+        Intent history = new Intent(getApplicationContext(), MoodHistoryScreen.class);
+        history.putExtra("history", MOOD_REQUEST_CODE);
+        startActivity(history);
     }
     public void EmailBtn(View view){
         Intent email = new Intent(getApplicationContext(), EmailSender.class);
