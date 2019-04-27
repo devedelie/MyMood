@@ -187,7 +187,7 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
     }
 
     public void HistoryBtn(View view){
-        Intent statistics = new Intent(getApplicationContext(), MoodHistoryScreen.class);
+        Intent statistics = new Intent(getApplicationContext(), History.class);
         statistics.putExtra("history", MOOD_REQUEST_CODE);
         startActivity(statistics);
     }

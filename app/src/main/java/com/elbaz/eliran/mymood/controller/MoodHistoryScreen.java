@@ -9,14 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticFiveDaysAgo;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticFourDaysAgo;
 import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticSevenDaysAgo;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticSixDaysAgo;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticThreeDaysAgo;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticToday;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticTwoDaysAgo;
-import com.elbaz.eliran.mymood.controller.HistoryFragments.StatisticYesterday;
 
 /**
  * History screen frame-layout with 8 fragments
@@ -32,19 +25,19 @@ public class MoodHistoryScreen extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_7_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_6_days_ago, new StatisticSixDaysAgo()).commit();
+                .replace(R.id.frame_6_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_5_days_ago, new StatisticFiveDaysAgo()).commit();
+                .replace(R.id.frame_5_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_4_days_ago, new StatisticFourDaysAgo()).commit();
+                .replace(R.id.frame_4_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_3_days_ago, new StatisticThreeDaysAgo()).commit();
+                .replace(R.id.frame_3_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_2_days_ago, new StatisticTwoDaysAgo()).commit();
+                .replace(R.id.frame_2_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_1_days_ago, new StatisticYesterday()).commit();
+                .replace(R.id.frame_1_days_ago, new StatisticSevenDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_today, new StatisticToday()).commit();
+                .replace(R.id.frame_today, new StatisticSevenDaysAgo()).commit();
 
     }
 

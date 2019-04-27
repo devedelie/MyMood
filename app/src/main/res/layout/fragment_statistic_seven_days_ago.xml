@@ -1,35 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    android:id="@+id/fragment_line"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    android:id="@+id/main_fragment_layout"
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="wrap_content"
+android:layout_height="match_parent"
+tools:context=".controller.MoodHistoryScreen">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/moodText"
-            android:layout_width="match_parent"
-            android:layout_height="86dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/HappySmiley"
-            android:text="@string/today"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/fragment_history_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:text="@string/_7_days_ago" />
 
-        <ImageButton
-            android:id="@+id/moodImageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="@null"
-            android:src="@drawable/ic_comment_black_48px"
-            android:layout_alignBottom="@+id/moodText"
-            android:layout_alignEnd="@+id/moodText"
-            android:layout_alignRight="@+id/moodText" />
+    <ImageView
+        android:id="@+id/fragment_comment_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="250dp"
+        android:contentDescription="@string/view_comment_btn"
+        android:onClick="comment7DaysAgo"
+        android:src="@drawable/ic_comment_black_48px" />
+</RelativeLayout>
 
-    </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>

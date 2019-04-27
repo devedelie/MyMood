@@ -30,9 +30,8 @@ public class StatisticSevenDaysAgo extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic_seven_days_ago, container, false);
 
-//        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_7);
-        commentBtn = (ImageView) view.findViewById(R.id.fragment_7_days_ago_comment_btn);
-        moodText = (TextView) view.findViewById(R.id.fragment_7_days_ago_text);
+        commentBtn = (ImageView) view.findViewById(R.id.fragment_comment_btn);
+        moodText = (TextView) view.findViewById(R.id.fragment_history_text);
 
 
         SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
@@ -43,11 +42,11 @@ public class StatisticSevenDaysAgo extends Fragment {
         ViewGroup.LayoutParams parameters = moodText.getLayoutParams();
         switch (value) {
             case "Super Happy Mood":
-                parameters.width = 150;
+                parameters.width = 1050;
                 moodText.setBackgroundColor(Color.YELLOW);
                 break;
             case "Happy Mood!":
-                parameters.width = 850;
+                parameters.width = 1150;
                 moodText.setBackgroundColor(Color.GREEN);
                 break;
             case "Normal Mood":
