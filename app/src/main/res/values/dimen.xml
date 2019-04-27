@@ -12,7 +12,7 @@
     <dimen name="smiley_marginEnd">8dp</dimen>
 
     <dimen name="btn_width">65dp</dimen>
-    <dimen name="btn_height">65dp</dimen>
+    <dimen name="btn_height">45dp</dimen>
     <dimen name="btn_marginStart">8dp</dimen>
     <dimen name="btn_marginEnd">8dp</dimen>
 

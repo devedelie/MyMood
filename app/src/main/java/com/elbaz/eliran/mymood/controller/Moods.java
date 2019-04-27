@@ -196,5 +196,4 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         email.putExtra("Email Subject", "Subject: Hey, I'm in Happy-mood and I wanted to share it with you.");
         startActivity(email);
     }
-
 }
