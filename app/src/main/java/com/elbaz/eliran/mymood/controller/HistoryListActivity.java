@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.adapters.HistoryRecyclerAdapter;
+import com.elbaz.eliran.mymood.controller.util.HistoryItemDecorator;
 import com.elbaz.eliran.mymood.model.History;
 
 import java.util.ArrayList;
@@ -56,6 +57,13 @@ public class HistoryListActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         // set the layoutManager to the recyclerView
         mRecyclerView.setLayoutManager(linearLayoutManager);
+
+
+        //**************************************TEST set item width
+        HistoryItemDecorator itemDecorator = new HistoryItemDecorator(1.25f, 0.25f);
+        mRecyclerView.addItemDecoration(itemDecorator);
+        //*************************************************
+
 
         // Instantiate the adapter
         mHistoryRecyclerAdapter = new HistoryRecyclerAdapter(mHistory);
