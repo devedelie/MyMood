@@ -7,7 +7,7 @@
     android:weightSum="100"
     android:background="#fff"
     android:orientation="horizontal"
-    android:layout_gravity="center_vertical">
+    android:gravity="center_vertical">
 
     <LinearLayout
         android:id="@+id/relativeLayout_background_and_sum"
