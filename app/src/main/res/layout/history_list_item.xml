@@ -13,7 +13,7 @@
         android:id="@+id/relativeLayout_background_and_sum"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="60"
+        android:layout_weight="100"
         android:orientation="vertical"
         android:background="@color/HappySmiley">
 
@@ -24,8 +24,7 @@
             android:layout_marginStart="10dp"
             android:text="@string/days_ago_text"
             android:textStyle="bold"
-            android:padding="5dp"
-            android:lines="1" />
+            android:padding="5dp" />
 
         <ImageButton
             android:id="@+id/commentButton"
@@ -38,11 +37,11 @@
             app:srcCompat="@drawable/ic_comment_black_48px" />
     </LinearLayout>
 
-    <View
-        android:id="@+id/paddingView"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="400"
-        android:background="@color/defaultColor" />
+    <!--<View-->
+        <!--android:id="@+id/paddingView"-->
+        <!--android:layout_width="0dp"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_weight="400"-->
+        <!--android:background="@color/defaultColor" />-->
 
 </LinearLayout>
