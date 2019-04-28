@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:weightSum="100"
+    android:background="#fff"
+    android:orientation="horizontal"
+    android:layout_gravity="center_vertical">
+
+    <LinearLayout
+        android:id="@+id/relativeLayout_background_and_sum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="60"
+        android:orientation="vertical"
+        android:background="@color/HappySmiley">
+
+        <TextView
+            android:id="@+id/dayTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:text="@string/days_ago_text"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:lines="1" />
+
+        <ImageButton
+            android:id="@+id/commentButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="end"
+            android:layout_below="@+id/dayTxt"
+            android:background="@android:color/transparent"
+            app:srcCompat="@drawable/ic_comment_black_48px" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/paddingView"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="400"
+        android:background="@color/defaultColor" />
+
+</LinearLayout>
