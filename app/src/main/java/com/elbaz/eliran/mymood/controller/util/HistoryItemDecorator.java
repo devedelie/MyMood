@@ -28,7 +28,7 @@ public class HistoryItemDecorator extends RecyclerView.ItemDecoration {
     @Override
     public void getItemOffsets(@NonNull Rect outRect, @NonNull View view, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
         super.getItemOffsets(outRect, view, parent, state);
-        // Divide the width of the item by 1 for full width, 2,3,4 & 5 for smaller size
+        // Divide the width of the item by certain values for shrinking its size
         paddingSpaceOnRight = parent.getMeasuredWidth() / mainDivider;
         view.getLayoutParams().width = (int)(paddingSpaceOnRight + complementForFloat);
     }
