@@ -8,81 +8,94 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.controller.MoodHistoryScreen;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class StatisticFourDaysAgo extends Fragment {
-    private ImageView colorBar, commentBtn;
-    private TextView moodText;
-
-
-    public StatisticFourDaysAgo() {
-        // Required empty public constructor
-    }
-
+    private ImageView commentBtn;
+    private TextView daysAgo;
+    int mood;
+    String comment;
+    float widthDivider;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_statistic_four_days_ago, container, false);
+        View view = inflater.inflate(R.layout.history_bar, container, false);
 
-        colorBar = (ImageView) view.findViewById(R.id.color_bar_image_4);
-        commentBtn = (ImageView) view.findViewById(R.id.fragment_4_days_ago_comment_btn);
-        moodText = (TextView) view.findViewById(R.id.fragment_4_days_ago_text);
+        SharedPreferences result = this.getActivity().getSharedPreferences("Data", Context.MODE_PRIVATE);
 
-        SharedPreferences preferences = this.getActivity().getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        String value = preferences.getString("4DaysAgo", "default");
-        // Show the mood of specific day
-        moodText.setText("Your mood 4 days ago: \n"+value);
-        // Check the mood and switch it to set the correct bar-color
-        switch (value) {
-            case "Super Happy Mood":
-                colorBar.setImageResource(R.drawable.super_happy_color);
-                FrameLayout.LayoutParams superHappy = new FrameLayout.LayoutParams(1000, 300);
-                superHappy.setMargins(0, 0, 0 ,0);
-                colorBar.setLayoutParams(superHappy);
-                break;
-            case "Happy Mood!":
-                colorBar.setImageResource(R.drawable.happy_color);
-                FrameLayout.LayoutParams happy = new FrameLayout.LayoutParams(900, 300);
-                happy.setMargins(0, 0, 0 ,0);
-                colorBar.setLayoutParams(happy);
-                break;
-            case "Normal Mood":
-                colorBar.setImageResource(R.drawable.normal_color);
-                FrameLayout.LayoutParams normal = new FrameLayout.LayoutParams(800, 300);
-                normal.setMargins(0, 0, 0 ,0);
-                colorBar.setLayoutParams(normal);
-                break;
-            case "Disappointed":
-                colorBar.setImageResource(R.drawable.disappointed_color);
-                FrameLayout.LayoutParams disapp = new FrameLayout.LayoutParams(700, 300);
-                disapp.setMargins(0, 0, 0 ,0);
-                colorBar.setLayoutParams(disapp);
-                break;
-            case "Sad Mood":
-                colorBar.setImageResource(R.drawable.sad_color);
-                FrameLayout.LayoutParams sad = new FrameLayout.LayoutParams(600, 300);
-                sad.setMargins(0, 0, 0 ,0);
-                colorBar.setLayoutParams(sad);
-                break;
-            case "default":
-                colorBar.setImageResource(R.drawable.no_color);
-        }
+        // Load mood reference numbers of each day for the last 7 days
+        mood = result.getInt("4DaysAgo", -1);
+        comment = result.getString("comment4DaysAgo","");
 
-        // Show/hide the comment button by checking if comment was made for that day
-        if (preferences.getString("comment4DaysAgo", "default").isEmpty() || preferences.getString("comment4DaysAgo", "default").equals("default")){
+        // Check the relevant width for the current mood
+        widthSwitcher(mood);
+
+        // Set the width of the fragment, regarding the current mood of specific day.
+        float LayoutWidth = ((MoodHistoryScreen)getActivity()).setLayoutWidth() / widthDivider;
+        RelativeLayout relativeLayout = (RelativeLayout) container.findViewById(R.id.relativeLayout_background_and_sum);
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        params.width = (int)LayoutWidth;
+        /////////////////////////
+
+        daysAgo = (TextView) view.findViewById(R.id.dayTxt);
+        commentBtn = (ImageView) view.findViewById(R.id.commentButton);
+
+        // Load the comment (if exist) and show/hide the button regarding the result
+        if (result.getString("comment4DaysAgo", "").isEmpty() || result.getString("comment4DaysAgo", "").equals("")) {
             commentBtn.setVisibility(View.INVISIBLE);
+        }else{
+            commentBtn.setImageResource(R.drawable.ic_comment_black_48px);
+            commentBtn.setOnClickListener(commentBtnClick);
         }
 
+        // Set N/A message when no data was stored at the first week of the app run
+        if (mood==-1){
+            daysAgo.setText("N/A (No data has been recorded yet)");
+        }else {
+            daysAgo.setText("4 Days ago");
+        }
         return view;
+    }
+
+    View.OnClickListener commentBtnClick = new View.OnClickListener() {
+        public void onClick(View v) {
+            Toast.makeText(getContext(), comment, Toast.LENGTH_LONG).show();
+        }
+    };
+
+    public int widthSwitcher(int x){
+//        Fragment fragment = (Fragment) getFragmentManager().findFragmentById(R.id.frame_7_days_ago);
+        switch (x){
+            case 0:
+                widthDivider = 4.6f;
+//                fragment.getView().setBackgroundColor(Color.RED);
+                break;
+            case 1:
+                widthDivider = 2.5f;
+                break;
+            case 2:
+                widthDivider = 1.66f;
+                break;
+            case 3:
+                widthDivider = 1.25f;
+                break;
+            case 4:
+                widthDivider = 1.0f;
+                break;
+        }
+
+
+        return 0;
     }
 
 }
