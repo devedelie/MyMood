@@ -15,9 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
-import com.elbaz.eliran.mymood.model.CommentDialog;
 import com.elbaz.eliran.mymood.model.DataOrganizer;
-import com.elbaz.eliran.mymood.model.EmailSender;
 
 public class Moods extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -40,22 +38,22 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moods);
 
-        result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        result = getSharedPreferences("Data", Context.MODE_PRIVATE);
 
         // Check if alarm was executed
-        int flagValue = result.getInt("AlarmSetFlag", 0);
-        if (flagValue == 1) {
-            result.edit().putInt("MOOD_NUMBER", 3).apply();
+        String flagValue = result.getString("AlarmSetFlag", "OFF");
+        if (flagValue.equals("ON")) {
+            result.edit().putInt("TodayMood", 3).apply();
             // set alarm flag back to 0
             SharedPreferences.Editor alarmEditor = result.edit();
-            alarmEditor.putInt("AlarmSetFlag", 0).apply();
+            alarmEditor.putString("AlarmSetFlag", "OFF").apply();
             //Start the DataOrganizer.java class
             Intent data = new Intent(getApplicationContext(), DataOrganizer.class);
             startActivityForResult(data, MOOD_REQUEST_CODE);
             overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
         }else{
             // Get the last mood of the day. If its empty, set 3 (happy) by default and launch it
-            moodNumber = result.getInt("MOOD_NUMBER",3);
+            moodNumber = result.getInt("TodayMood",3);
         }
         // Link the elements of the layout to the activity
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
@@ -150,7 +148,7 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
     }
     public void SetMood(int num){
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
-        result = getSharedPreferences("SaveData", MODE_PRIVATE);
+        result = getSharedPreferences("Data", MODE_PRIVATE);
         MediaPlayer mediaPlayer;
 
         switch (num){
@@ -186,7 +184,7 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
                 break;
         }
         //Storing the mood in SharedPreferences
-        result.edit().putInt("MOOD_NUMBER", num).apply();
+        result.edit().putInt("TodayMood", num).commit();
     }
     // Buttons methods
     public void NoteBtn(View view){
