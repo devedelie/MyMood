@@ -19,9 +19,9 @@ public class DataOrganizeTaskLauncher extends BroadcastReceiver {
 
         // Set the alarm flag to 1, to indicate the condition that alarm was executed
         SharedPreferences mSharedPreferences;
-        mSharedPreferences = context.getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        mSharedPreferences = context.getSharedPreferences("Data", Context.MODE_PRIVATE);
         SharedPreferences.Editor alarmEditor = mSharedPreferences.edit();
-        alarmEditor.putInt("AlarmSetFlag",1);
+        alarmEditor.putString("AlarmSetFlag","ON");
         alarmEditor.apply();
         //////////[ End of alarm flag ]///////////////////////////////////////////////////////
 
@@ -29,7 +29,10 @@ public class DataOrganizeTaskLauncher extends BroadcastReceiver {
         /**
          * *****************boolean onStop onStart of Moods***************
          * to check if the user is live or the app is off
-         * if it is off, it will be updated anyway on next launch
+         * if it is off, need to set call only the setAlarm method from this onReceive,
+         * in order to set the alarm for the next day (in case if the app will not be launched)
+         * it will be updated anyway on next launch
+         *
          * if it is on "onStart/onCreate" it will relaunch Moods.java
          */
 //        Intent reload = new Intent();

@@ -15,7 +15,7 @@ public class DataOrganizer extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
     public static final int MOOD_REQUEST_CODE=1;
 
-    String day7, day6, day5, day4, day3, day2, yesterday, today; // Mood Strings
+    int day7, day6, day5, day4, day3, day2, yesterday, today; // Mood integers
     String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday; //Comment Strings
 
     @Override
@@ -26,25 +26,25 @@ public class DataOrganizer extends AppCompatActivity {
          * Set all the statistics data in the right daily order while the periodic alarm is launched
          */
         // Load the daily mood from SharedPreference (last 7 days)
-        SharedPreferences result = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
-        day7 = result.getString("7DaysAgo", "default");
-        day6 = result.getString("6DaysAgo", "default");
-        day5 = result.getString("5DaysAgo", "default");
-        day4 = result.getString("4DaysAgo", "default");
-        day3 = result.getString("3DaysAgo", "default");
-        day2 = result.getString("2DaysAgo", "default");
-        yesterday = result.getString("1DaysAgo", "default");
-        today = result.getString("TodayMood", "default");
+        SharedPreferences result = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        day7 = result.getInt("7DaysAgo", -1);
+        day6 = result.getInt("6DaysAgo", -1);
+        day5 = result.getInt("5DaysAgo", -1);
+        day4 = result.getInt("4DaysAgo", -1);
+        day3 = result.getInt("3DaysAgo", -1);
+        day2 = result.getInt("2DaysAgo", -1);
+        yesterday = result.getInt("1DaysAgo", -1);
+        today = result.getInt("TodayMood", -1);
 
         // Load Daily comments for the last 7 days
-        comment7 = result.getString("comment7DaysAgo","default");
-        comment6 = result.getString("comment6DaysAgo","default");
-        comment5 = result.getString("comment5DaysAgo","default");
-        comment4 = result.getString("comment4DaysAgo","default");
-        comment3 = result.getString("comment3DaysAgo","default");
-        comment2 = result.getString("comment2DaysAgo","default");
-        comment1 = result.getString("comment1DaysAgo","default");
-        commentToday = result.getString("DailyCommentData","default");
+        comment7 = result.getString("comment7DaysAgo","");
+        comment6 = result.getString("comment6DaysAgo","");
+        comment5 = result.getString("comment5DaysAgo","");
+        comment4 = result.getString("comment4DaysAgo","");
+        comment3 = result.getString("comment3DaysAgo","");
+        comment2 = result.getString("comment2DaysAgo","");
+        comment1 = result.getString("comment1DaysAgo","");
+        commentToday = result.getString("DailyCommentData","");
 
         // Switch mood and comment data between days
         day7 = day6;         comment7 = comment6;
@@ -56,17 +56,17 @@ public class DataOrganizer extends AppCompatActivity {
         yesterday = today;   comment1 = commentToday;
 
         // Save updated variables with daily moods to SharedPreference
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+        mSharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
-        editor.putString("7DaysAgo", day7);
-        editor.putString("6DaysAgo", day6);
-        editor.putString("5DaysAgo", day5);
-        editor.putString("4DaysAgo", day4);
-        editor.putString("3DaysAgo", day3);
-        editor.putString("2DaysAgo", day2);
-        editor.putString("1DaysAgo", yesterday);
+        editor.putInt("7DaysAgo", day7);
+        editor.putInt("6DaysAgo", day6);
+        editor.putInt("5DaysAgo", day5);
+        editor.putInt("4DaysAgo", day4);
+        editor.putInt("3DaysAgo", day3);
+        editor.putInt("2DaysAgo", day2);
+        editor.putInt("1DaysAgo", yesterday);
         //Set back the daily mood to Happy by default after midnight
-        editor.putString("TodayMood", "Happy Mood! (-:");
+        editor.putInt("TodayMood", 3);
 
         // Save updated variables with daily comments to SharedPreference
         editor.putString("comment7DaysAgo", comment7);
@@ -77,18 +77,16 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("comment2DaysAgo", comment2);
         editor.putString("comment1DaysAgo", comment1);
         editor.apply();
-        finish();
 
 
         // Set the alarm flag back to zero &
         // set the comment back to empty &
         // set the default mood back to "Happy"
-        mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
         SharedPreferences.Editor save = mSharedPreferences.edit();
         // Daily comment to empty
         save.putString("DailyCommentData","");
         // Default mood back to Happy
-        save.putString("TodayMood", "Happy Mood!");
+        save.putInt("TodayMood", 3);
         save.apply();
         //////////[ End of default values ]///////////////////////////
 
