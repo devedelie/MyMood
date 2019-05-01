@@ -20,4 +20,5 @@
     <string name="view_comment_btn">view_comment_btn</string>
     <string name="_6_days_ago">6 days ago:</string>
     <string name="fragment_layout_6_days_ago">fragment_layout_6_days_ago</string>
+    <string name="days_ago_text">days ago</string>
 </resources>

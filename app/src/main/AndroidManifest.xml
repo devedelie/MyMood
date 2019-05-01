@@ -24,13 +24,10 @@
             android:name=".controller.MoodHistoryScreen"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".model.EmailSender"
+            android:name=".controller.EmailSender"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".model.CommentDialog"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".model.Statistics"
+            android:name=".controller.CommentDialog"
             android:screenOrientation="portrait" />
         <activity android:name=".model.DataOrganizer" />
         <activity
