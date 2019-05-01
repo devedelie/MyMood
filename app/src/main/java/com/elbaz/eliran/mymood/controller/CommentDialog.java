@@ -1,4 +1,4 @@
-package com.elbaz.eliran.mymood.model;
+package com.elbaz.eliran.mymood.controller;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -60,7 +60,7 @@ public class CommentDialog extends AppCompatActivity {
             public void onClick(View view) {
                 if(!mComment.getText().toString().isEmpty()){
                     // Save mComment variable into SharedPreferences
-                    mSharedPreferences = getSharedPreferences("SaveData", Context.MODE_PRIVATE);
+                    mSharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
                     SharedPreferences.Editor editor = mSharedPreferences.edit();
                     editor.putString("DailyCommentData", mComment.getText().toString());
                     editor.apply();

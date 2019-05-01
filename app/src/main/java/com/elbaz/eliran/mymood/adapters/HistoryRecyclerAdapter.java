@@ -78,4 +78,6 @@ public class HistoryRecyclerAdapter extends RecyclerView.Adapter<HistoryRecycler
 
         }
     }
+
+
 }
