@@ -3,9 +3,10 @@
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
+    android:id="@+id/main_fragments_linearlayout"
 android:orientation="vertical"
 android:weightSum="8"
-android:background="#E0E1FF"
+android:background="#D6D5D5"
 tools:context=".controller.MoodHistoryScreen">
 
     <LinearLayout
@@ -30,6 +31,7 @@ tools:context=".controller.MoodHistoryScreen">
     <LinearLayout
         android:id="@+id/frame_5_days_ago"
         android:orientation="horizontal"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -39,6 +41,7 @@ tools:context=".controller.MoodHistoryScreen">
     <LinearLayout
         android:id="@+id/frame_4_days_ago"
         android:orientation="horizontal"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -48,6 +51,7 @@ tools:context=".controller.MoodHistoryScreen">
     <LinearLayout
         android:id="@+id/frame_3_days_ago"
         android:orientation="horizontal"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -57,6 +61,7 @@ tools:context=".controller.MoodHistoryScreen">
     <LinearLayout
         android:id="@+id/frame_2_days_ago"
         android:orientation="horizontal"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -66,6 +71,7 @@ tools:context=".controller.MoodHistoryScreen">
     <LinearLayout
         android:id="@+id/frame_1_days_ago"
         android:orientation="horizontal"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -75,9 +81,18 @@ tools:context=".controller.MoodHistoryScreen">
     <LinearLayout
         android:id="@+id/frame_today"
         android:orientation="horizontal"
+        android:layout_marginStart="0dp"
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:layout_height="match_parent">
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/frame_controller"
+        android:orientation="horizontal"
+        android:layout_marginStart="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
     </LinearLayout>
 
 </LinearLayout>

@@ -32,7 +32,8 @@
             android:layout_height="35dp"
             android:padding="2dp"
             android:layout_alignParentEnd="true"
-            android:layout_alignBottom="@id/dayTxt"/>
+            android:layout_alignBottom="@id/dayTxt"
+            android:onClick="showToastOnClick"/>
 
     </RelativeLayout>
 
