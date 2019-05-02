@@ -4,6 +4,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
@@ -17,9 +18,11 @@ public class MainActivity extends AppCompatActivity {
 
     // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
     public static final int MOOD_REQUEST_CODE=1;
-
+    SharedPreferences mSharedPreferences;
+    private AlarmManager mAlarmManager;
+    private PendingIntent mPendingIntent;
     // Set time variables for repeated execution of DataOrganizer.java (with AlarmManager)
-    int hour=23,minutes=59,seconds=0;
+    int hour=22,minutes=25;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,33 +34,38 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
 
         // Set the calender to prepare the periodic alarm
-        setCalendarForAlarm();
-        finish();
+        SharedPreferences result = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        String alarmFlag = result.getString("AlarmSetFlag", "");
+        if (alarmFlag.equals("Standby")){
+            finish();
+        }else {
+            setAlarm();
+            finish();
+        }
      }
 
+
     /**
-     * Set the calendar with date and time for system alarm to launch DataOrganizer.java
+     * setAlarm() method, will receive the time in milliseconds from the calendar,
+     * and will initialize a repeating alarm to call dataOrganizer.java every 24H
      */
-    private void setCalendarForAlarm(){
-        // Set the the time and date in calendar
+    public void setAlarm() {
+        // set alarm flag
+        mSharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.putString("AlarmSetFlag", "Standby").commit();
+        // Initialize AlarmManager
+        mAlarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, DataOrganizeTaskLauncher.class);
+        mPendingIntent = PendingIntent.getBroadcast(this, 0, intent,0);
+        // Set the time in calendar for the first launch
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY, hour);
         calendar.set(Calendar.MINUTE, minutes);
-        calendar.set(Calendar.SECOND, seconds);
-        // call setAlarm with the time in milli-seconds
-        setAlarm(calendar.getTimeInMillis());
-    }
-    /**
-     * setAlarm() method, will receive the time in milliseconds from setCalendarForAlarm()
-     * and will initialize a repeating system alarm to call dataOrganizer.java
-     * @param
-     */
-    public void setAlarm(long timeInMillis) {
-        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(this, DataOrganizeTaskLauncher.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent,0);
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, timeInMillis, AlarmManager.INTERVAL_DAY, pendingIntent);
+        // setRepeating() will specify a precise custom interval of repeats every 24H
+        mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
+                1000 * 60 * 60 * 24, mPendingIntent);
         Toast.makeText(this, "Alarm set", Toast.LENGTH_LONG).show();
     }
-
 }
