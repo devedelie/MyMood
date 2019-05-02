@@ -15,7 +15,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
-import com.elbaz.eliran.mymood.model.DataOrganizer;
 
 public class Moods extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -37,24 +36,14 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_moods);
-
+        //Get today's mood from SharedPreferences (mood 3 by default = happy)
         result = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        moodNumber = result.getInt("TodayMood",3);
 
-        // Check if alarm was executed
-        String flagValue = result.getString("AlarmSetFlag", "OFF");
-        if (flagValue.equals("ON")) {
-            result.edit().putInt("TodayMood", 3).apply();
-            // set alarm flag back to 0
-            SharedPreferences.Editor alarmEditor = result.edit();
-            alarmEditor.putString("AlarmSetFlag", "OFF").apply();
-            //Start the DataOrganizer.java class
-            Intent data = new Intent(getApplicationContext(), DataOrganizer.class);
-            startActivityForResult(data, MOOD_REQUEST_CODE);
-            overridePendingTransition(R.anim.no_change,R.anim.slide_down_info);
-        }else{
-            // Get the last mood of the day. If its empty, set 3 (happy) by default and launch it
-            moodNumber = result.getInt("TodayMood",3);
-        }
+        // Set indicator to check if user is using the app now (used for alarm and dataOrganizer.java)
+        SharedPreferences.Editor editor = result.edit();
+        editor.putBoolean("userIsOnline", true).apply();
+
         // Link the elements of the layout to the activity
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
         mNoteBtn = (ImageView) findViewById(R.id.note_btn);
@@ -67,6 +56,15 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         //Start of the Gesture Detector
         mGestureDetector = new GestureDetector(this);
     }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Set the boolean to false, to indicate the system that user is not using the app now
+        result = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = result.edit();
+        editor.putBoolean("userIsOnline", false).commit();
+    }
+
     // GestureDetector overriding methods
     @Override
     public boolean onDown(MotionEvent e) { // For future use
@@ -192,7 +190,6 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         commentDialog.putExtra("MoodNumberForComment", MOOD_REQUEST_CODE);
         startActivity(commentDialog);
     }
-
     public void HistoryBtn(View view){
         Intent history = new Intent(getApplicationContext(), MoodHistoryScreen.class);
         history.putExtra("history", MOOD_REQUEST_CODE);
