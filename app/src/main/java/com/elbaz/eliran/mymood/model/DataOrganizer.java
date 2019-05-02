@@ -1,9 +1,13 @@
 package com.elbaz.eliran.mymood.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
+
+import com.elbaz.eliran.mymood.controller.Moods;
 
 /**
  * Created by Eliran Elbaz on 17-Apr-19.
@@ -13,7 +17,6 @@ import android.support.v7.app.AppCompatActivity;
 public class DataOrganizer extends AppCompatActivity {
 
     SharedPreferences mSharedPreferences;
-    public static final int MOOD_REQUEST_CODE=1;
 
     int day7, day6, day5, day4, day3, day2, yesterday, today; // Mood integers
     String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday; //Comment Strings
@@ -76,24 +79,25 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("comment3DaysAgo", comment3);
         editor.putString("comment2DaysAgo", comment2);
         editor.putString("comment1DaysAgo", comment1);
-        editor.apply();
+        editor.commit();
 
-
-        // Set the alarm flag back to zero &
-        // set the comment back to empty &
-        // set the default mood back to "Happy"
+        // set the comment back to empty & the default mood back to "Happy"
         SharedPreferences.Editor save = mSharedPreferences.edit();
-        // Daily comment to empty
         save.putString("DailyCommentData","");
-        // Default mood back to Happy
         save.putInt("TodayMood", 3);
-        save.apply();
-        //////////[ End of default values ]///////////////////////////
+        save.commit();
 
-
+        // if user is online, invoke Moods.java to refresh the screen to default mood
+        boolean userIsOnline = mSharedPreferences.getBoolean("userIsOnline", false);
+        if(userIsOnline){
+            Intent reLaunchMoods = new Intent();
+            reLaunchMoods.setClassName(this, Moods.class.getName());
+            reLaunchMoods.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(reLaunchMoods);
+            Toast.makeText(this, "It's a new day, it's a new dawn, it's a new mood...\n What is your mood today?", Toast.LENGTH_LONG).show();
+        }
         finish();
     }
-
 }
 
 
