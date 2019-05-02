@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.adapters.HistoryRecyclerAdapter;
@@ -36,7 +38,6 @@ public class HistoryListActivity extends AppCompatActivity {
         for (int x=7; x>=0 ; x-- ){
             switch (x){
                 case 7:
-                    History history = new History();
                     mHistory.add(new History("7 Days ago","comment bla bla",(R.drawable.ic_comment_black_48px)));
                     break;
                 case 6:
@@ -107,6 +108,10 @@ public class HistoryListActivity extends AppCompatActivity {
         mHistoryRecyclerAdapter = new HistoryRecyclerAdapter(mHistory);
         // set the adapter to the recyclerView
         mRecyclerView.setAdapter(mHistoryRecyclerAdapter);
+    }
+
+    public void showToastOnClick(View view){
+        Toast.makeText(HistoryListActivity.this, "Comment is working", Toast.LENGTH_SHORT).show();
     }
 
 }

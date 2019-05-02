@@ -4,13 +4,19 @@ package com.elbaz.eliran.mymood.model;
 public class History {
 
     private String dayText, commentData;
+    int mCommentBtnImage;
 
-    public History(String dayText, String commentData) {
+    public History(String dayText, String commentData, int commentBtnImage) {
         this.dayText = dayText;
         this.commentData = commentData;
+        this.mCommentBtnImage = commentBtnImage;
     }
 
     public History() {
+    }
+
+    public int getCommentBtnImage() {
+        return mCommentBtnImage;
     }
 
     public String getDayText() {

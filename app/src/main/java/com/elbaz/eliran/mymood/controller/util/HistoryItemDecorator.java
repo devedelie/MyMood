@@ -14,9 +14,9 @@ public class HistoryItemDecorator extends RecyclerView.ItemDecoration {
     private float mainDivider, complementForFloat, paddingSpaceOnRight;
 
 
-    // Constructor to use when no need any value from HistoryListActivity
-    public HistoryItemDecorator(float floatValueDevider,float complement ){
-        this.mainDivider = floatValueDevider;
+    // Constructor to use for item width value
+    public HistoryItemDecorator(float floatValueDivider,float complement ){
+        this.mainDivider = floatValueDivider;
         this.complementForFloat = complement;
 
     }
