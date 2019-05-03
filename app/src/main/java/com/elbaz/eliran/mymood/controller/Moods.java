@@ -20,7 +20,6 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
     public static final int MOOD_REQUEST_CODE=4;
 
     SharedPreferences result;

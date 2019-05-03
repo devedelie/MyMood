@@ -16,13 +16,12 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    // MOOD_REQUEST_CODE=4   -  Code number 4 to determine the Happy mood location on tasks(1-5)
     public static final int MOOD_REQUEST_CODE=1;
     SharedPreferences mSharedPreferences;
     private AlarmManager mAlarmManager;
     private PendingIntent mPendingIntent;
     // Set time variables for repeated execution of DataOrganizer.java (with AlarmManager)
-    int hour=22,minutes=25;
+    int hour=17,minutes=20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         calendar.set(Calendar.MINUTE, minutes);
         // setRepeating() will specify a precise custom interval of repeats every 24H
         mAlarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(),
-                1000 * 60 * 60 * 24, mPendingIntent);
+                1000 * 60 * 60 * 24 , mPendingIntent); // set the time in milliseconds for the next alarm
         Toast.makeText(this, "Alarm set", Toast.LENGTH_LONG).show();
     }
 }
