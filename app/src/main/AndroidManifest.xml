@@ -43,7 +43,7 @@
 
         <receiver
             android:name=".model.DataOrganizeTaskLauncher"
-            android:enabled="true"
+            android:enabled="false"
             android:exported="true"
             tools:ignore="ExportedReceiver" />
     </application>
