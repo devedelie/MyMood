@@ -28,12 +28,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Launch moods activity
+        // Launch Moods activity
         Intent defaultSmileyIntent = new Intent(this, Moods.class);
         startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
 
-        // Set the calender to prepare the periodic alarm
+        // Check if alarm is running, if not prepare the periodic alarm
         SharedPreferences result = getSharedPreferences("Data", Context.MODE_PRIVATE);
         String alarmFlag = result.getString("AlarmSetFlag", "");
         if (alarmFlag.equals("Standby")){
@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
      }
-
-
     /**
      * setAlarm() method, will receive the time in milliseconds from the calendar,
      * and will initialize a repeating alarm to call dataOrganizer.java every 24H
