@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
     private AlarmManager mAlarmManager;
     private PendingIntent mPendingIntent;
     // Set time variables for repeated execution of DataOrganizer.java (with AlarmManager)
-    int hour=17,minutes=20;
+    int hour=0,minutes=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
