@@ -15,8 +15,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".controller.HistoryListActivity"
-            android:screenOrientation="portrait"/>
         <activity
             android:name=".controller.Moods"
             android:screenOrientation="portrait" />
