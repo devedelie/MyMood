@@ -23,23 +23,17 @@ public class CommentDialog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comment_dialog);
 
-        /**
-         * Declaration of the Dialog Builder along with the Text and Button
-         */
+        //Declaration of the Dialog Builder along with the Text and Button
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(CommentDialog.this);
         View mView = getLayoutInflater().inflate(R.layout.activity_comment_dialog, null);
         mComment = (EditText) mView.findViewById(R.id.activity_comment_dialog);
         Button mSave = (Button) mView.findViewById(R.id.comment_box_save_btn);
         Button mCancel = (Button) mView.findViewById(R.id.comment_box_cancel_btn);
 
-
-        /**
-         * KeyListener to detect the android "Back Press" button and dismiss the dialog box
-         */
+        //KeyListener to detect the android "Back Press" button and dismiss the dialog box
         mBuilder.setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-
                 if(keyCode == KeyEvent.KEYCODE_BACK){
                     dialog.dismiss(); // dismiss the dialog
                     CommentDialog.this.finish(); // exits the activity
@@ -48,9 +42,7 @@ public class CommentDialog extends AppCompatActivity {
             }
         });
 
-        /**
-         * Set the save button functionality
-         */
+         //Set the save button functionality
         mBuilder.setView(mView);
         final AlertDialog dialog = mBuilder.create();
         dialog.show();
@@ -81,5 +73,4 @@ public class CommentDialog extends AppCompatActivity {
         });
         //// End of Save/Cancel button
     }
-
 }
