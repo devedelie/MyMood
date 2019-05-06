@@ -50,7 +50,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/activity_comment_dialog"
         app:layout_constraintVertical_bias="0.506" />
-    
+
     <Button
         android:id="@+id/comment_box_cancel_btn"
         android:layout_width="wrap_content"
