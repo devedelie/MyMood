@@ -143,11 +143,14 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
             Toast.makeText(this, "We are sorry, but no more moods below that one", Toast.LENGTH_LONG).show();
         }
     }
+
+    /**
+     * SetMood() will set the correct smiley + Background color + launch a sound gesture for each mood
+     */
     public void SetMood(int num){
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
         result = getSharedPreferences("Data", MODE_PRIVATE);
         MediaPlayer mediaPlayer;
-
         switch (num){
             case 0: //Sad
                 mSmiley.setImageResource(R.drawable.smiley_sad);
