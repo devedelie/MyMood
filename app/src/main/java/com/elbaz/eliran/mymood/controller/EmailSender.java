@@ -24,9 +24,7 @@ public class EmailSender extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_email_sender);
 
-    /**
-     * Declaration of the Dialog Builder along with the Text and Button
-     */
+        //Declaration of the Dialog Builder along with the Text and Button
     AlertDialog.Builder mBuilder = new AlertDialog.Builder(EmailSender.this);
     View mView = getLayoutInflater().inflate(R.layout.activity_email_sender, null);
     mTitle = (TextView) mView.findViewById(R.id.email_dialog_activity_title);
@@ -36,15 +34,12 @@ public class EmailSender extends AppCompatActivity {
     Button mCancel = (Button) mView.findViewById(R.id.email_box_cancel_btn);
     // Get & set a pre-defined title for the email, from the current mood
     String data = getIntent().getExtras().getString("Email Subject","No Title");
-        mTitle.setText(data);
+    mTitle.setText(data);
 
-        /**
-         * KeyListener to detect the android "Back Press" button and dismiss the dialog box
-         */
+        //KeyListener to detect the android "Back Press" button and dismiss the dialog box
         mBuilder.setOnKeyListener(new DialogInterface.OnKeyListener() {
             @Override
             public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
-
                 if(keyCode == KeyEvent.KEYCODE_BACK){
                     dialog.dismiss(); // dismiss the dialog
                     EmailSender.this.finish(); // exits the activity
@@ -53,9 +48,7 @@ public class EmailSender extends AppCompatActivity {
             }
         });
 
-    /**
-     * Set the save button functionality
-     */
+     //Set the save button functionality
         mBuilder.setView(mView);
     final AlertDialog dialog = mBuilder.create();
         dialog.show();
