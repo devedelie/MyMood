@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
+    
     <TextView
         android:id="@+id/email_dialog_activity_title"
         android:layout_width="wrap_content"
@@ -16,9 +13,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_centerHorizontal="true"
-        android:text="Share your mood with a friend:"
-        android:textSize="23dp"
-        />
+        android:text="@string/share_your_mood_with_a_friend"
+        android:textSize="23sp"/>
 
     <EditText
         android:id="@+id/email_activity_email_dialog"
@@ -27,7 +23,7 @@
         android:layout_marginTop="30dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/email_dialog_activity_title"
-        android:hint="example@example.com" />
+        android:hint="@string/example_example_com" />
 
     <EditText
         android:id="@+id/email_activity_comment_dialog"
@@ -36,32 +32,28 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:layout_below="@id/email_activity_email_dialog"
-        android:hint="Email body message..." />
+        android:hint="@string/email_body_message" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/email_activity_comment_dialog">
+
     <Button
         android:id="@+id/email_box_send_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="60dp"
-        android:layout_below="@id/email_activity_comment_dialog"
-        android:text="Send" />
-
+        android:layout_marginStart="60dp"
+        android:text="@string/send" />
 
     <Button
         android:id="@+id/email_box_cancel_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="60dp"
-        android:layout_below="@id/email_activity_comment_dialog"
-        android:text="Cancel"
+        android:layout_marginStart="60dp"
+        android:text="@string/cancel"
         />
     </LinearLayout>
-
 </RelativeLayout>
