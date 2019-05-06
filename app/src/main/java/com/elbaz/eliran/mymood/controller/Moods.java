@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.model.Constants;
 
 public class Moods extends AppCompatActivity implements GestureDetector.OnGestureListener{
 
@@ -199,7 +200,8 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
     }
     public void EmailBtn(View view){
         Intent email = new Intent(getApplicationContext(), EmailSender.class);
-        email.putExtra("Email Subject", "Subject: Hey, I'm in Happy-mood and I wanted to share it with you.");
+        // get email subject from constants and paste it to the intent
+        email.putExtra("Email Subject", Constants.emailSubjects[moodNumber]);
         startActivity(email);
     }
 }
