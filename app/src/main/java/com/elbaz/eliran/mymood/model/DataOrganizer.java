@@ -81,9 +81,9 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("comment1DaysAgo", comment1);
         editor.commit();
 
-        // set the comment back to empty & the default mood back to "Happy"
+        // set today's comment back to empty & the default mood back to "Happy"
         SharedPreferences.Editor save = mSharedPreferences.edit();
-        save.putString("DailyCommentData","");
+        save.putString("DailyCommentData", "");
         save.putInt("TodayMood", 3);
         save.commit();
 

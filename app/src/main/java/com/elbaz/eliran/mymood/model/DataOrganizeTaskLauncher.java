@@ -19,7 +19,9 @@ public class DataOrganizeTaskLauncher extends BroadcastReceiver {
     private PendingIntent mPendingIntent;
     int hour=0, minutes=0;
 
-    // This method will be invoked once the AlarmManager reaches the time we set for data saving
+    /**
+     * This method will be invoked once the AlarmManager reaches the alarm-time
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         // The task to be launched by Android AlarmManager when time is right.
