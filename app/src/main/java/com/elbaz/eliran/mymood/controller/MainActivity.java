@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Launch Moods activity
+        // Launch Moods.java activity
         Intent defaultSmileyIntent = new Intent(this, Moods.class);
         startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
 
-        // Check if alarm is running, if not prepare the periodic alarm
+        // Check if alarm is running, if not, prepare the periodic alarm
         SharedPreferences result = getSharedPreferences("Data", Context.MODE_PRIVATE);
         String alarmFlag = result.getString("AlarmSetFlag", "");
         if (alarmFlag.equals("Standby")){
