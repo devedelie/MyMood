@@ -21,12 +21,12 @@
     <string name="_6_days_ago">6 days ago:</string>
     <string name="fragment_layout_6_days_ago">fragment_layout_6_days_ago</string>
     <string name="days_ago_text">days ago</string>
-    <string name="send">Send</string>
-    <string name="email_body_message">Email body message...</string>
+    <string name="send">Envoyer</string>
+    <string name="email_body_message">Ecrivez votre message ici...</string>
     <string name="example_example_com">example@example.com</string>
-    <string name="share_your_mood_with_a_friend">Share your mood with a friend:</string>
-    <string name="what_s_on_your_mind_today">What\'s on your mind today?</string>
-    <string name="comment">Comment...</string>
-    <string name="save">Save</string>
-    <string name="cancel">Cancel</string>
+    <string name="share_your_mood_with_a_friend"></string>
+    <string name="what_s_on_your_mind_today">Ecrivez votre commentaire:</string>
+    <string name="comment">commentaire...</string>
+    <string name="save">Sauvegard</string>
+    <string name="cancel">Annuler</string>
 </resources>
