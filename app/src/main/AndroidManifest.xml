@@ -39,11 +39,6 @@
             </intent-filter>
         </activity>
 
-        <receiver
-            android:name=".model.DataOrganizeTaskLauncher"
-            android:enabled="false"
-            android:exported="true"
-            tools:ignore="ExportedReceiver" />
     </application>
 
 </manifest>
