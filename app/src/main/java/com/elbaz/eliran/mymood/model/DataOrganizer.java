@@ -1,9 +1,16 @@
 package com.elbaz.eliran.mymood.model;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.elbaz.eliran.mymood.controller.Moods;
+
+import java.util.Calendar;
+
+import static com.elbaz.eliran.mymood.controller.Moods.MOOD_REQUEST_CODE;
 
 /**
  * Created by Eliran Elbaz on 17-Apr-19.
@@ -77,11 +84,26 @@ public class DataOrganizer extends AppCompatActivity {
         editor.putString("comment1DaysAgo", comment1);
         editor.commit();
 
-        // set today's comment back to empty & the default mood back to "Happy"
+        // set today's comment back to empty + default mood back to "Happy" + launchDate boolean back to true
         SharedPreferences.Editor save = mSharedPreferences.edit();
         save.putString("DailyCommentData", "");
         save.putInt("TodayMood", 3);
+
+        // Store the last date when data was updated
+        Calendar firstLaunchDate = Calendar.getInstance();
+        int yearOfLaunch = Calendar.getInstance().get(Calendar.YEAR);
+        int monthOfLaunch = Calendar.getInstance().get(Calendar.MONTH);
+        int dayOfLaunch = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+        firstLaunchDate.set(yearOfLaunch,++monthOfLaunch,dayOfLaunch);
+        save.putInt("FirstLaunchYear", yearOfLaunch);
+        save.putInt("FirstLaunchMonth", monthOfLaunch);
+        save.putInt("FirstLaunchDay", dayOfLaunch);
+
         save.commit();
+        // Re-launch Moods.Java in order to show the updated mood by default (Happy)
+        Intent launchMoods = new Intent(this, Moods.class);
+        launchMoods.putExtra("MoodNumberForComment", MOOD_REQUEST_CODE);
+        startActivity(launchMoods);
 
         finish();
     }
