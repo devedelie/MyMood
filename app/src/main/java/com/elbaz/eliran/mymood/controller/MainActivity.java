@@ -46,11 +46,9 @@ public class MainActivity extends AppCompatActivity {
              SharedPreferences.Editor edit = prefs.edit();
              edit.putLong("DateComparator", todayMillis);
              edit.commit();
-             // Calculate how many days past since last app launch, and run intent
-             for (int diff = thisDay - lastDay;  diff>0; diff--){
+             // Launch DataOrganizer.class
                  Intent defaultSmileyIntent = new Intent(this, DataOrganizer.class);
                  startActivityForResult(defaultSmileyIntent, MOOD_REQUEST_CODE);
-             }
          }
      }
 }
