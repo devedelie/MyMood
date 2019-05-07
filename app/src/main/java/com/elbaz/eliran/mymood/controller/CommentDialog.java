@@ -57,10 +57,10 @@ public class CommentDialog extends AppCompatActivity {
                     editor.putString("DailyCommentData", mComment.getText().toString());
                     editor.apply();
                     // Toast message and termination
-                    Toast.makeText(CommentDialog.this, "Comment saved", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommentDialog.this, "Commentaire enregistré", Toast.LENGTH_SHORT).show();
                     finish();
                 }else{
-                    Toast.makeText(CommentDialog.this, "Your comment field is empty", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CommentDialog.this, "Votre champ de commentaire est vide", Toast.LENGTH_SHORT).show();
                 }
             }
         });

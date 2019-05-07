@@ -33,7 +33,7 @@ public class EmailSender extends AppCompatActivity {
     Button mSend = (Button) mView.findViewById(R.id.email_box_send_btn);
     Button mCancel = (Button) mView.findViewById(R.id.email_box_cancel_btn);
     // Get & set a pre-defined title for the email, from the current mood
-    String data = getIntent().getExtras().getString("Email Subject","No Title");
+    String data = getIntent().getExtras().getString("Email Subject","Sans titre");
     mTitle.setText(data);
 
         //KeyListener to detect the android "Back Press" button and dismiss the dialog box
@@ -62,7 +62,7 @@ public class EmailSender extends AppCompatActivity {
                 String recipientList = mEmail.getText().toString();
                 String[] recipients = recipientList.split(",");
 
-                String subject = "Hey, I would like to share my mood with you";
+                String subject = "Hey, je voudrais partager mon humeur avec vous";
                 String message = mComment.getText().toString();
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
@@ -71,13 +71,13 @@ public class EmailSender extends AppCompatActivity {
                 intent.putExtra(Intent.EXTRA_TEXT, message);
 
                 intent.setType("message/rfc822");
-                startActivity(Intent.createChooser(intent, "Choose your email client"));
+                startActivity(Intent.createChooser(intent, "Choisissez votre client de messagerie"));
 
                 // Toast message and termination
-                Toast.makeText(EmailSender.this, "Sending Email", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EmailSender.this, "Envoi d'e-mail maintenant", Toast.LENGTH_SHORT).show();
                 finish();
             }else{
-                Toast.makeText(EmailSender.this, "Your comment field is empty", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EmailSender.this, "Votre champ de commentaire est vide", Toast.LENGTH_SHORT).show();
             }
         }
     });
