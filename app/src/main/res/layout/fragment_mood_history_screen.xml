@@ -5,7 +5,7 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
     android:id="@+id/main_fragments_linearlayout"
 android:orientation="vertical"
-android:weightSum="8"
+android:weightSum="7"
 android:background="#D6D5D5"
 tools:context=".controller.MoodHistoryScreen">
 
@@ -83,8 +83,7 @@ tools:context=".controller.MoodHistoryScreen">
         android:orientation="horizontal"
         android:layout_marginStart="0dp"
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:layout_height="match_parent">
+        android:layout_height="0dp">
     </LinearLayout>
 
     <LinearLayout
