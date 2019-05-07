@@ -14,6 +14,7 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     public static final int MOOD_REQUEST_CODE=1;
+    private static MainActivity instance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,12 @@ public class MainActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.no_change,R.anim.slide_up_info);
 
         CheckDay();
+        instance = this;
      }
+
+    public static MainActivity getInstance() {
+        return instance;
+    }
 
     /**
      * Check if and how many days has passed, and update history data regardless
