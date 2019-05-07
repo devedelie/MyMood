@@ -28,13 +28,6 @@ public class MoodHistoryScreen extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
 
     @Override
-    public void onResume(){
-        super.onResume();
-        // Check if date has changed, if yes, organize the data
-        MainActivity.getInstance().CheckDay();
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_mood_history_screen);
