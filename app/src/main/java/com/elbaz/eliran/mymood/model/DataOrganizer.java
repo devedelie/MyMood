@@ -1,13 +1,9 @@
 package com.elbaz.eliran.mymood.model;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.Toast;
-
-import com.elbaz.eliran.mymood.controller.Moods;
 
 /**
  * Created by Eliran Elbaz on 17-Apr-19.
@@ -87,15 +83,6 @@ public class DataOrganizer extends AppCompatActivity {
         save.putInt("TodayMood", 3);
         save.commit();
 
-        // if user is online, invoke Moods.java to refresh the screen to default mood
-        boolean userIsOnline = mSharedPreferences.getBoolean("userIsOnline", false);
-        if(userIsOnline){
-            Intent reLaunchMoods = new Intent();
-            reLaunchMoods.setClassName(this, Moods.class.getName());
-            reLaunchMoods.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(reLaunchMoods);
-            Toast.makeText(this, "It's a new day, it's a new dawn, it's a new mood...\n What is your mood today?", Toast.LENGTH_LONG).show();
-        }
         finish();
     }
 }
