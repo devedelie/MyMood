@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.controller.MoodHistoryScreen;
+import com.elbaz.eliran.mymood.model.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,9 +60,9 @@ public class StatisticTwoDaysAgo extends Fragment {
 
         // Set N/A message when no data was stored at the first week of the app run
         if (mood==-1){
-            daysAgo.setText("N/A (No data has been recorded yet)");
+            daysAgo.setText(Constants.dataNotAvailable);
         }else {
-            daysAgo.setText("2 Days ago");
+            daysAgo.setText(Constants.historyDaysText[5]);
         }
         return view;
     }
