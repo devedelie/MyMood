@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
      }
 
     /**
-     * Check if day has changed, and update history data
+     * Check if and how many days has passed, and update history data regardless
      */
     public void CheckDay() {
         // Get today's date from calendar
