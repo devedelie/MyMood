@@ -52,7 +52,7 @@ public class MoodHistoryScreen extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_3_days_ago, new StatisticThreeDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_2_days_ago, new StatisticTwoDaysAgo()).commit();
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_1_days_ago, new StatisticYesterday()).commit();
-        getSupportFragmentManager().beginTransaction().replace(R.id.frame_today, new StatisticToday()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.frame_today, new StatisticToday()).commit(); // for testing only
         getSupportFragmentManager().beginTransaction().replace(R.id.frame_controller, new FragmentController()).commit();
     }
 
