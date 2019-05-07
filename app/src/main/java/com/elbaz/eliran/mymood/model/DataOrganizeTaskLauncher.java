@@ -33,7 +33,7 @@ public class DataOrganizeTaskLauncher extends BroadcastReceiver {
         dataOrganizer.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(dataOrganizer);
 
-        // If the device has been rebooted, this condition will set the alarm back to cycle.
+//         If the device has been rebooted, this condition will set the alarm back to cycle.
         if (intent.getAction().equals("android.intent.action.BOOT_COMPLETED")) {
             // set alarm flag
             mSharedPreferences = context.getSharedPreferences("Data", Context.MODE_PRIVATE);
@@ -53,7 +53,6 @@ public class DataOrganizeTaskLauncher extends BroadcastReceiver {
                     1000 * 60 * 60 * 24, mPendingIntent);
             Toast.makeText(context, "Alarm set", Toast.LENGTH_LONG).show();
         }
-
 
         // Set the alarm flag to OFF, for testing only
 //        SharedPreferences mSharedPreferences;
