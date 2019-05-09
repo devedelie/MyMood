@@ -13,5 +13,6 @@ public class Constants {
     public static final  String dataNotAvailable = "N / A (aucune donnée n'a encore été enregistrée)";
 
     public static final String[] historyDaysText = {"Il y a une semaine", "Il y a six jours", "Il y a cinq jours", "Il y a quatre jours","Il y a trois jours", "Avent-hier", "Hier"};
+    
 
 }

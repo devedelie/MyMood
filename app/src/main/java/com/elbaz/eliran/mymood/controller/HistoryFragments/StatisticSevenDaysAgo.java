@@ -73,11 +73,9 @@ public class StatisticSevenDaysAgo extends Fragment {
     };
 
     public void widthSwitcher(int x){
-//        Fragment fragment = (Fragment) getFragmentManager().findFragmentById(R.id.frame_7_days_ago);
         switch (x){
             case 0:
                 widthDivider = 4.6f;
-//                fragment.getView().setBackgroundColor(Color.RED);
                 break;
             case 1:
                 widthDivider = 2.5f;

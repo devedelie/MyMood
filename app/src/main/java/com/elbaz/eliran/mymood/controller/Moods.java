@@ -1,16 +1,20 @@
 package com.elbaz.eliran.mymood.controller;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.GestureDetector;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -194,21 +198,62 @@ public class Moods extends AppCompatActivity implements GestureDetector.OnGestur
         //Storing the mood in SharedPreferences
         result.edit().putInt("TodayMood", num).commit();
     }
-    // Buttons methods
+
+    /**
+     * Add comment button
+     */
     public void NoteBtn(View view){
-        Intent commentDialog = new Intent(this, CommentDialog.class);
-        commentDialog.putExtra("MoodNumberForComment", MOOD_REQUEST_CODE);
-        startActivity(commentDialog);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        view = inflater.inflate(R.layout.activity_comment_dialog, null);
+        final EditText editText = view.findViewById(R.id.commentEditTxt);
+        builder.setView(view)
+                .setTitle(R.string.alert_dialog_title)
+                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                })
+                .setPositiveButton(R.string.save, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String comment = editText.getText().toString();
+                        if (comment.isEmpty()){
+                            Toast.makeText(Moods.this, R.string.toast_comment_dialog_empty, Toast.LENGTH_SHORT).show();
+                        }else {
+                            SharedPreferences.Editor editor = result.edit();
+                            editor.putString("DailyCommentData", comment);
+                            editor.apply();
+                            Toast.makeText(Moods.this, R.string.toast_comment_dialog_save, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                })
+                .create()
+                .show();
     }
+
+    /**
+     * History screen button
+     */
     public void HistoryBtn(View view){
         Intent history = new Intent(getApplicationContext(), MoodHistoryScreen.class);
         history.putExtra("history", MOOD_REQUEST_CODE);
         startActivity(history);
     }
+    /**
+     *  Share button
+     */
     public void EmailBtn(View view){
-        Intent email = new Intent(getApplicationContext(), EmailSender.class);
-        // get email subject from constants and paste it to the intent
-        email.putExtra("Email Subject", Constants.emailSubjects[moodNumber]);
-        startActivity(email);
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.emailSubjects[moodNumber]);
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, "test");
+        startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_dialog_text)));
+
+//        Intent email = new Intent(getApplicationContext(), EmailSender.class);
+//        // get email subject from constants and paste it to the intent
+//        email.putExtra("Email Subject", Constants.emailSubjects[moodNumber]);
+//        startActivity(email);
     }
 }

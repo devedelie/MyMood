@@ -6,15 +6,19 @@
     <string name="super_happy">super_happy</string>
     <string name="note_btn">note_btn</string>
     <string name="history_btn">history_btn</string>
+    <!--Comment dialog-->
+    <string name="alert_dialog_title">"Ajoutez un commentaire à votre humeur du jour :"</string>
+    <string name="toast_comment_dialog_save">Votre message a été enregistré</string>
+    <string name="toast_comment_dialog_empty">Commentaire vide</string>
+    <string name="comment">commentaire...</string>
+    <string name="save">Sauvegard</string>
+    <string name="cancel">Annuler</string>
+    <string name="what_s_on_your_mind_today">Ecrivez votre commentaire:</string>
+    <!--Share dialog-->
+    <string name="share_dialog_text">Choisissez un client pour partager votre humeur</string>
 
-    <string name="days_ago_7">Mood 7 Days ago: </string>
-    <string name="days_ago_6">Mood 6 Days ago: </string>
-    <string name="days_ago_5">Mood 5 Days ago: </string>
-    <string name="days_ago_4">Mood 4 Days ago: </string>
-    <string name="days_ago_3">Mood 3 Days ago: </string>
-    <string name="days_ago_2">Mood 2 Days ago: </string>
-    <string name="yesterday">Mood Yesterday: </string>
-    <string name="today">Mood today: </string>
+
+
     <string name="happy_email_btn">happy_email_btn</string>
     <string name="_7_days_ago">7 days ago:</string>
     <string name="view_comment_btn">view_comment_btn</string>
@@ -25,8 +29,6 @@
     <string name="email_body_message">Ecrivez votre message ici...</string>
     <string name="example_example_com">example@example.com</string>
     <string name="share_your_mood_with_a_friend"></string>
-    <string name="what_s_on_your_mind_today">Ecrivez votre commentaire:</string>
-    <string name="comment">commentaire...</string>
-    <string name="save">Sauvegard</string>
-    <string name="cancel">Annuler</string>
+
+
 </resources>
