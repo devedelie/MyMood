@@ -15,24 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".controller.Moods"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".controller.MoodHistoryScreen"
-            android:screenOrientation="portrait" />
-        <activity android:name=".model.DataOrganizer" />
+
         <activity
             android:name=".controller.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-    </application>
+        <activity
+            android:name=".controller.MoodHistoryScreen"
+            android:screenOrientation="portrait" />
 
+    </application>
 </manifest>

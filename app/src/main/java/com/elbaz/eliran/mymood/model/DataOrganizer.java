@@ -3,36 +3,38 @@ package com.elbaz.eliran.mymood.model;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
-import com.elbaz.eliran.mymood.controller.Moods;
+import com.elbaz.eliran.mymood.R;
+import com.elbaz.eliran.mymood.controller.MainActivity;
 
 import java.util.Calendar;
-
-import static com.elbaz.eliran.mymood.controller.Moods.MOOD_REQUEST_CODE;
 
 /**
  * Created by Eliran Elbaz on 17-Apr-19.
  *
  * DataOrganizer.java will be launched every day at midnight to set and save the values for the next day.
  */
-public class DataOrganizer extends AppCompatActivity {
+public class DataOrganizer {
 
+    private static final boolean MOOD_REQUEST_CODE = true;
     SharedPreferences mSharedPreferences;
 
     int day7, day6, day5, day4, day3, day2, yesterday, today; // Mood integers
     String comment7, comment6,comment5,comment4,comment3,comment2,comment1, commentToday; //Comment Strings
+    private Context mContext;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public DataOrganizer(Context context){
+        this.mContext = context;
+    }
 
-        /**
-         * Set all the statistics data in the right daily order while the periodic alarm is launched
-         */
+    /**
+     * Set all the history data in the right daily order while the day is changing
+     */
+    public void organize() {
+        Toast.makeText(mContext, R.string.data_organize_saving_message, Toast.LENGTH_SHORT).show();
         // Load the daily mood from SharedPreference (last 7 days)
-        SharedPreferences result = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        SharedPreferences result = mContext.getSharedPreferences("Data", Context.MODE_PRIVATE);
         day7 = result.getInt("7DaysAgo", -1);
         day6 = result.getInt("6DaysAgo", -1);
         day5 = result.getInt("5DaysAgo", -1);
@@ -62,7 +64,7 @@ public class DataOrganizer extends AppCompatActivity {
         yesterday = today;   comment1 = commentToday;
 
         // Save updated variables with daily moods to SharedPreference
-        mSharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        mSharedPreferences = mContext.getSharedPreferences("Data", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putInt("7DaysAgo", day7);
         editor.putInt("6DaysAgo", day6);
@@ -100,12 +102,10 @@ public class DataOrganizer extends AppCompatActivity {
         save.putInt("FirstLaunchDay", dayOfLaunch);
 
         save.commit();
-        // Re-launch Moods.Java in order to show the updated mood by default (Happy)
-        Intent launchMoods = new Intent(this, Moods.class);
-        launchMoods.putExtra("MoodNumberForComment", MOOD_REQUEST_CODE);
-        startActivity(launchMoods);
-
-        finish();
+        // Re-launch MainActivity.Java in order to show the updated mood by default (Happy)
+        Intent launchMoods = new Intent(mContext, MainActivity.class);
+        launchMoods.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(launchMoods);
     }
 }
 
