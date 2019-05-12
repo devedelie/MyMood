@@ -72,7 +72,6 @@ public class DateChecker  {
                 dataOrganizer.organize();
             }
         }
-
     }
 }
 
