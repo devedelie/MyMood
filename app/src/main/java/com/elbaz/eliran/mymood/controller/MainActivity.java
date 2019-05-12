@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_moods);
+        setContentView(R.layout.activity_main);
         //Get today's mood from SharedPreferences (mood 3 by default = happy)
         result = getSharedPreferences("Data", Context.MODE_PRIVATE);
         moodNumber = result.getInt("TodayMood",3);

@@ -1,10 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
+    android:id="@+id/main_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.DateChecker"/>
+    tools:context=".controller.MainActivity"
+    android:background="@color/HappySmiley">
 
+    <ImageView
+        android:id="@+id/activity_main_default_smiley"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/size_image_height"
+        android:layout_marginStart="@dimen/smiley_marginStart"
+        android:layout_marginTop="@dimen/smiley_marginTop"
+        android:layout_marginEnd="@dimen/smiley_marginEnd"
+        android:layout_marginBottom="@dimen/smiley_marginBottom"
+        android:src="@drawable/smiley_happy"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/note_btn"
+        android:layout_width="65dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="NoteBtn"
+        android:src="@drawable/ic_note_add_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/email_btn"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="2dp"
+        android:contentDescription="@string/happy_email_btn"
+        android:onClick="EmailBtn"
+        android:src="@drawable/ic_mail_outline_black_48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/history_btn"
+        app:layout_constraintStart_toEndOf="@+id/note_btn" />
+
+    <ImageView
+        android:id="@+id/history_btn"
+        android:layout_width="65dp"
+        android:layout_height="55dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="HistoryBtn"
+        android:src="@drawable/ic_history_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
 

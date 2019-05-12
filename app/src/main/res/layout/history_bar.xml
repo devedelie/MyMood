@@ -25,7 +25,6 @@
             android:textStyle="bold"
             android:textSize="15sp"/>
 
-
         <ImageView
             android:id="@+id/commentButton"
             android:layout_width="40dp"
@@ -34,16 +33,7 @@
             android:layout_alignParentEnd="true"
             android:layout_gravity="end"
             android:layout_below="@+id/dayTxt"
-            android:background="@android:color/transparent"
-             />
+            android:background="@android:color/transparent" />
 
     </RelativeLayout>
-
-    <!--<View-->
-        <!--android:id="@+id/paddingView"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="25"-->
-        <!--android:background="@color/defaultColor" />-->
-
 </LinearLayout>
