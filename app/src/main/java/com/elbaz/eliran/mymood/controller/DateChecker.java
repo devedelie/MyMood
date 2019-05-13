@@ -66,6 +66,7 @@ public class DateChecker  {
         // Calculate difference in days
         long diffDays = diff / (24 * 60 * 60 * 1000);
 
+        // run DataOrganizer X times regarding the amount of days have been passed
         if (diffDays !=0){
             DataOrganizer dataOrganizer = new DataOrganizer(this.mContext);
             for (long x = diffDays; x > 0 ; x--){
