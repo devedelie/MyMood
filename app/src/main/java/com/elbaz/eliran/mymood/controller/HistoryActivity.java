@@ -1,19 +1,12 @@
 package com.elbaz.eliran.mymood.controller;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.elbaz.eliran.mymood.R;
-import com.elbaz.eliran.mymood.model.Constants;
 
 public class HistoryActivity extends AppCompatActivity {
     SharedPreferences mSharedPreferences;
@@ -22,8 +15,7 @@ public class HistoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
-
-
+        
         createHistoryList();
     }
 
@@ -32,7 +24,7 @@ public class HistoryActivity extends AppCompatActivity {
         LayoutInflater inflater = LayoutInflater.from(this);
         float[] paddingWeight = {0.4f, 0.8f, 1.66f, 3.9f, 1000f};
 
-        
+
     }
 }
 
