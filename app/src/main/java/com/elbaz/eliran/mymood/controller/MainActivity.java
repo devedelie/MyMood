@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private GestureDetector mGestureDetector;
     private ImageView mSmiley, mNoteBtn, mHistoryBtn, mEmailBtn;
     /**
-     * // mood numbers: //
+     * // mood numbers:
      * 0 = Sad , 1 = Disappointed , 2 = Normal , 3 = Happy , 4 = Super-Happy
      */
     int moodNumber;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     public void onResume(){
         super.onResume();
-        // Check if date has changed, if yes, organize the data
+        // Check if date has changed, if yes, re-organize the data
         DateChecker dateChecker = new DateChecker(this);
     }
 
@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
      * History screen button
      */
     public void HistoryBtn(View view){
-        Intent history = new Intent(getApplicationContext(), MoodHistoryScreen.class);
+        Intent history = new Intent(getApplicationContext(), HistoryActivity.class);
         history.putExtra("history", MOOD_REQUEST_CODE);
         startActivity(history);
     }
