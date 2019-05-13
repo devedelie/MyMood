@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
     <color name="HappySmiley">#9086</color>
     <color name="SuperHappySmiley">#FAF911</color>
     <color name="NormalSmiley">#11D8D6</color>
     <color name="DisappointedSmiley">#A4A4A4</color>
     <color name="SadSmiley">#cf1a08</color>
     <color name="defaultColor">#E7E6E6</color>
-
-
 </resources>
