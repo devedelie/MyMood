@@ -2,28 +2,24 @@
     <!--TextView-->
     <dimen name="size_title">10sp</dimen>
     <dimen name="padding_title">50dip</dimen>
-    <!--images-->
-    <dimen name="size_image_height">400dip</dimen>
-    <dimen name="size_image_width">400dip</dimen>
-    <!--Element position on screen (constraints)-->
+
+    <!--Smiley margin on screen (constraints)-->
     <dimen name="smiley_marginTop">140dp</dimen>
     <dimen name="smiley_marginBottom">130dp</dimen>
     <dimen name="smiley_marginStart">8dp</dimen>
     <dimen name="smiley_marginEnd">8dp</dimen>
 
+    <!--Main screen buttons-->
     <dimen name="btn_width">65dp</dimen>
-    <dimen name="btn_height">45dp</dimen>
+    <dimen name="btn_height">55dp</dimen>
+    <dimen name="email_btn_height">65dp</dimen>
     <dimen name="btn_marginStart">8dp</dimen>
     <dimen name="btn_marginEnd">8dp</dimen>
+    <dimen name="btn_marginBottom">8dp</dimen>
+    <dimen name="email_btn_margin_bottom">2dp</dimen>
 
-    <dimen name="statistics_text_size">15sp</dimen>
+    <!--History Item-->
+    <dimen name="text_margin_top">2dp</dimen>
+    <dimen name="text_margin_start">7dp</dimen>
 
-    <!--Statistics - TextView element position-->
-    <dimen name="TextView_layout_marginStart">25dp</dimen>
-    <dimen name="TextView_layout_marginTop">34dp</dimen>
-    <dimen name="TextView_layout_marginBottom">34dp</dimen>
-    <!--Statistics - ImageView element position-->
-    <dimen name="ImageView_layout_marginStart">75dp</dimen>
-    <dimen name="ImageView_layout_marginTop">34dp</dimen>
-    <dimen name="ImageView_layout_marginBottom">34dp</dimen>
 </resources>

@@ -19,8 +19,10 @@
             android:id="@+id/dayTxt"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginStart="@dimen/text_margin_start"
+            android:layout_marginTop="@dimen/text_margin_top"
             android:layout_weight="1"
-            android:text="Textview1"
+            android:text="Day Number"
             android:textStyle="bold" />
 
         <ImageButton
@@ -31,14 +33,11 @@
             android:layout_gravity="end"
             android:background="@android:color/transparent"
             app:srcCompat="@drawable/ic_comment_black_48px" />
-
     </LinearLayout>
-
     <View
         android:id="@+id/paddingView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="10"
         android:background="@color/defaultColor"/>
-
 </LinearLayout>
