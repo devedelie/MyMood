@@ -13,8 +13,17 @@
     <!--Share dialog-->
     <string name="share_dialog_text">Choisissez un client pour partager votre humeur</string>
     <string name="email_body_message">Ecrivez votre message ici...</string>
+
+
+    <string name="happy_email_btn">happy_email_btn</string>
+    <string name="_7_days_ago">7 days ago:</string>
+    <string name="view_comment_btn">view_comment_btn</string>
+    <string name="_6_days_ago">6 days ago:</string>
+    <string name="fragment_layout_6_days_ago">fragment_layout_6_days_ago</string>
     <string name="days_ago_text">days ago</string>
     <string name="send">Envoyer</string>
     <string name="example_example_com">example@example.com</string>
-    
+    <string name="share_your_mood_with_a_friend"></string>
+
+
 </resources>
