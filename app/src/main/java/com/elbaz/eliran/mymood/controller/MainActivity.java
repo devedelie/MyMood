@@ -155,34 +155,27 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             case 0: //Sad
                 mSmiley.setImageResource(R.drawable.smiley_sad);
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.SadSmiley));
-                mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-                mediaPlayer.start();
                 break;
             case 1: //Disappointed
                 mSmiley.setImageResource(R.drawable.smiley_disappointed);
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.DisappointedSmiley));
-                mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-                mediaPlayer.start();
                 break;
             case 2: //Normal
                 mSmiley.setImageResource(R.drawable.smiley_normal);
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.NormalSmiley));
-                mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-                mediaPlayer.start();
                 break;
             case 3: // Happy
                 mSmiley.setImageResource(R.drawable.smiley_happy);
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.HappySmiley));
-                mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-                mediaPlayer.start();
                 break;
             case 4: // Super Happy
                 mSmiley.setImageResource(R.drawable.smiley_super_happy);
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.SuperHappySmiley));
-                mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-                mediaPlayer.start();
                 break;
         }
+        //Play sound
+        mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
+        mediaPlayer.start();
         //Storing the mood in SharedPreferences
         result.edit().putInt("TodayMood", num).commit();
     }
