@@ -51,10 +51,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         result = getSharedPreferences("Data", Context.MODE_PRIVATE);
         moodNumber = result.getInt("TodayMood",3);
 
-        // Set indicator to check if user is using the app now (used for alarm and dataOrganizer.java)
-        SharedPreferences.Editor editor = result.edit();
-        editor.putBoolean("userIsOnline", true).apply();
-
         // Link the elements of the layout to the activity
         mSmiley = (ImageView) findViewById(R.id.activity_main_default_smiley);
         mNoteBtn = (ImageView) findViewById(R.id.note_btn);
@@ -66,14 +62,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         //Start of the Gesture Detector
         mGestureDetector = new GestureDetector(this);
-    }
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        // Set the boolean to false, to indicate the system that user is not using the app now
-        result = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = result.edit();
-        editor.putBoolean("userIsOnline", false).commit();
     }
 
     // GestureDetector overriding methods
@@ -143,7 +131,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             SetMood(moodNumber);
         }else{
             moodNumber=4;
-            Toast.makeText(this, "We are glad you are happy, but no more moods above that one", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.above_superHappy, Toast.LENGTH_LONG).show();
         }
     }
     private void onSwipeBottom() {
@@ -152,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
             SetMood(moodNumber);
         } else {
             moodNumber=0;
-            Toast.makeText(this, "We are sorry, but no more moods below that one", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.below_sad, Toast.LENGTH_LONG).show();
         }
     }
 

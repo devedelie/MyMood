@@ -9,15 +9,8 @@ import java.util.Calendar;
 
 public class DateChecker  {
 
-    public static final int MOOD_REQUEST_CODE=1;
-    private static DateChecker instance;
     SharedPreferences prefs;
     private Context mContext;
-
-
-    public static DateChecker getInstance() {
-        return instance;
-    }
 
     /**
      * Check if and how many days has passed since last time the data was organized, and update history data regardless

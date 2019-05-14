@@ -17,7 +17,6 @@ import java.util.Calendar;
  */
 public class DataOrganizer {
 
-    private static final boolean MOOD_REQUEST_CODE = true;
     SharedPreferences mSharedPreferences;
 
     int day7, day6, day5, day4, day3, day2, yesterday, today; // Mood integers
