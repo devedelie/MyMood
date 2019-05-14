@@ -149,8 +149,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
      */
     public void SetMood(int num){
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
-        result = getSharedPreferences("Data", MODE_PRIVATE);
         MediaPlayer mediaPlayer;
+        //Play sound
+        mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
+        mediaPlayer.start();
         switch (num){
             case 0: //Sad
                 mSmiley.setImageResource(R.drawable.smiley_sad);
@@ -173,9 +175,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 constraintLayout.setBackgroundColor(ContextCompat.getColor(this, R.color.SuperHappySmiley));
                 break;
         }
-        //Play sound
-        mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-        mediaPlayer.start();
         //Storing the mood in SharedPreferences
         result.edit().putInt("TodayMood", num).commit();
     }
