@@ -32,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
         float[] paddingWeight = {0.4f, 0.8f, 1.66f, 3.9f, 1000f};
 
         for (int i = 0; i <= 6; i++) {
-            // Inflate the bar
+            // Inflate the bar + suppress lint to avoid error
             @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.history_item, null);
             // Link the layout elements with the activity
             View paddingView = view.findViewById(R.id.paddingView);

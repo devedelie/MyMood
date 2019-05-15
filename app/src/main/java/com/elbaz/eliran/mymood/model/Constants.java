@@ -3,7 +3,7 @@ package com.elbaz.eliran.mymood.model;
 import com.elbaz.eliran.mymood.R;
 
 /**
- * This class made to store constant variables
+ * This class made to store constant array variables
  */
 public class Constants {
     public static final String[] emailSubjects = {"Hey, je suis triste et je voulais partager avec toi.",
