@@ -42,7 +42,7 @@
         android:layout_marginEnd="@dimen/btn_marginEnd"
         android:layout_marginBottom="@dimen/email_btn_margin_bottom"
         android:contentDescription="@string/happy_email_btn"
-        android:onClick="EmailBtn"
+        android:onClick="ShareBtn"
         android:src="@drawable/ic_mail_outline_black_48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/history_btn"

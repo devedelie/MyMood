@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         //Start of the Gesture Detector
         mGestureDetector = new GestureDetector(this);
     }
-    
+
     /**
      * Check the date when app start or when app comes back from background
      */
@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     /**
      *  Share button
      */
-    public void EmailBtn(View view){
+    public void ShareBtn(View view){
         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.emailSubjects[moodNumber]);
