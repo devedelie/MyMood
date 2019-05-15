@@ -19,7 +19,7 @@ public class DateChecker  {
         this.mContext = context;
 
         prefs = context.getSharedPreferences("Data", Context.MODE_PRIVATE);
-        // Check if it is the first launch of the app since last time DataOrganizer was launched
+        // Check if it is the first launch of the app since last time when DataOrganizer was launched
         boolean isFirstLaunch = prefs.getBoolean("IsFirstLaunch" , true);
         if (isFirstLaunch) {
             Calendar firstLaunchDate = Calendar.getInstance();
