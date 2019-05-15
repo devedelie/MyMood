@@ -29,8 +29,9 @@ public class HistoryActivity extends AppCompatActivity {
     public void createHistoryList(){
         LinearLayout linearLayout = findViewById(R.id.linearLayout);
         LayoutInflater inflater = LayoutInflater.from(this);
+        // Set an array with all padding values
         float[] paddingWeight = {0.4f, 0.8f, 1.66f, 3.9f, 1000f};
-
+        // inflate layouts for the last 7 days
         for (int i = 0; i <= 6; i++) {
             // Inflate the bar + suppress lint to avoid error
             @SuppressLint("InflateParams") View view = inflater.inflate(R.layout.history_item, null);
@@ -71,7 +72,6 @@ public class HistoryActivity extends AppCompatActivity {
                     });
                 }
             }
-
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT, 1);
             linearLayout.addView(view, params);
         }
