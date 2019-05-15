@@ -3,9 +3,7 @@ package com.elbaz.eliran.mymood.model;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
-import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.controller.MainActivity;
 
 import java.util.Calendar;
@@ -31,7 +29,6 @@ public class DataOrganizer {
      * Set all the history data in the right daily order while the day is changing
      */
     public void organize() {
-        Toast.makeText(mContext, R.string.data_organize_saving_message, Toast.LENGTH_SHORT).show();
         // Load the daily mood from SharedPreference (last 7 days)
         SharedPreferences result = mContext.getSharedPreferences("Data", Context.MODE_PRIVATE);
         day7 = result.getInt("7DaysAgo", -1);

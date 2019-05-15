@@ -2,7 +2,9 @@ package com.elbaz.eliran.mymood.controller;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
+import com.elbaz.eliran.mymood.R;
 import com.elbaz.eliran.mymood.model.DataOrganizer;
 
 import java.util.Calendar;
@@ -62,6 +64,7 @@ public class DateChecker  {
         // run DataOrganizer X times regarding the amount of days have been passed
         if (diffDays !=0){
             DataOrganizer dataOrganizer = new DataOrganizer(this.mContext);
+            Toast.makeText(mContext, R.string.data_organize_saving_message, Toast.LENGTH_SHORT).show();
             for (long x = diffDays; x > 0 ; x--){
                 dataOrganizer.organize();
             }
