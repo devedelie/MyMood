@@ -215,14 +215,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
                 .show();
     }
     /**
-     * History screen button
-     */
-    public void HistoryBtn(View view){
-        Intent history = new Intent(getApplicationContext(), HistoryActivity.class);
-        history.putExtra("history", MOOD_REQUEST_CODE);
-        startActivity(history);
-    }
-    /**
      *  Share button
      */
     public void ShareBtn(View view){
@@ -231,5 +223,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, Constants.emailSubjects[moodNumber]);
         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, R.string.email_body_message);
         startActivity(Intent.createChooser(sharingIntent, getString(R.string.share_dialog_text)));
+    }
+    /**
+     * History screen button
+     */
+    public void HistoryBtn(View view){
+        Intent history = new Intent(getApplicationContext(), HistoryActivity.class);
+        history.putExtra("history", MOOD_REQUEST_CODE);
+        startActivity(history);
     }
 }
