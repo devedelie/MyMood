@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     SharedPreferences result;
     private GestureDetector mGestureDetector;
     private ImageView mSmiley, mNoteBtn, mHistoryBtn, mEmailBtn;
+    MediaPlayer mediaPlayer;
     /**
      * // mood numbers:
      * 0 = Sad , 1 = Disappointed , 2 = Normal , 3 = Happy , 4 = Super-Happy
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private void onSwipeUp() {
         if (moodNumber < 4){
             moodNumber++;
+            PlaySound();
             SetMood(moodNumber);
         }else{
             moodNumber=4;
@@ -140,11 +142,17 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private void onSwipeBottom() {
         if (moodNumber > 0) {
             moodNumber--;
+            PlaySound();
             SetMood(moodNumber);
         } else {
             moodNumber=0;
             Toast.makeText(this, R.string.below_sad, Toast.LENGTH_LONG).show();
         }
+    }
+    private void PlaySound(){
+        //Play sound
+        mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
+        mediaPlayer.start();
     }
 
     /**
@@ -152,10 +160,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
      */
     public void SetMood(int num){
         ConstraintLayout constraintLayout = findViewById(R.id.main_layout);
-        MediaPlayer mediaPlayer;
-        //Play sound
-        mediaPlayer = MediaPlayer.create(this, R.raw.zapsplat_warfare_sword_swipe_slash_head_chop_off_fall_to_ground_20831);
-        mediaPlayer.start();
         switch (num){
             case 0: //Sad
                 mSmiley.setImageResource(R.drawable.smiley_sad);
