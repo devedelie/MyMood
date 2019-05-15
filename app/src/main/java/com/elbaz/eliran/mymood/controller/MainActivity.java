@@ -37,13 +37,6 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     int moodNumber;
 
     @Override
-    public void onResume(){
-        super.onResume();
-        // Check if date has changed, if yes, re-organize the data
-        DateChecker dateChecker = new DateChecker(this);
-    }
-
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -62,6 +55,16 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
         //Start of the Gesture Detector
         mGestureDetector = new GestureDetector(this);
+    }
+    
+    /**
+     * Check the date when app start or when app comes back from background
+     */
+    @Override
+    public void onResume(){
+        super.onResume();
+        // Check if date has changed, if yes, re-organize the data
+        DateChecker dateChecker = new DateChecker(this);
     }
 
     // GestureDetector overriding methods
