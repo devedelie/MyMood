@@ -43,20 +43,18 @@ public class HistoryActivity extends AppCompatActivity {
             //Get the mood of the current day
             mSharedPreferences  = getSharedPreferences("Data", Context.MODE_PRIVATE);
             int mood = mSharedPreferences.getInt(Constants.moodDaysAgo[i], -1);
-            // check if NO content available on a specific day, and set it invisible
+            // check if NO content is available on a specific day, and make it invisible
             if(mood == -1){
                 textView.setText(Constants.dataNotAvailable);
                 commentBtn.setVisibility(View.INVISIBLE);
             }else{
                 // Set relevant text
                 textView.setText(Constants.historyDaysText[i]);
-
                 // Set background color
                 view.setBackgroundColor(getResources().getColor(Constants.historyColors[mood]));
                 // Set bar width
                 paddingView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
                         LinearLayout.LayoutParams.WRAP_CONTENT, paddingWeight[mood]));
-
                 // Get the comment of specific day and show button, or hide if not exist
                 final String comment = mSharedPreferences.getString(Constants.commentDaysAgo[i],"");
                 if (comment.equals("") || comment.isEmpty()) {

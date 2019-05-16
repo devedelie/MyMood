@@ -22,5 +22,5 @@ public class Constants {
 
     public static final int[] historyColors = {R.color.SadSmiley, R.color.DisappointedSmiley, R.color.NormalSmiley,
             R.color.HappySmiley, R.color.SuperHappySmiley};
-    
+
 }
