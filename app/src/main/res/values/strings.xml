@@ -17,7 +17,6 @@
     <!--MainActivity-->
     <string name="above_superHappy">We are glad you are happy, but no more moods above that one</string>
     <string name="below_sad">We are sorry, but no more moods below that one</string>
-
     <string name="happy_email_btn">happy_email_btn</string>
     <string name="_7_days_ago">7 days ago:</string>
     <string name="view_comment_btn">view_comment_btn</string>
